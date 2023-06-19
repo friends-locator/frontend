@@ -1,0 +1,33 @@
+import React from 'react';
+import './PopupWithForm.css';
+
+function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
+	function handleMouseDown(evt) {
+		if (evt.target === evt.currentTarget) {
+			onClose();
+		}
+	}
+
+	return (
+		/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
+		<div
+			className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}
+			onMouseDown={handleMouseDown}
+		>
+			<div className="popup__container">
+				<h2 className="popup__title">{title}</h2>
+				<form className="form" name={name} onSubmit={onSubmit} noValidate>
+					{children}
+				</form>
+				<button
+					className="popup__btn-close"
+					type="button"
+					aria-label="Закрыть"
+					onClick={onClose}
+				/>
+			</div>
+		</div>
+	);
+}
+
+export default PopupWithForm;

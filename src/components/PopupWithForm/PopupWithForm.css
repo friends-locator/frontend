@@ -1,0 +1,65 @@
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.5s, opacity 0.5s;
+}
+
+.popup__container {
+	position: fixed;
+	bottom: 0;
+	width: 320px;
+	min-height: 160px;
+	background-color: #fff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding: 60px 20px 30px;
+	box-sizing: border-box;
+}
+
+.popup_opened {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0.5s, opacity 0.5s;
+}
+
+/* @TODO добавить общие стили чтобы можно было убрать некоторые свойсва стилей */
+
+.popup__title {
+	margin: 0;
+	margin-bottom: 25px;
+	padding: 0;
+	font-family: 'Noto Sans', 'Arial', sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 20px;
+	text-align: center;
+	color: #141513;
+}
+
+.popup__btn-close {
+	padding: 0;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	width: 24px;
+	height: 24px;
+	background-color: transparent;
+	background-image: url(../../Images/icon_close.svg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	transition: opacity 0.3s;
+}
+
+.popup__btn-close:hover {
+	opacity: 0.6;
+}

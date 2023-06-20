@@ -5,38 +5,35 @@ export default {
 	component: Button,
 	tags: ['autodocs'],
 	argTypes: {
-		backgroundColor: { control: 'color' },
+		size: {
+			description: 'Варианты размера кнопки',
+			options: ['small', 'medium', 'large'],
+			control: {
+				type: 'radio',
+			},
+		},
+		type: {
+			description: 'Варианты типа кнопки',
+			options: ['button', 'submit', 'link'],
+			control: {
+				type: 'radio',
+			},
+		},
+		color: {
+			description: 'Варианты цвета кнопки',
+			options: ['primary', 'secondary'],
+			control: {
+				type: 'radio',
+			},
+		},
 	},
 	args: {
 		label: 'Button',
 		type: 'button',
+		size: 'medium',
+		color: 'primary',
+		disabled: false,
 	},
 };
 
-export const Default = (args) => <Button {...args}>Привет мир!</Button>;
-
-export const Color = (args) => (
-	<div className="buttons">
-		<Button color="white" {...args} />
-		<Button color="light" {...args} />
-		<Button color="dark" {...args} />
-		<Button color="black" {...args} />
-		<Button color="text" {...args} />
-		<Button color="ghost" {...args} />
-		<Button color="primary" {...args} />
-		<Button color="link" {...args} />
-		<Button color="info" {...args} />
-		<Button color="success" {...args} />
-		<Button color="warning" {...args} />
-		<Button color="danger" {...args} />
-	</div>
-);
-
-export const Sizes = (args) => (
-	<div className="buttons">
-		<Button size="small" {...args} />
-		<Button size="normal" {...args} />
-		<Button size="medium" {...args} />
-		<Button size="large" {...args} />
-	</div>
-);
+export const Default = (args) => <Button {...args} />;

@@ -1,7 +1,16 @@
 import React from 'react';
-import './Button.css';
+import PropTypes from 'prop-types';
+import './Button.scss';
 
-export function Button({ label, url, type, color, size, disabled, onClick }) {
+export default function Button({
+	label,
+	url,
+	type,
+	color,
+	size,
+	disabled,
+	onClick,
+}) {
 	const props = {
 		disabled,
 		onClick,
@@ -31,3 +40,22 @@ export function Button({ label, url, type, color, size, disabled, onClick }) {
 			);
 	}
 }
+
+Button.propTypes = {
+	label: PropTypes.string.isRequired,
+	url: PropTypes.string,
+	type: PropTypes.oneOf(['link', 'button', 'submit']),
+	disabled: PropTypes.bool,
+	color: PropTypes.oneOf(['primary', 'secondary']),
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	onClick: PropTypes.func,
+};
+
+Button.defaultProps = {
+	type: 'button',
+	url: undefined,
+	disabled: false,
+	color: undefined,
+	size: 'medium',
+	onClick: undefined,
+};

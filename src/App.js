@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import PopupWithForm from './components/PopupWithForm/PopupWithForm';
 
 function App() {
 	return (
@@ -19,8 +18,6 @@ function App() {
 					Learn React
 				</a>
 			</header>
-
-			<PopupWithForm />
 		</div>
 	);
 }

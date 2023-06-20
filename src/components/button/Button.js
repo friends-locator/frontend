@@ -47,7 +47,7 @@ Button.propTypes = {
 	type: PropTypes.oneOf(['link', 'button', 'submit']),
 	disabled: PropTypes.bool,
 	color: PropTypes.oneOf(['primary', 'secondary']),
-	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	size: PropTypes.oneOf(['medium', 'large']),
 	onClick: PropTypes.func,
 };
 

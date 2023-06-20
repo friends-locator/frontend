@@ -7,7 +7,7 @@ export default {
 	argTypes: {
 		size: {
 			description: 'Варианты размера кнопки',
-			options: ['small', 'medium', 'large'],
+			options: ['medium', 'large'],
 			control: {
 				type: 'radio',
 			},

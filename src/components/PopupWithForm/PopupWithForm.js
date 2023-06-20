@@ -1,5 +1,6 @@
 import React from 'react';
-import './PopupWithForm.css';
+import PropTypes from 'prop-types';
+import './PopupWithForm.scss';
 
 function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
 	function handleMouseDown(evt) {
@@ -29,5 +30,19 @@ function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
 		</div>
 	);
 }
+PopupWithForm.propTypes = {
+	title: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	children: PropTypes.element.isRequired,
+	isOpen: PropTypes.bool,
+	onClose: PropTypes.func,
+	onSubmit: PropTypes.func,
+};
+
+PopupWithForm.defaultProps = {
+	isOpen: false,
+	onClose: undefined,
+	onSubmit: undefined,
+};
 
 export default PopupWithForm;

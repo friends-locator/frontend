@@ -47,6 +47,10 @@
 	}
 
 	&_color-primary:hover {
+		background: #c3f402;
+	}
+
+	&_color-primary:active {
 		background: #3fe911;
 	}
 
@@ -68,6 +72,11 @@
 	}
 
 	&_color-secondary:hover {
+		border: none;
+		background: #c3f402;
+	}
+
+	&_color-secondary:active {
 		border: none;
 		background: #3fe911;
 	}

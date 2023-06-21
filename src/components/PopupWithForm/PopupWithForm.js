@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './PopupWithForm.scss';
 
 function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
 	function handleMouseDown(evt) {

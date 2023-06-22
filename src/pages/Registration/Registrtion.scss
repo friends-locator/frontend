@@ -8,7 +8,7 @@
 		z-index: 1;
 		cursor: pointer;
 		position: absolute;
-		border: none; 
+		border: none;
 		outline: none;
 		width: 32px;
 		height: 32px;
@@ -17,7 +17,6 @@
 		background: transparent;
 		background-image: url(../../images/arrow-back.svg);
 		background-repeat: no-repeat;
-
 	}
 
 	&_container {
@@ -41,7 +40,12 @@
 		overflow: hidden;
 
 		&_step-2 {
-			background: radial-gradient(152.12% 76.27% at -14.67% 88.24%, rgba(244, 66, 0, 0.30) 0%, rgba(244, 66, 0, 0.00) 100%), #FFF;
+			background: radial-gradient(
+					152.12% 76.27% at -14.67% 88.24%,
+					rgba(244, 66, 0, 0.3) 0%,
+					rgba(244, 66, 0, 0) 100%
+				),
+				#fff;
 		}
 	}
 
@@ -135,7 +139,7 @@
 		}
 
 		&_terms-of-use-link {
-			color: #3FE911;
+			color: #3fe911;
 			font-size: 11px;
 			cursor: pointer;
 		}

@@ -54,7 +54,7 @@ export const Registrtion = () => {
 		invalidConfirmPasswordErrorText
 	);
 
-	const [step, setStep] = useState(2);
+	const [step, setStep] = useState(1);
 
 	const handleChange = (evt) => {
 		const { name, value } = evt.target;
@@ -178,6 +178,8 @@ export const Registrtion = () => {
 	const hadleBtnBackClick = () => {
 		if (step === 2) {
 			setStep(1);
+		} else {
+			window.location.assign(ROUTES.ROOT);
 		}
 	};
 

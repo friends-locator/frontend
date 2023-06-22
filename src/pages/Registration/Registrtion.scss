@@ -1,0 +1,192 @@
+.registration {
+    font-family: 'Noto Sans', 'Arial', sans-serif;
+
+    display: flex;
+    justify-content: center;
+
+    &_container {
+        background: radial-gradient(111.73% 51.6% at 116.4% 62.19%, rgba(244, 66, 0, 0.4) 0%, rgba(244, 66, 0, 0) 100%)
+                /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+                , #FFFFFF;
+        box-shadow: 4px 4px 50px 3px rgba(34, 13, 9, 0.13);
+        height: 812px;
+        width: 375px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+    }
+
+    &_vector {
+        position: absolute;
+        width: 274.48px;
+        height: 137.44px;
+        top: 42px;
+        left: 0;
+
+        background-image: url(../../images/vector.png);
+        background-repeat: no-repeat;
+    }
+
+    &_form {
+        z-index: 1;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 36px 33px;
+        background: #FFFFFF;
+        border-radius: 30px 30px 0px 0px;
+        width: 100%;
+
+        &_step-number {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19px;
+        
+            color: #AEAFA4;
+
+            margin: 0;
+            margin-bottom: 16px;
+        }
+
+        &_title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 130%;
+            color: #000000;
+            margin-bottom: 12px;
+        }
+
+        &_input-container {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 12px;
+        }
+
+        &_label {
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 17px;
+            letter-spacing: -0.019em;
+            text-align: left;
+        }
+
+        &_input {
+            margin-top: 4px;
+            border: 1px solid #CCCDC2;
+            border-radius: 10px;
+            padding: 0 8px;
+            height: 40px;
+
+            color: #000;
+            font-size: 14px;
+            line-height: 130%;
+            letter-spacing: -0.266px;
+
+            &_error {
+                border-color: #E90000;
+                color: #E90000;
+                font-size: 11px;
+                margin-top: 4px;
+            }
+        }
+
+        &_sex-fieldset {
+            border: none;
+            width: 100%;
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 87px;
+
+            &_legend {
+                box-sizing: border-box;
+                margin-bottom: 12px;
+                color: #000;
+                font-size: 13px;
+                font-family: Noto Sans;
+                font-weight: 500;
+                line-height: 130%;
+                letter-spacing: -0.247px;
+            }
+
+            &_label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            &_label::before {
+                content: "";
+                background: url(../../images/radio-unchecked.svg) 0 0 no-repeat;
+                width: 24px;
+                height: 24px;
+                background-position: center;
+                padding: 4px;
+            }
+
+            input[type=radio]:checked + label:before {
+                background: url(../../images/radio-checked.svg) 0 0 no-repeat;
+                background-position: center;
+                padding: 4px;
+            }
+
+            &_radio {
+                display: none;
+            }
+
+            &_radio-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+        }
+
+        &_btn-continue {
+            margin-top: 36px;
+        }
+
+        &_span {
+            margin-top: 20px;
+            color: #141513;
+            font-size: 14px;
+        }
+
+        &_link {
+            color: #3FE911;
+            font-size: 14px;
+            text-decoration-line: underline;
+        }
+    }
+
+
+    &_footer {
+        width: 100%;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 34px;
+    }
+
+    &_home-indicator {
+        width: 134px;
+        height: 5px;
+        margin-top: 8px;
+    
+        background: #000000;
+        border-radius: 100px;
+    }
+
+}

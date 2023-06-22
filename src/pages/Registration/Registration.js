@@ -364,13 +364,19 @@ export const Registrtion = () => {
 								<span className="registration_form_terms-of-use-text">
 									Регистрируясь, ты подтверждаешь,
 									<br /> что прочитал(а) и принимаешь &nbsp;
-									<span className="registration_form_terms-of-use-link">
+									<Link
+										to={ROUTES.PRIVACY_POLICY}
+										className="registration_form_terms-of-use-link"
+									>
 										политику конфиденциальности
-									</span>
+									</Link>
 									&nbsp;и&nbsp;
-									<span className="registration_form_terms-of-use-link">
+									<Link
+										to={ROUTES.TERMS_OF_USE}
+										className="registration_form_terms-of-use-link"
+									>
 										условия использования
-									</span>
+									</Link>
 								</span>
 							</div>
 							<Button

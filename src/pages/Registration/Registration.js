@@ -18,7 +18,7 @@ import {
 	ROUTES,
 } from '../../constants';
 
-import Button from '../../components/button/Button';
+import { Button, InputText, InputPassword } from '../../components';
 
 import avatarman from '../../images/avatarman.svg';
 import avatarwoman from '../../images/avatarwoman.svg';
@@ -154,6 +154,18 @@ export const Registrtion = () => {
 	const handleContinueButtonClick = () => {
 		if (!nameError && !surnameError && !nicknameError && !emailError) {
 			setStep(2);
+		} else if (userData.name.length === 0) {
+			setNameDirty(true);
+			setNameError(emptyNameErrorText);
+		} else if (userData.surname.length === 0) {
+			setSurnameDirty(true);
+			setSurnameError(emptySurnameErrorText);
+		} else if (userData.nickname.length === 0) {
+			setNicknameDirty(true);
+			setNicknameError(emptyNicknameErrorText);
+		} else if (userData.email.length === 0) {
+			setEmailDirty(true);
+			setEmailError(emptyEmailErrorText);
 		}
 	};
 
@@ -202,100 +214,50 @@ export const Registrtion = () => {
 						<form className="registration_form">
 							<h2 className="registration_form_step-number">Шаг 1 из 2</h2>
 							<h1 className="registration_form_title">Создаём аккаунт</h1>
-							<div className="registration_form_input-container">
-								<label htmlFor="name" className="registration_form_label">
-									Имя
-									<input
-										type="text"
-										className={`registration_form_input ${
-											nameDirty && nameError && 'registration_form_input_error'
-										}`}
-										id="name"
-										name="name"
-										required
-										value={userData.name}
-										onChange={handleChange}
-										onBlur={blurHandler}
-									/>
-								</label>
-								{nameDirty && nameError && (
-									<span className="registration_form_input_error">
-										{nameError}
-									</span>
-								)}
-							</div>
-							<div className="registration_form_input-container">
-								<label htmlFor="surname" className="registration_form_label">
-									Фамилия
-									<input
-										type="text"
-										className={`registration_form_input ${
-											surnameDirty &&
-											surnameError &&
-											'registration_form_input_error'
-										}`}
-										id="surname"
-										name="surname"
-										required
-										value={userData.surname}
-										onChange={handleChange}
-										onBlur={blurHandler}
-									/>
-								</label>
-								{surnameDirty && surnameError && (
-									<span className="registration_form_input_error">
-										{surnameError}
-									</span>
-								)}
-							</div>
-							<div className="registration_form_input-container">
-								<label htmlFor="nickname" className="registration_form_label">
-									Твой ник
-									<input
-										type="text"
-										className={`registration_form_input ${
-											nicknameDirty &&
-											nicknameError &&
-											'registration_form_input_error'
-										}`}
-										id="nickname"
-										name="nickname"
-										required
-										value={userData.nickname}
-										onChange={handleChange}
-										onBlur={blurHandler}
-									/>
-								</label>
-								{nicknameDirty && nicknameError && (
-									<span className="registration_form_input_error">
-										{nicknameError}
-									</span>
-								)}
-							</div>
-							<div className="registration_form_input-container">
-								<label htmlFor="email" className="registration_form_label">
-									Email
-									<input
-										type="email"
-										className={`registration_form_input ${
-											emailDirty &&
-											emailError &&
-											'registration_form_input_error'
-										}`}
-										id="email"
-										name="email"
-										required
-										value={userData.email}
-										onChange={handleChange}
-										onBlur={blurHandler}
-									/>
-								</label>
-								{emailDirty && emailError && (
-									<span className="registration_form_input_error">
-										{emailError}
-									</span>
-								)}
-							</div>
+							<InputText
+								label="Имя"
+								id="name"
+								name="name"
+								isRequired
+								inputValue={userData.name}
+								onChange={handleChange}
+								onBlur={blurHandler}
+								inputDirty={nameDirty}
+								inputError={nameError}
+							/>
+							<InputText
+								label="Фамилия"
+								id="surname"
+								name="surname"
+								isRequired
+								inputValue={userData.surname}
+								onChange={handleChange}
+								onBlur={blurHandler}
+								inputDirty={surnameDirty}
+								inputError={surnameError}
+							/>
+							<InputText
+								label="Твой ник"
+								id="nickname"
+								name="nickname"
+								isRequired
+								inputValue={userData.nickname}
+								onChange={handleChange}
+								onBlur={blurHandler}
+								inputDirty={nicknameDirty}
+								inputError={nicknameError}
+							/>
+							<InputText
+								label="Email"
+								id="email"
+								name="email"
+								isRequired
+								inputValue={userData.email}
+								onChange={handleChange}
+								onBlur={blurHandler}
+								inputDirty={emailDirty}
+								inputError={emailError}
+							/>
 							<fieldset className="registration_form_sex-fieldset">
 								<legend className="registration_form_sex-fieldset_legend">
 									Пол
@@ -358,72 +320,32 @@ export const Registrtion = () => {
 						<form className="registration_form">
 							<h2 className="registration_form_step-number">Шаг 2 из 2</h2>
 							<h1 className="registration_form_title">Создаём аккаунт</h1>
-							<div className="registration_form_input-container">
-								<label htmlFor="email" className="registration_form_label">
-									Придумайте пароль
-									<input
-										type={passwordType}
-										className={`registration_form_input ${
-											passwordDirty &&
-											passwordError &&
-											'registration_form_input_error'
-										}`}
-										id="password"
-										name="password"
-										required
-										value={userData.password}
-										onChange={handleChange}
-										onBlur={blurHandler}
-									/>
-									<button
-										type="button"
-										aria-label="show/hide button click"
-										className={`registration_form_password-control ${
-											passwordType === 'text' &&
-											'registration_form_password-control_active'
-										}`}
-										onClick={handlePasswordBtnClick}
-									/>
-								</label>
-								{passwordDirty && passwordError && (
-									<span className="registration_form_input_error">
-										{passwordError}
-									</span>
-								)}
-							</div>
-							<div className="registration_form_input-container">
-								<label htmlFor="email" className="registration_form_label">
-									Подтверждение пароля
-									<input
-										type={confirmPasswordType}
-										className={`registration_form_input ${
-											confirmPasswordDirty &&
-											confirmPasswordError &&
-											'registration_form_input_error'
-										}`}
-										id="confirmPassword"
-										name="confirmPassword"
-										required
-										value={userData.confirmPassword}
-										onChange={handleChange}
-										onBlur={blurHandler}
-									/>
-									<button
-										type="button"
-										aria-label="show/hide button click"
-										className={`registration_form_password-control ${
-											confirmPasswordType === 'text' &&
-											'registration_form_password-control_active'
-										}`}
-										onClick={handleConfirmPasswordBtnClick}
-									/>
-								</label>
-								{confirmPasswordDirty && confirmPasswordError && (
-									<span className="registration_form_input_error">
-										{confirmPasswordError}
-									</span>
-								)}
-							</div>
+							<InputPassword
+								label="Придумайте пароль"
+								passwordType={passwordType}
+								id="password"
+								name="password"
+								isRequired
+								inputValue={userData.password}
+								onChange={handleChange}
+								onBlur={blurHandler}
+								passwordDirty={passwordDirty}
+								passwordError={passwordError}
+								onPasswordBtnClick={handlePasswordBtnClick}
+							/>
+							<InputPassword
+								label="Подтверждение пароля"
+								passwordType={confirmPasswordType}
+								id="confirmPassword"
+								name="confirmPassword"
+								isRequired
+								inputValue={userData.confirmPassword}
+								onChange={handleChange}
+								onBlur={blurHandler}
+								passwordDirty={confirmPasswordDirty}
+								passwordError={confirmPasswordError}
+								onPasswordBtnClick={handleConfirmPasswordBtnClick}
+							/>
 							<div className="registration_form_terms-of-use-container">
 								<input
 									id="terms-of-use-checkbox"

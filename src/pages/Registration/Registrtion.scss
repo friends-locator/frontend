@@ -1,0 +1,254 @@
+.registration {
+	font-family: 'Noto Sans', 'Arial', sans-serif;
+	display: flex;
+	justify-content: center;
+	position: relative;
+
+	&_btn-back {
+		z-index: 1;
+		cursor: pointer;
+		position: absolute;
+		border: none;
+		outline: none;
+		width: 32px;
+		height: 32px;
+		top: 62px;
+		left: 20px;
+		background: transparent;
+		background-image: url(../../images/arrow-back.svg);
+		background-repeat: no-repeat;
+	}
+
+	&_container {
+		background: radial-gradient(
+					111.73% 51.6% at 116.4% 62.19%,
+					rgba(244, 66, 0, 0.4) 0%,
+					rgba(244, 66, 0, 0) 100%
+				)
+				/* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+			#ffffff;
+		box-shadow: 4px 4px 50px 3px rgba(34, 13, 9, 0.13);
+		height: 812px;
+		width: 375px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-end;
+		position: relative;
+		border-radius: 24px;
+		overflow: hidden;
+
+		&_step-2 {
+			background: radial-gradient(
+					152.12% 76.27% at -14.67% 88.24%,
+					rgba(244, 66, 0, 0.3) 0%,
+					rgba(244, 66, 0, 0) 100%
+				),
+				#fff;
+		}
+	}
+
+	&_vector {
+		position: absolute;
+		width: 274.48px;
+		height: 137.44px;
+		top: 42px;
+		left: 0;
+
+		background-image: url(../../images/vector.svg);
+		background-repeat: no-repeat;
+
+		&_step-2 {
+			background-image: url(../../images/vector-step-2.svg);
+			top: calc(138px + 46px);
+			left: 189px;
+		}
+	}
+
+	&_spiral {
+		z-index: 1;
+		position: absolute;
+		width: 222.412px;
+		height: 222.412px;
+		top: 15px;
+		left: 204px;
+
+		background-image: url(../../images/spiral.svg);
+		background-repeat: no-repeat;
+	}
+
+	&_diamond {
+		position: absolute;
+		width: 115.779px;
+		height: 115.779px;
+		top: 142px;
+		left: 40px;
+
+		background-image: url(../../images/diabond.svg);
+		background-repeat: no-repeat;
+	}
+
+	&_form {
+		z-index: 10;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 24px 36px 33px;
+		background: #ffffff;
+		border-radius: 30px 30px 0px 0px;
+		width: 100%;
+
+		&_terms-of-use-container {
+			display: flex;
+			width: 100%;
+			align-items: flex-start;
+			gap: 8px;
+			margin-top: 12px;
+		}
+
+		&_terms-of-use_label {
+			display: flex;
+			align-items: center;
+			cursor: pointer;
+		}
+
+		&_terms-of-use_label::before {
+			content: '';
+			background: url(../../images/checkbox-unchecked.svg) 0 0 no-repeat;
+			width: 20px;
+			height: 20px;
+			background-position: center;
+			padding: 2px;
+		}
+
+		input[type='checkbox']:checked + label:before {
+			background: url(../../images/checkbox-checked.svg) 0 0 no-repeat;
+			background-position: center;
+			padding: 2px;
+		}
+
+		&_terms-of-use_checkbox {
+			display: none;
+		}
+
+		&_terms-of-use-text {
+			color: #141513;
+			font-size: 11px;
+		}
+
+		&_terms-of-use-link {
+			color: #3fe911;
+			font-size: 11px;
+			cursor: pointer;
+		}
+
+		&_step-number {
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 19px;
+
+			color: #aeafa4;
+
+			margin: 0;
+			margin-bottom: 16px;
+		}
+
+		&_title {
+			font-style: normal;
+			font-weight: 700;
+			font-size: 24px;
+			line-height: 130%;
+			color: #000000;
+			margin-bottom: 12px;
+		}
+
+		&_sex-fieldset {
+			border: none;
+			width: 100%;
+			margin-top: 12px;
+			display: flex;
+			justify-content: center;
+			gap: 87px;
+
+			&_legend {
+				box-sizing: border-box;
+				margin-bottom: 12px;
+				color: #000;
+				font-size: 13px;
+				font-family: Noto Sans;
+				font-weight: 500;
+				line-height: 130%;
+				letter-spacing: -0.247px;
+			}
+
+			&_label {
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+			}
+
+			&_label::before {
+				content: '';
+				background: url(../../images/radio-unchecked.svg) 0 0 no-repeat;
+				width: 24px;
+				height: 24px;
+				background-position: center;
+				padding: 4px;
+			}
+
+			input[type='radio']:checked + label:before {
+				background: url(../../images/radio-checked.svg) 0 0 no-repeat;
+				background-position: center;
+				padding: 4px;
+			}
+
+			&_radio {
+				display: none;
+			}
+
+			&_radio-container {
+				display: flex;
+				flex-direction: row;
+			}
+		}
+
+		&_btn-continue {
+			margin-top: 36px;
+		}
+
+		&_span {
+			margin-top: 20px;
+			color: #141513;
+			font-size: 14px;
+		}
+
+		&_link {
+			color: #3fe911;
+			font-size: 14px;
+			text-decoration-line: underline;
+		}
+	}
+
+	&_footer {
+		z-index: 10;
+		width: 100%;
+		background: #ffffff;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 34px;
+	}
+
+	&_home-indicator {
+		width: 134px;
+		height: 5px;
+		margin-top: 8px;
+
+		background: #000000;
+		border-radius: 100px;
+	}
+}

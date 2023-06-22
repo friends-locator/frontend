@@ -10,6 +10,7 @@ export default function Button({
 	size,
 	disabled,
 	onClick,
+	className,
 }) {
 	const props = {
 		disabled,
@@ -22,7 +23,7 @@ export default function Button({
 				<a
 					{...props}
 					href={url}
-					className={`button button_link button_${size} button_color-${color}`}
+					className={`button button_link button_${size} button_color-${color} ${className}`}
 				>
 					{label}
 				</a>
@@ -33,7 +34,7 @@ export default function Button({
 				<button
 					{...props}
 					type={type}
-					className={`button button_${size} button_color-${color}`}
+					className={`button button_${size} button_color-${color} ${className}`}
 				>
 					{label}
 				</button>
@@ -49,6 +50,7 @@ Button.propTypes = {
 	color: PropTypes.oneOf(['primary', 'secondary']),
 	size: PropTypes.oneOf(['medium', 'large']),
 	onClick: PropTypes.func,
+	className: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -58,4 +60,5 @@ Button.defaultProps = {
 	color: undefined,
 	size: 'medium',
 	onClick: undefined,
+	className: '',
 };

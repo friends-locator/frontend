@@ -195,6 +195,17 @@ export const Registrtion = () => {
 		}
 	};
 
+	// const formValidCheck = (validationStep) => {
+	// 	const isFormValidStepOne = !nameError && !surnameError && !nicknameError && !emailError;
+	// 	const isFormValidStepTwo = isFormValidStepOne && !passwordError && !confirmPasswordError && termsOfUse;
+
+	// 	if(validationStep===1) {
+	// 		return isFormValidStepOne;
+	// 	}
+
+	// 	return isFormValidStepTwo;
+	// }
+
 	return (
 		<section className="registration">
 			<div

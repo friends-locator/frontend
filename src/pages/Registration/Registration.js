@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './Registrtion.scss';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
 	namePattern,
 	emailPattern,
@@ -24,6 +24,8 @@ import avatarman from '../../images/avatarman.svg';
 import avatarwoman from '../../images/avatarwoman.svg';
 
 export const Registrtion = () => {
+	const navigate = useNavigate();
+
 	const [userData, setUserData] = useState({
 		name: '',
 		surname: '',
@@ -191,7 +193,7 @@ export const Registrtion = () => {
 		if (step === 2) {
 			setStep(1);
 		} else {
-			window.location.assign(ROUTES.ROOT);
+			navigate(-1);
 		}
 	};
 

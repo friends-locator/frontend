@@ -1,12 +1,10 @@
 import './App.scss';
-import Welcome from "../Welcome/Welcome";
+import Carousel from "../Carousel/Carousel";
 
 function App() {
 	return (
 		<div className="page">
-			<Welcome
-				title="Узнай, где твои друзья"
-				description="Проверь местоположением своих друзей в реальном времени"/>
+			<Carousel />
 		</div>
 	);
 }

@@ -20,8 +20,8 @@ import {
 
 import { Button, InputText, InputPassword } from '../../components';
 
-import avatarman from '../../images/avatarman.svg';
-import avatarwoman from '../../images/avatarwoman.svg';
+import avatarman from '../../images/avatarman.png';
+import avatarwoman from '../../images/avatarwoman.png';
 
 export const Registrtion = () => {
 	const navigate = useNavigate();

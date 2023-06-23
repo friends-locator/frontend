@@ -1,21 +1,12 @@
 import './App.scss';
+import Welcome from "../Welcome/Welcome";
 
 function App() {
 	return (
 		<div className="page">
-			<header className="App-header">
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
+			<Welcome
+				title="Узнай, где твои друзья"
+				description="Проверь местоположением своих друзей в реальном времени"/>
 		</div>
 	);
 }

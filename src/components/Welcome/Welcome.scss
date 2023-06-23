@@ -1,0 +1,32 @@
+.welcome {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.welcome__container {
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome__title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31px;
+  margin: 0 0 16px;
+}
+
+.welcome__description {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.welcome__button-container {
+  display: grid;
+  gap: 12px;
+}

@@ -409,9 +409,6 @@ export const Registrtion = () => {
 						</form>
 					</>
 				)}
-				<div className="registration_footer">
-					<div className="registration_home-indicator" />
-				</div>
 			</div>
 		</section>
 	);

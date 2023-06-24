@@ -109,6 +109,12 @@ export const Registration = () => {
 				} else {
 					setPasswordError('');
 				}
+
+				if (value !== userData.confirmPassword && confirmPasswordDirty) {
+					setConfirmPasswordError(invalidConfirmPasswordErrorText);
+				} else {
+					setConfirmPasswordError('');
+				}
 				break;
 			case 'confirmPassword':
 				if (String(value).length === 0) {

@@ -71,8 +71,7 @@
 			"react/function-component-definition": "off",
 			"react/jsx-props-no-spreading": "off",
 			"react/no-unescaped-entities": "off",
-			"react/button-has-type": "off",
-			"import/no-named-as-default": 0
+			"react/button-has-type": "off"
 		},
 		"overrides": [
 			{

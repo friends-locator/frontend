@@ -1,10 +1,10 @@
 import './App.scss';
-import Carousel from "../Carousel/Carousel";
+import Welcome from "../Welcome/Welcome";
 
 function App() {
 	return (
 		<div className="page">
-			<Carousel />
+			<Welcome />
 		</div>
 	);
 }

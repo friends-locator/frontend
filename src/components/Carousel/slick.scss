@@ -68,7 +68,7 @@
     pointer-events: none;
   }
 }
-.slick-slide {
+[dir='rtl'] .slick-slide {
     float: right;
   }
 .slick-initialized .slick-slide {

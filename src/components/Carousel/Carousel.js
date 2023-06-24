@@ -1,6 +1,7 @@
 import Slider from 'react-slick';
 import "./slick.scss";
 import "./slick-theme.scss";
+
 import carousel1 from "../../Images/Carousel1.png";
 import carousel2 from "../../Images/Carousel2.png";
 import carousel3 from "../../Images/Carousel3.png";
@@ -20,7 +21,7 @@ const Carousel = () => {
       <div className="slick__container">
         <div className="slick-image" style={{ backgroundImage: `url(${carousel1})`}}/>
         <h1 className="slick__title">Узнай, где твои друзья</h1>
-        <p className="slick__description">Проверь местоположением своих друзей в реальном времени</p>
+        <p className="slick__description">Проверь местоположение своих друзей в реальном времени</p>
       </div>
       <div className="slick__container">
         <div className="slick-image" style={{ backgroundImage: `url(${carousel2})`}}/>

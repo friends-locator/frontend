@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import './Registrtion.scss';
+import './Registration.scss';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
 	namePattern,
 	emailPattern,
@@ -23,7 +23,9 @@ import { Button, InputText, InputPassword } from '../../components';
 import avatarman from '../../images/avatarman.png';
 import avatarwoman from '../../images/avatarwoman.png';
 
-export const Registrtion = () => {
+export const Registration = () => {
+	const navigate = useNavigate();
+
 	const [userData, setUserData] = useState({
 		name: '',
 		surname: '',
@@ -106,6 +108,12 @@ export const Registrtion = () => {
 					setPasswordError(emptyPasswordErrorText);
 				} else {
 					setPasswordError('');
+				}
+
+				if (value !== userData.confirmPassword && confirmPasswordDirty) {
+					setConfirmPasswordError(invalidConfirmPasswordErrorText);
+				} else {
+					setConfirmPasswordError('');
 				}
 				break;
 			case 'confirmPassword':
@@ -191,9 +199,20 @@ export const Registrtion = () => {
 		if (step === 2) {
 			setStep(1);
 		} else {
-			window.location.assign(ROUTES.ROOT);
+			navigate(-1);
 		}
 	};
+
+	// const formValidCheck = (validationStep) => {
+	// 	const isFormValidStepOne = !nameError && !surnameError && !nicknameError && !emailError;
+	// 	const isFormValidStepTwo = isFormValidStepOne && !passwordError && !confirmPasswordError && termsOfUse;
+
+	// 	if(validationStep===1) {
+	// 		return isFormValidStepOne;
+	// 	}
+
+	// 	return isFormValidStepTwo;
+	// }
 
 	return (
 		<section className="registration">
@@ -396,9 +415,6 @@ export const Registrtion = () => {
 						</form>
 					</>
 				)}
-				<div className="registration_footer">
-					<div className="registration_home-indicator" />
-				</div>
 			</div>
 		</section>
 	);

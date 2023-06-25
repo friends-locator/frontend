@@ -221,6 +221,7 @@
 
 		&_span {
 			margin-top: 20px;
+			margin-bottom: 34px;
 			color: #141513;
 			font-size: 14px;
 		}
@@ -230,25 +231,5 @@
 			font-size: 14px;
 			text-decoration-line: underline;
 		}
-	}
-
-	&_footer {
-		z-index: 10;
-		width: 100%;
-		background: #ffffff;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 34px;
-	}
-
-	&_home-indicator {
-		width: 134px;
-		height: 5px;
-		margin-top: 8px;
-
-		background: #000000;
-		border-radius: 100px;
 	}
 }

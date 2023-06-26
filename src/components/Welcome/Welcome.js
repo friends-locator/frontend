@@ -1,6 +1,6 @@
 import React from 'react';
 import './Welcome.scss';
-import Button from "../button/Button";
+import Button from "../Button/Button";
 import Carousel from "../Carousel/Carousel";
 
 function Welcome() {

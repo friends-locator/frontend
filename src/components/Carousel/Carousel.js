@@ -4,9 +4,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import "./Carousel.scss";
 
-import carousel1 from "../../Images/Carousel1.png";
-import carousel2 from "../../Images/Carousel2.png";
-import carousel3 from "../../Images/Carousel3.png";
+import carousel1 from "../../images/Carousel1.png";
+import carousel2 from "../../images/Carousel2.png";
+import carousel3 from "../../images/Carousel3.png";
 
 const Carousel = () => {
   const settings = {

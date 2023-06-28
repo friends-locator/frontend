@@ -9,7 +9,7 @@ const position = [41.721098, 44.725121];
 
 export default function TrackingMap() {
   return (
-      <MapContainer className="trackingMap__mapContainer" center={position} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

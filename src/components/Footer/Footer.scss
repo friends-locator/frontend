@@ -7,7 +7,7 @@
 	border-top: 1px solid #cccdc2;
 	background-color: #fff;
 
-	&__btn {
+	&__link {
 		width: calc(100% / 3);
 		display: flex;
 		flex-direction: column;
@@ -16,15 +16,17 @@
 		padding: 8px 0;
 		border: none;
 		background-color: transparent;
+		text-decoration: none;
 		cursor: pointer;
 		color: #aeafa4;
 	}
-	&__btn-icon {
+
+	&__link-icon {
 		width: 24px;
 		height: 24px;
 	}
 
-	&__btn-text {
+	&__link-text {
 		font-size: 14px;
 		font-weight: 500;
 		line-height: 140%;

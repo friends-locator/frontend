@@ -4,4 +4,7 @@ export const ROUTES = {
 	SIGN_IN: '/signin',
 	PRIVACY_POLICY: '/privacy-policy',
 	TERMS_OF_USE: '/terms-of-use',
+  MAP:'/map',
+  CHAT: '/chat',
+  FRIENDS: '/friends',
 };

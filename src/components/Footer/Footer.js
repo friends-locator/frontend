@@ -1,22 +1,23 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants';
 import './Footer.scss';
 
-const Footer = ({ handleContentChange }) => {
-	const [activeButton, setActiveButton] = useState('chat');
+const Footer = () => {
+	const [activeButton, setActiveButton] = useState('');
 
 	const handleClick = (buttonName) => {
 		setActiveButton(buttonName);
-		handleContentChange(buttonName);
 	};
 
 	return (
 		<footer className="footer">
-			<button
-				className={`footer__btn ${activeButton === 'map' ? 'active' : ''}`}
+			<Link
+				to={ROUTES.MAP}
+				className={`footer__link ${activeButton === 'map' ? 'active' : ''}`}
 				onClick={() => handleClick('map')}
 			>
-				<span className="footer__btn-icon">
+				<span className="footer__link-icon">
 					<svg
 						width="24"
 						height="24"
@@ -36,13 +37,14 @@ const Footer = ({ handleContentChange }) => {
 						/>
 					</svg>
 				</span>
-				<span className="footer__btn-text">Карта</span>
-			</button>
-			<button
-				className={`footer__btn ${activeButton === 'chat' ? 'active' : ''}`}
+				<span className="footer__link-text">Карта</span>
+			</Link>
+			<Link
+				to={ROUTES.CHAT}
+				className={`footer__link ${activeButton === 'chat' ? 'active' : ''}`}
 				onClick={() => handleClick('chat')}
 			>
-				<span className="footer__btn-icon">
+				<span className="footer__link-icon">
 					<svg
 						width="24"
 						height="24"
@@ -53,13 +55,14 @@ const Footer = ({ handleContentChange }) => {
 						<path d="M20.5 3C21.0523 3 21.5 3.44772 21.5 4V18C21.5 18.5523 21.0523 19 20.5 19H12.8333L9.1 21.8C8.44076 22.2944 7.5 21.824 7.5 21V19H4.5C3.94772 19 3.5 18.5523 3.5 18V4C3.5 3.44772 3.94772 3 4.5 3H20.5ZM19.5 5H5.5V17H8.5C9.05228 17 9.5 17.4477 9.5 18V19L11.9 17.2C12.0731 17.0702 12.2836 17 12.5 17H19.5V5ZM15.5 12V14H7.5V12H15.5ZM17.5 8V10H7.5V8H17.5Z" />
 					</svg>
 				</span>
-				<span className="footer__btn-text">Чат</span>
-			</button>
-			<button
-				className={`footer__btn ${activeButton === 'friends' ? 'active' : ''}`}
+				<span className="footer__link-text">Чат</span>
+			</Link>
+			<Link
+				to={ROUTES.FRIENDS}
+				className={`footer__link ${activeButton === 'friends' ? 'active' : ''}`}
 				onClick={() => handleClick('friends')}
 			>
-				<span className="footer__btn-icon">
+				<span className="footer__link-icon">
 					<svg
 						width="24"
 						height="24"
@@ -81,18 +84,10 @@ const Footer = ({ handleContentChange }) => {
 						/>
 					</svg>
 				</span>
-				<span className="footer__btn-text">Друзья</span>
-			</button>
+				<span className="footer__link-text">Друзья</span>
+			</Link>
 		</footer>
 	);
-};
-
-Footer.propTypes = {
-	handleContentChange: PropTypes.func,
-};
-
-Footer.defaultProps = {
-	handleContentChange: undefined,
 };
 
 export default Footer;

@@ -31,7 +31,7 @@ export default function InputText({
 				/>
 			</label>
 			{inputDirty && inputError && (
-				<span className="registration_form_input_error">{inputError}</span>
+				<span className="registration_form_input_error-text">{inputError}</span>
 			)}
 		</div>
 	);

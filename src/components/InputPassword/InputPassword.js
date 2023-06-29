@@ -41,7 +41,9 @@ export default function InputPassword({
 				/>
 			</label>
 			{passwordDirty && passwordError && (
-				<span className="registration_form_input_error">{passwordError}</span>
+				<span className="registration_form_input_error-text">
+					{passwordError}
+				</span>
 			)}
 		</div>
 	);

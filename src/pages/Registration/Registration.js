@@ -386,6 +386,7 @@ export const Registration = () => {
 									<Link
 										to={ROUTES.PRIVACY_POLICY}
 										className="registration_form_terms-of-use-link"
+										target="_blank"
 									>
 										политику конфиденциальности
 									</Link>
@@ -393,6 +394,7 @@ export const Registration = () => {
 									<Link
 										to={ROUTES.TERMS_OF_USE}
 										className="registration_form_terms-of-use-link"
+										target="_blank"
 									>
 										условия использования
 									</Link>

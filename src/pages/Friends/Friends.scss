@@ -1,0 +1,43 @@
+.friends {
+	max-width: 375px;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 64px auto 92px 76px;
+
+	&-list {
+		display: flex;
+		flex-direction: column;
+		row-gap: 12px;
+		margin: 0;
+		padding: 20px;
+		list-style: none;
+		background-color: #fff;
+		overflow-y: scroll;
+
+		&__item {
+			display: flex;
+			padding: 4px 8px;
+			align-items: center;
+			gap: 12px;
+			align-self: stretch;
+			border-radius: 12px;
+			background-color: #fafafa;
+		}
+	}
+
+	&__btn-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: linear-gradient(
+			180deg,
+			rgba(32, 31, 29, 0) 0%,
+			rgba(32, 31, 29, 0.08) 100%
+		);
+	}
+
+	&__add-btn {
+		width: 335px;
+	}
+}

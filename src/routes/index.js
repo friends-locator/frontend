@@ -10,6 +10,7 @@ import {
 } from '../pages';
 
 import { ROUTES } from '../constants';
+import { TrackingMap } from "../pages/TrackingMap/TrackingMap";
 
 export const Routes = () => (
 	<RoutesDOM>
@@ -19,5 +20,6 @@ export const Routes = () => (
 		<Route path={ROUTES.PRIVACY_POLICY} element={<PrivacyPolicy />} />
 		<Route path={ROUTES.TERMS_OF_USE} element={<TermsOfUse />} />
 		<Route path={ROUTES.FRIENDS} element={<Friends />} />
+		<Route path={ROUTES.MAP} element={<TrackingMap />}/>
 	</RoutesDOM>
 );

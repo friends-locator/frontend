@@ -4,7 +4,9 @@ import 'leaflet/dist/leaflet.css';
 import './TrackingMap.css';
 import { Icon } from "leaflet";
 import avatar from '../../images/avatarwoman.png';
-import { friendsLocation } from "./friendsLocation"; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
+import { friendsLocation } from "./friendsLocation";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer"; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
 
 const position = [55.729348, 37.560709]; //  TODO стартовые координаты пользователя брать из контекст провайдера?
 const userIcon = new Icon({ //  TODO аватарку брать из компонента, который отвечает за аватар пользователя в Profile?
@@ -12,8 +14,10 @@ const userIcon = new Icon({ //  TODO аватарку брать из компо
   iconSize: [40, 48],
 })
 
-export default function TrackingMap() {
+export function TrackingMap() {
   return (
+    <>
+      <Header />
       <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -36,5 +40,7 @@ export default function TrackingMap() {
           );
         })}
       </MapContainer>
+      <Footer />
+    </>
   );
 }

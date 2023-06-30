@@ -12,6 +12,7 @@ const position = [55.729348, 37.560709]; //  TODO стартовые коорд�
 const userIcon = new Icon({
   iconUrl: geotag,
   iconSize: [32, 47],
+  iconAnchor: [15, 40]
 })
 
 export function TrackingMap() {

@@ -9,6 +9,10 @@
   margin-top: 78px;
 }
 
+.leaflet-left .leaflet-control {
+  margin-left: 20px;
+}
+
 /*переопределяет стиль компонента Header*/
 .header {
   background-color: transparent;

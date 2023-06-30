@@ -18,16 +18,15 @@ export function TrackingMap() {
   return (
     <>
       <Header />
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker
-          position={position}
-          icon={userIcon} />
-        {friendsLocation.map(friend => {
-          return (
+        <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker
+            position={position}
+            icon={userIcon} />
+          {friendsLocation.map(friend => (
             <Marker
               key={friend.id}
               position={friend.position}
@@ -35,11 +34,10 @@ export function TrackingMap() {
                 iconUrl: friend.avatar,
                 iconSize: [40, 48]
               })}
-            />
-          );
-        })}
-      </MapContainer>
+            />))
+          })}
+        </MapContainer>
       <Footer />
     </>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import avatar1 from '../../images/avatarman.png';
-import avatar2 from '../../images/avatarwoman.png';
+import avatar1 from '../../images/icon_profile_man.png';
+import avatar2 from '../../images/icon_profile_woman.png';
 
 export const friendsLocation = [
    {

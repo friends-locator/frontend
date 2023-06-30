@@ -5,7 +5,7 @@ import { Icon } from "leaflet";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer"; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
 import './TrackingMap.css';
-import avatar from '../../images/avatarwoman.png';
+import avatar from '../../images/icon_profile_man.png';
 import { friendsLocation } from "./friendsLocation";
 
 const position = [55.729348, 37.560709]; //  TODO стартовые координаты пользователя брать из контекст провайдера?

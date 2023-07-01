@@ -7,6 +7,7 @@ import Footer from "../../components/Footer/Footer"; // TODO делать зап
 import './TrackingMap.css';
 import geotag from '../../images/geotag_map.svg';
 import { friendsLocation } from "./friendsLocation";
+import ButtonUserLocation from "../../components/ButtonUserLocation/ButtonUserLocation";
 
 const position = [55.729348, 37.560709]; //  TODO стартовые координаты пользователя брать из контекст провайдера?
 const userIcon = new Icon({
@@ -38,6 +39,7 @@ export function TrackingMap() {
             />))
           })}
         </MapContainer>
+      <ButtonUserLocation />
       <Footer />
     </>
   )

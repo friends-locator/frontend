@@ -5,13 +5,16 @@ export const friendsLocation = [
    {
      id: 1,
      avatar: avatar1,
-     name: "Архыз",
      position: [55.729094, 37.558545]
    },
   {
     id: 2,
     avatar: avatar2,
-    name: "Челябинская область",
     position: [55.729753, 37.561687]
+  },
+  {
+    id: 3,
+    avatar: avatar2,
+    position: [55.730227, 37.562526]
   }
  ];

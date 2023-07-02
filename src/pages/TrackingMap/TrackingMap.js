@@ -1,15 +1,15 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import { Icon } from "leaflet";
 import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer"; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
+import Footer from "../../components/Footer/Footer";
 import './TrackingMap.css';
 import geotag from '../../images/geotag_map.svg';
-import { friendsLocation } from "./friendsLocation";
+import { friendsLocation } from "./friendsLocation"; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
 import ButtonUserLocation from "../../components/ButtonUserLocation/ButtonUserLocation";
 
-const position = [55.729348, 37.560709]; //  TODO стартовые координаты пользователя брать из контекст провайдера?
+const position = [55.729348, 37.560709]; //  TODO стартовые координаты пользователя брать из редакса
 const userIcon = new Icon({
   iconUrl: geotag,
   iconSize: [32, 47],
@@ -43,9 +43,9 @@ export function TrackingMap() {
     ), [],
   )
 
-  function findUserLocation() {
+  const findUserLocation = useCallback(() => {
     map.setView(position);
-  }
+  }, [map]);
 
   return (
     <>

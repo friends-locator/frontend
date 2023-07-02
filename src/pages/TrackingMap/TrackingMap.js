@@ -17,29 +17,33 @@ const userIcon = new Icon({
 })
 
 export function TrackingMap() {
+  function findUserLocation() {
+    console.log('ku');
+  }
+
   return (
     <>
       <Header />
-        <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker
+          position={position}
+          icon={userIcon} />
+        {friendsLocation.map(friend => (
           <Marker
-            position={position}
-            icon={userIcon} />
-          {friendsLocation.map(friend => (
-            <Marker
-              key={friend.id}
-              position={friend.position}
-              icon={new Icon({
-                iconUrl: friend.avatar,
-                iconSize: [40, 48]
-              })}
-            />))
-          })}
-        </MapContainer>
-      <ButtonUserLocation />
+            key={friend.id}
+            position={friend.position}
+            icon={new Icon({
+              iconUrl: friend.avatar,
+              iconSize: [40, 48]
+            })}
+          />))
+        })}
+      </MapContainer>
+      <ButtonUserLocation handleClick={ findUserLocation }/>
       <Footer />
     </>
   )

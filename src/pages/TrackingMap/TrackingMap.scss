@@ -1,0 +1,36 @@
+$white: #fff;
+
+/*переопределят стиль из библиотеки*/
+.leaflet-container {
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+}
+
+.leaflet-top .leaflet-control {
+  margin-top: 78px;
+}
+
+.leaflet-left .leaflet-control {
+  margin-left: 20px;
+}
+
+/*переопределяет стиль компонента Header*/
+.header {
+  background-color: transparent;
+  position: absolute;
+  z-index: 1;
+  border: none;
+  &__menu {
+   background-color: $white;
+  }
+  &__input {
+   background-color: $white;
+  }
+}
+
+.footer {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+}

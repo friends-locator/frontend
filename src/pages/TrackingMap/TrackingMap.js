@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import { Icon } from "leaflet";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import './TrackingMap.css';
+import './TrackingMap.scss';
 import geotag from '../../images/geotag_map.svg';
 import { friendsLocation } from "./friendsLocation"; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
 import ButtonUserLocation from "../../components/ButtonUserLocation/ButtonUserLocation";

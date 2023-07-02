@@ -1,3 +1,5 @@
+$white: #fff;
+
 /*переопределят стиль из библиотеки*/
 .leaflet-container {
   height: 100vh;
@@ -19,14 +21,12 @@
   position: absolute;
   z-index: 1;
   border: none;
-}
-
-.header__menu {
-  background-color: #fff;
-}
-
-.header__input {
-  background-color: #fff;
+  &__menu {
+   background-color: $white;
+  }
+  &__input {
+   background-color: $white;
+  }
 }
 
 .footer {

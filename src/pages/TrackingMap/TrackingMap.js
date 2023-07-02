@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from "react";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import { Icon } from "leaflet";
@@ -17,14 +18,16 @@ const userIcon = new Icon({
 })
 
 export function TrackingMap() {
+  const [map, setMap] = useState(null);
+
   function findUserLocation() {
-    console.log('ku');
+    map.setView(position);
   }
 
   return (
     <>
       <Header />
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={position} zoom={13} scrollWheelZoom={false} ref={setMap}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

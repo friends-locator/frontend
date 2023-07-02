@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import { Icon } from "leaflet";
@@ -20,13 +19,8 @@ const userIcon = new Icon({
 export function TrackingMap() {
   const [map, setMap] = useState(null);
 
-  function findUserLocation() {
-    map.setView(position);
-  }
-
-  return (
-    <>
-      <Header />
+  const displayMap = useMemo(
+    () => (
       <MapContainer center={position} zoom={13} scrollWheelZoom={false} ref={setMap}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -46,6 +40,17 @@ export function TrackingMap() {
           />))
         })}
       </MapContainer>
+    ), [],
+  )
+
+  function findUserLocation() {
+    map.setView(position);
+  }
+
+  return (
+    <>
+      <Header />
+      {displayMap}
       <ButtonUserLocation handleClick={ findUserLocation }/>
       <Footer />
     </>

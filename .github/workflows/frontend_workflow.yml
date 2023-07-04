@@ -34,9 +34,9 @@ jobs:
       #       ${{ runner.os }}-build-${{ env.cache-name }}-
       #       ${{ runner.os }}-build-
       #       ${{ runner.os }}-
-      - name: Create yarn directory
-        run: |
-          mkdir ~/.yarn
+      # - name: Create yarn directory
+      #   run: |
+      #     mkdir ~/.yarn
       - name: Cache yarn dependencies
         id: cache-yarn
         uses: actions/cache@v3

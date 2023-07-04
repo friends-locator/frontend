@@ -35,8 +35,13 @@ jobs:
       #       ${{ runner.os }}-build-
       #       ${{ runner.os }}-
       - name: Create yarn directory
+        
         run: |
-          mkdir ~/.yarn
+          if test -d ~/.yarn; then
+            echo "Directory exists"
+          else
+            echo mkdir ~/.yarn
+          fi
       - name: Cache yarn dependencies
         id: cache-yarn
         uses: actions/cache@v3
@@ -50,7 +55,7 @@ jobs:
             ${{ runner.os }}-yarn-
             ${{ runner.os }}-
       - name: Install Dependencies
-        # if: ${{ steps.cache-yarn.outputs.cache-hit != 'true' }}
+        if: ${{ steps.cache-yarn.outputs.cache-hit != 'true' }}
         run: |
           yarn install --non-interactive
       - name: Run Prettier

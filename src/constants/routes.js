@@ -9,4 +9,5 @@ export const ROUTES = {
 	FRIENDS: '/friends',
 	ACCESS_GEO: '/access-geo',
 	ACCESS_GEO_ERROR: '/access-geo-error',
+	PROFILE: '/profile',
 };

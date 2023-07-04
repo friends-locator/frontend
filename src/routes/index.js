@@ -9,6 +9,7 @@ import {
 	Friends,
 	AccessGeo,
 	AccessGeoError,
+	Profile,
 } from '../pages';
 
 import { ROUTES } from '../constants';
@@ -25,5 +26,6 @@ export const Routes = () => (
 		<Route path={ROUTES.ACCESS_GEO} element={<AccessGeo />} />
 		<Route path={ROUTES.ACCESS_GEO_ERROR} element={<AccessGeoError />} />
 		<Route path={ROUTES.MAP} element={<TrackingMap />}/>
+		<Route path={ROUTES.PROFILE} element={<Profile />}/>
 	</RoutesDOM>
 );

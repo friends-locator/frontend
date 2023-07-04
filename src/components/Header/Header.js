@@ -11,12 +11,15 @@ const Header = ({ handleSearch }) => {
 		<header className="header">
 			{/* @TODO вставить сюда меню когда оно будет готово */}
 			<div className="header__menu" />
-			<input
-				type="text"
-				placeholder="Поиск друзей"
-				onChange={handleChange}
-				className="header__input"
-			/>
+			{/* если нет пропса то только кнопка меню */}
+			{handleSearch && (
+        <input
+          type="text"
+          placeholder="Поиск друзей"
+          onChange={handleChange}
+          className="header__input"
+        />
+      )}
 		</header>
 	);
 };

@@ -40,7 +40,7 @@ jobs:
           'if [ -d ~/.yarn ]; then
             echo "Directory exists"
           else
-            echo mkdir ~/.yarn
+            mkdir ~/.yarn
           fi'
       - name: Cache yarn dependencies
         id: cache-yarn

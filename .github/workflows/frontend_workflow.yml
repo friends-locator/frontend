@@ -71,6 +71,7 @@ jobs:
       - name: Push to DockerHub
         uses: docker/build-push-action@v2
         with:
-          context: "{{defaultContext}}:frontend"
+          context: "{{defaultContext}}"
           push: True
           tags: ${{ secrets.DOCKER_USERNAME }}/friends-locator-frontend:latest
+          file: ./Dockerfile

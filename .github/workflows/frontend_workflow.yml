@@ -19,10 +19,10 @@ jobs:
       - name: Checkout Commit
         uses: actions/checkout@v3
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16.15.0
-      # - name: Cache npm dependencies
+      # - name: Cache npm dependencie
       #   id: cache-npm
       #   uses: actions/cache@v3
       #   env:

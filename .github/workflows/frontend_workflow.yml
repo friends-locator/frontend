@@ -37,11 +37,7 @@ jobs:
       - name: Create yarn directory
         
         run: |
-          'if [ -d ~/.yarn ]; then
-            echo "Directory exists"
-          else
-            mkdir ~/.yarn
-          fi'
+          '[[ -d "$HOME/.yarn" ]] &&  mkdir $HOME/.yarn'
       - name: Cache yarn dependencies
         id: cache-yarn
         uses: actions/cache@v3

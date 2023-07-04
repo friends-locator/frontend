@@ -28,6 +28,7 @@ export const Profile = () => {
 	const [formValues, setFormValues] = useState({
 		nicknameValue: UserInfo.nickname,
 		inviteEmailValue: '',
+		status: UserInfo.status,
 	});
 	const handleStatusChange = () => {
 		// Обработчик для изменения статуса
@@ -67,12 +68,20 @@ export const Profile = () => {
 					</button>
 				</div>
 			</div>
-			<form className="profile-status-container">
+			<form
+				className="profile-status-container"
+				onSubmit={(e) => {
+					setFormValues((prevState) => ({
+						...prevState,
+						status: e.target.value,
+					}));
+				}}
+			>
 				<label htmlFor="status" className="profile-status-label">
 					Твой статус
 					<input
 						type="text"
-						placeholder="Хочу на прогулку"
+						placeholder={formValues.status || 'Хочу на прогулку'}
 						className="profile-status-input"
 						id="status"
 						onChange={handleStatusChange}
@@ -80,13 +89,19 @@ export const Profile = () => {
 					/>
 				</label>
 				<div className="profile-status-bar">
-					{recommendedStatuses.map((status) => (
+					{recommendedStatuses.map((statusValue) => (
 						<button
-							key={status}
+							key={statusValue}
 							type="button"
+							onClick={() => {
+								setFormValues((prevState) => ({
+									...prevState,
+									status: statusValue,
+								}));
+							}}
 							className="profile-status-bar-button"
 						>
-							{status}
+							{statusValue}
 						</button>
 					))}
 				</div>

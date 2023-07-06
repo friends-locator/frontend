@@ -7,3 +7,4 @@ export * from './Welcome/Welcome';
 export * from './AccessGeo/AccessGeo';
 export * from './AccessGeoError/AccessGeoError';
 export * from './Profile/Profile';
+export * from './AccessAge/AccessAge';

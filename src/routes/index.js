@@ -10,10 +10,11 @@ import {
 	AccessGeo,
 	AccessGeoError,
 	Profile,
+	AccessAge,
 } from '../pages';
 
 import { ROUTES } from '../constants';
-import { TrackingMap } from "../pages/TrackingMap/TrackingMap";
+import { TrackingMap } from '../pages/TrackingMap/TrackingMap';
 
 export const Routes = () => (
 	<RoutesDOM>
@@ -25,7 +26,8 @@ export const Routes = () => (
 		<Route path={ROUTES.FRIENDS} element={<Friends />} />
 		<Route path={ROUTES.ACCESS_GEO} element={<AccessGeo />} />
 		<Route path={ROUTES.ACCESS_GEO_ERROR} element={<AccessGeoError />} />
-		<Route path={ROUTES.MAP} element={<TrackingMap />}/>
-		<Route path={ROUTES.PROFILE} element={<Profile />}/>
+		<Route path={ROUTES.MAP} element={<TrackingMap />} />
+		<Route path={ROUTES.PROFILE} element={<Profile />} />
+		<Route path={ROUTES.ACCESS_AGE} element={<AccessAge />} />
 	</RoutesDOM>
 );

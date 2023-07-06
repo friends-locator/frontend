@@ -8,7 +8,11 @@ function MenuPopup({ isOpen, onClose }) {
 
   return (
     <div className={`menuPopup ${isOpen && "menuPopup_opened"}`} onClick={handleOverlayClick}>
-      <div className="menuPopup__container"/>
+      <div className="menuPopup__container">
+       <div className="menuPopup__header">
+
+       </div>
+      </div>
     </div>
   )
 }

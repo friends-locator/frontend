@@ -66,7 +66,7 @@ export const Profile = () => {
 
 	return (
 		<section className="profile">
-			<MainLayout>
+			<MainLayout className="header">
 				<h1 className="profile-heading">Профиль</h1>
 				<div className="profile-user-container">
 					<button

@@ -53,7 +53,7 @@ export function TrackingMap() {
 	}, [map]);
 
 	return (
-		<MainLayout>
+		<MainLayout className="header" handleSearch={() => {}}>
 			{displayMap}
 			<ButtonUserLocation handleClick={findUserLocation} />
 		</MainLayout>

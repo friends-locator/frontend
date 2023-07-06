@@ -23,7 +23,7 @@ export const Friends = () => {
 
 	return (
 		<section className="friends">
-			<MainLayout handleSearch={handleSearch}>
+			<MainLayout handleSearch={handleSearch} className="friends__header">
 				<ul className="friends-list">
 					{filteredFriends.map((friend) => (
 						<li key={friend.id} className="friends-list__item">

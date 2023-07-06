@@ -3,7 +3,7 @@ import './Header.scss';
 import { useState } from "react";
 import MenuPopup from "../MenuPopup/MenuPopup";
 
-const Header = ({ handleSearch }) => {
+const Header = ({ handleSearch, className }) => {
 	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
 
 	const handleChange = (e) => {
@@ -12,7 +12,7 @@ const Header = ({ handleSearch }) => {
 	};
 
 	return (
-		<header className="header">
+		<header className={className}>
 			{/* @TODO вставить сюда меню когда оно будет готово */}
 			<button
 				className="header__menu"
@@ -22,13 +22,13 @@ const Header = ({ handleSearch }) => {
 			/>
 			{/* если нет пропса то только кнопка меню */}
 			{handleSearch && (
-        <input
-          type="text"
-          placeholder="Поиск друзей"
-          onChange={handleChange}
-          className="header__input"
-        />
-      )}
+				<input
+					type="text"
+					placeholder="Поиск друзей"
+					onChange={handleChange}
+					className="header__input"
+				/>
+			)}
 			<MenuPopup
 				isOpen={ isMenuPopupOpen }
 				onClose={ ()=> setIsMenuPopupOpen(false) }/>
@@ -38,10 +38,12 @@ const Header = ({ handleSearch }) => {
 
 Header.propTypes = {
 	handleSearch: PropTypes.func,
+	className: PropTypes.string,
 };
 
 Header.defaultProps = {
 	handleSearch: undefined,
+	className: '',
 };
 
 export default Header;

@@ -40,7 +40,7 @@ export const Profile = () => {
 
 	return (
 		<section className="profile">
-			<Header />
+			<Header className="header" />
 			<h1 className="profile-heading">Профиль</h1>
 			<div className="profile-user-container">
 				<button

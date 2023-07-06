@@ -2,8 +2,7 @@ import React, { useMemo, useState, useCallback } from 'react';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
+import MainLayout from '../../layouts/MainLayout';
 import './TrackingMap.scss';
 import geotag from '../../images/geotag_map.svg';
 import { friendsLocation } from './friendsLocation'; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
@@ -54,11 +53,9 @@ export function TrackingMap() {
 	}, [map]);
 
 	return (
-		<>
-			<Header className="header" />
+		<MainLayout className="header" handleSearch={() => {}}>
 			{displayMap}
 			<ButtonUserLocation handleClick={findUserLocation} />
-			<Footer />
-		</>
+		</MainLayout>
 	);
 }

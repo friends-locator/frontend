@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Header, Footer } from '../../components';
-import avatarMale from '../../images/friend-avatar-male.png';
-import avatarFemale from '../../images/friend-avatar-female.png';
+import avatarMale from '../../images/icon_profile_man.png';
+import avatarFemale from '../../images/icon_profile_woman.png';
 import './Friends.scss';
 
 export const Friends = () => {
@@ -28,11 +28,15 @@ export const Friends = () => {
 
 	return (
 		<section className="friends">
-			<Header handleSearch={handleSearch} />
+			<Header handleSearch={handleSearch} className="friends__header" />
 			<ul className="friends-list">
 				{filteredFriends.map((friend) => (
 					<li key={friend.id} className="friends-list__item">
-						<img src={friend.avatar} alt={friend.name} />
+						<img
+							src={friend.avatar}
+							alt={friend.name}
+							className="friends-list__item-img"
+						/>
 						<span>{friend.name}</span>
 					</li>
 				))}

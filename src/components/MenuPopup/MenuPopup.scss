@@ -1,4 +1,4 @@
-$grey: #FAFAFA;
+$light-grey: #FAFAFA;
 
 .menuPopup {
   position: fixed;
@@ -16,7 +16,7 @@ $grey: #FAFAFA;
     top: 50%;
     left: 40%;
     transform: translate(-50%, -50%);
-    background-color: $grey;
+    background-color: $light-grey;
     box-sizing: border-box;
 
     width: 80%;

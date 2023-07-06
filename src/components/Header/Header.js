@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
 import './Header.scss';
+import { useState } from "react";
+import MenuPopup from "../MenuPopup/MenuPopup";
 
 const Header = ({ handleSearch }) => {
+	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
+
 	const handleChange = (e) => {
 		const searchTerm = e.target.value;
 		handleSearch(searchTerm);
@@ -10,7 +14,12 @@ const Header = ({ handleSearch }) => {
 	return (
 		<header className="header">
 			{/* @TODO вставить сюда меню когда оно будет готово */}
-			<div className="header__menu" />
+			<button
+				className="header__menu"
+				type='button'
+				aria-label='Кнопка меню'
+				onClick={()=> setIsMenuPopupOpen(true)}
+			/>
 			{/* если нет пропса то только кнопка меню */}
 			{handleSearch && (
         <input
@@ -20,6 +29,9 @@ const Header = ({ handleSearch }) => {
           className="header__input"
         />
       )}
+			<MenuPopup
+				isOpen={ isMenuPopupOpen }
+				onClose={ ()=> setIsMenuPopupOpen(false) }/>
 		</header>
 	);
 };

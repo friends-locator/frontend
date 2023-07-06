@@ -1,7 +1,7 @@
 import { createContext, useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import avatarMale from '../images/friend-avatar-male.png';
-import avatarFemale from '../images/friend-avatar-female.png';
+import avatarMale from '../images/icon_profile_man.png';
+import avatarFemale from '../images/icon_profile_woman.png';
 
 export const AppContext = createContext();
 

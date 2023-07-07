@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '../../components';
+import { Button, PopupAddFriend } from '../../components';
 import { useUser } from '../../context/AppContext';
 import MainLayout from '../../layouts/MainLayout';
 import './Friends.scss';
@@ -8,6 +8,7 @@ export const Friends = () => {
 	// @TODO Добавлять друзей из базы данных
 
 	const { currentUser } = useUser();
+	const [addFreindsPopupOpened, setAddFreindsPopupOpened] = useState(false);
 	const [filteredFriends, setFilteredFriends] = useState(currentUser.friends);
 
 	const handleSearch = (searchTerm) => {
@@ -18,7 +19,7 @@ export const Friends = () => {
 	};
 
 	const handleAddFriend = () => {
-		// @TODO Логика для добавления новых друзей
+		setAddFreindsPopupOpened(true);
 	};
 
 	return (
@@ -27,7 +28,11 @@ export const Friends = () => {
 				<ul className="friends-list">
 					{filteredFriends.map((friend) => (
 						<li key={friend.id} className="friends-list__item">
-							<img src={friend.avatar} alt={friend.name} />
+							<img
+								src={friend.avatar}
+								alt={friend.name}
+								className="friends-list__item-img"
+							/>
 							<span>{friend.name}</span>
 						</li>
 					))}
@@ -43,6 +48,10 @@ export const Friends = () => {
 					/>
 				</div>
 			</MainLayout>
+			<PopupAddFriend
+				isOpen={addFreindsPopupOpened}
+				onClose={() => setAddFreindsPopupOpened(false)}
+			/>
 		</section>
 	);
 };

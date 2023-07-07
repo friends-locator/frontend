@@ -14,15 +14,34 @@ export function AppContextProvider({ children }) {
 		status: '',
 		sex: 'female',
 		friends: [
-			{ id: 1, name: 'Николай Иронов', sex: 'male', avatar: `${avatarMale}` },
+			{
+				id: 1,
+				name: 'Николай Иронов',
+				sex: 'male',
+				avatar: `${avatarMale}`,
+				email: '1@mail.ru',
+			},
 			{
 				id: 2,
 				name: 'Мария Строгих',
 				sex: 'female',
 				avatar: `${avatarFemale}`,
+				email: '2@mail.ru',
 			},
-			{ id: 3, name: 'Анна Лейтман', sex: 'female', avatar: `${avatarFemale}` },
-			{ id: 4, name: 'Виктор Дробыш', sex: 'male', avatar: `${avatarMale}` },
+			{
+				id: 3,
+				name: 'Анна Лейтман',
+				sex: 'female',
+				avatar: `${avatarFemale}`,
+				email: '3@mail.ru',
+			},
+			{
+				id: 4,
+				name: 'Виктор Дробыш',
+				sex: 'male',
+				avatar: `${avatarMale}`,
+				email: '4@mail.ru',
+			},
 		],
 	});
 

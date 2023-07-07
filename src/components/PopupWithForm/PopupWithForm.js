@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './PopupWithForm.scss';
 
-function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
+function PopupWithForm({
+	title,
+	name,
+	children,
+	isOpen,
+	onClose,
+	onSubmit,
+	formWidth,
+}) {
 	function handleMouseDown(evt) {
 		if (evt.target === evt.currentTarget) {
 			onClose();
@@ -15,8 +23,8 @@ function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
 			className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}
 			onMouseDown={handleMouseDown}
 		>
-			<div className="popup__container">
-				<h2 className="popup__title">{title}</h2>
+			<div className="popup__container" style={{ width: `${formWidth}` }}>
+				{title && <h2 className="popup__title">{title}</h2>}
 				<form className="form" name={name} onSubmit={onSubmit} noValidate>
 					{children}
 				</form>
@@ -37,12 +45,14 @@ PopupWithForm.propTypes = {
 	isOpen: PropTypes.bool,
 	onClose: PropTypes.func,
 	onSubmit: PropTypes.func,
+	formWidth: PropTypes.string,
 };
 
 PopupWithForm.defaultProps = {
 	isOpen: false,
 	onClose: undefined,
 	onSubmit: undefined,
+	formWidth: '320px',
 };
 
 export default PopupWithForm;

@@ -11,6 +11,7 @@ import {
 	AccessGeoError,
 	Profile,
 	AccessAge,
+	ComingSoon
 } from '../pages';
 
 import { ROUTES } from '../constants';
@@ -29,5 +30,6 @@ export const Routes = () => (
 		<Route path={ROUTES.MAP} element={<TrackingMap />} />
 		<Route path={ROUTES.PROFILE} element={<Profile />} />
 		<Route path={ROUTES.ACCESS_AGE} element={<AccessAge />} />
+		<Route path={ROUTES.COMING_SOON} element={<ComingSoon />} />
 	</RoutesDOM>
 );

@@ -11,4 +11,5 @@ export const ROUTES = {
 	ACCESS_GEO_ERROR: '/access-geo-error',
 	PROFILE: '/profile',
 	ACCESS_AGE: '/access-age',
+	COMING_SOON: '/coming-soon',
 };

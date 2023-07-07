@@ -1,22 +1,17 @@
 import { useState } from 'react';
-import { Button, Header, Footer } from '../../components';
-import avatarMale from '../../images/friend-avatar-male.png';
-import avatarFemale from '../../images/friend-avatar-female.png';
+import { Button } from '../../components';
+import { useUser } from '../../context/AppContext';
+import MainLayout from '../../layouts/MainLayout';
 import './Friends.scss';
 
 export const Friends = () => {
 	// @TODO Добавлять друзей из базы данных
-	const friends = [
-		{ id: 1, name: 'Николай Иронов', avatar: avatarMale },
-		{ id: 2, name: 'Мария Строгих', avatar: avatarFemale },
-		{ id: 3, name: 'Анна Лейтман', avatar: avatarFemale },
-		{ id: 4, name: 'Виктор Дробыш', avatar: avatarMale },
-	];
 
-	const [filteredFriends, setFilteredFriends] = useState(friends);
+	const { currentUser } = useUser();
+	const [filteredFriends, setFilteredFriends] = useState(currentUser.friends);
 
 	const handleSearch = (searchTerm) => {
-		const filtered = friends.filter((friend) =>
+		const filtered = currentUser.friends.filter((friend) =>
 			friend.name.toLowerCase().includes(searchTerm.toLowerCase())
 		);
 		setFilteredFriends(filtered);
@@ -28,26 +23,26 @@ export const Friends = () => {
 
 	return (
 		<section className="friends">
-			<Header handleSearch={handleSearch} />
-			<ul className="friends-list">
-				{filteredFriends.map((friend) => (
-					<li key={friend.id} className="friends-list__item">
-						<img src={friend.avatar} alt={friend.name} />
-						<span>{friend.name}</span>
-					</li>
-				))}
-			</ul>
-			<div className="friends__btn-container">
-				<Button
-					label="Добавить новых друзей"
-					type="button"
-					color="secondary"
-					size="large"
-					onClick={handleAddFriend}
-					className="friends__add-btn"
-				/>
-			</div>
-			<Footer />
+			<MainLayout handleSearch={handleSearch} className="friends__header">
+				<ul className="friends-list">
+					{filteredFriends.map((friend) => (
+						<li key={friend.id} className="friends-list__item">
+							<img src={friend.avatar} alt={friend.name} />
+							<span>{friend.name}</span>
+						</li>
+					))}
+				</ul>
+				<div className="friends__btn-container">
+					<Button
+						label="Добавить новых друзей"
+						type="button"
+						color="secondary"
+						size="large"
+						onClick={handleAddFriend}
+						className="friends__add-btn"
+					/>
+				</div>
+			</MainLayout>
 		</section>
 	);
 };

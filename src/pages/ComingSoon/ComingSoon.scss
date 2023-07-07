@@ -1,0 +1,105 @@
+.coming-soon {
+	display: flex;
+	justify-content: center;
+	position: relative;
+
+	&_diamond {
+		z-index: 2;
+		content: '';
+		background-image: url(../../images/coming-soon-diamond.png);
+		background-repeat: no-repeat;
+		position: absolute;
+		left: 270.01px;
+		top: 531px;
+		width: 115.779px;
+		height: 115.779px;
+	}
+
+	&_container {
+		background: #fafafa;
+		width: 375px;
+		height: 812px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		position: relative;
+	}
+
+	&_container::before {
+		content: '';
+		background-image: url(../../images/coming-soon-vector-1.svg);
+		background-repeat: no-repeat;
+		position: absolute;
+		left: 0;
+		top: 114px;
+		width: 150px;
+		height: 150px;
+	}
+
+	&_container::after {
+		content: '';
+		background-image: url(../../images/coming-soon-vector-2.svg);
+		background-repeat: no-repeat;
+		position: absolute;
+		left: 245px;
+		top: 498px;
+		width: 180px;
+		height: 180px;
+	}
+
+	&_img-container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&_logo {
+		width: 167px;
+		height: 65px;
+		margin-top: 70px;
+		margin-bottom: 24px;
+	}
+
+	&_main-img {
+		z-index: 1;
+		width: 335px;
+		height: 455px;
+	}
+
+	&_text-container {
+		z-index: 2;
+		position: absolute;
+		margin-top: 180px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&_title {
+		margin: 0;
+		color: #141513;
+		text-align: center;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 130%;
+	}
+
+	&_subtitle {
+		margin: 0;
+		margin-top: 8px;
+		color: #141513;
+		text-align: center;
+		font-size: 15px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+	}
+
+	&_back-btn {
+		margin-top: 80px;
+	}
+}

@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
-import { Button, Header, Footer, PopupWithForm, Input } from '../../components';
+import { Button, PopupWithForm, Input } from '../../components';
+import MainLayout from '../../layouts/MainLayout';
 import spiralPng from '../../images/spiral-banner.png';
 import vectorCircle from '../../images/vector-signin-2.svg';
 import avatarMale from '../../images/icon_profile_man.png';
 import avatarFemale from '../../images/icon_profile_woman.png';
+import { useUser } from '../../context/AppContext';
 import './Profile.scss';
 
-const UserInfo = {
-	firstName: 'Екатерина',
-	lastName: 'Иванова',
-	nickname: 'Ivanova123',
-	status: '',
-	sex: 'female',
-};
-
-// TODO адаптировать количество рекомендуемых статусов под экран
 const recommendedStatuses = [
 	'На работе',
 	'На мероприятии',
@@ -22,16 +15,49 @@ const recommendedStatuses = [
 ].slice(0, 3);
 
 export const Profile = () => {
+	const { currentUser, setCurrentUser } = useUser();
 	const [nicknamePopupOpened, setNicknamePopupOpened] = useState(false);
 	const [inviteFreindsPopupOpened, setInviteFreindsPopupOpened] =
 		useState(false);
 	const [formValues, setFormValues] = useState({
-		nicknameValue: UserInfo.nickname,
+		status: currentUser.status,
+		nicknameValue: currentUser.nickname,
 		inviteEmailValue: '',
-		status: UserInfo.status,
 	});
-	const handleStatusChange = () => {
-		// Обработчик для изменения статуса
+
+	const handleSubmitStatus = (newStatus) => {
+		setCurrentUser((prevState) => ({
+			...prevState,
+			status: newStatus,
+		}));
+		setFormValues((prevState) => ({
+			...prevState,
+			status: '',
+		}));
+	};
+
+	const handleStatusChange = (newStatus) => {
+		setFormValues((prevState) => ({
+			...prevState,
+			status: newStatus,
+		}));
+	};
+
+	const handleSubmitNickname = (e) => {
+		e.preventDefault();
+		// Здесь нужно реализовать логику отправки никнейма
+		setCurrentUser((prevState) => ({
+			...prevState,
+			nickname: formValues.nicknameValue,
+		}));
+		setNicknamePopupOpened(false);
+	};
+
+	const handleSubmitInvite = (e) => {
+		e.preventDefault();
+		// Здесь нужно реализовать логику отправки приглашения
+		setFormValues((prevState) => ({ ...prevState, inviteEmailValue: '' }));
+		setInviteFreindsPopupOpened(false);
 	};
 
 	function getUserAvatar(sex) {
@@ -40,111 +66,112 @@ export const Profile = () => {
 
 	return (
 		<section className="profile">
-			<Header />
-			<h1 className="profile-heading">Профиль</h1>
-			<div className="profile-user-container">
-				<button
-					className="profile-avatar"
-					onClick={(f) => f}
-					type="button"
-					aria-label="Изменить аватар"
-				>
-					<img
-						src={getUserAvatar(UserInfo.sex)}
-						alt="Avatar"
-						className="profile-avatar-image"
-					/>
-				</button>
-				{/* <Avatar url={getUserAvatar(UserInfo.sex)} /> */}
-				<div className="profile-user-info">
-					<div className="profile-user-name">{`${UserInfo.firstName} ${UserInfo.lastName}`}</div>
-					<div className="profile-user-nickname">{UserInfo.nickname}</div>
+			<MainLayout className="header">
+				<h1 className="profile-heading">Профиль</h1>
+				<div className="profile-user-container">
 					<button
-						className="profile-user-change-nickname"
-						aria-label="Изменить ник"
-						onClick={() => setNicknamePopupOpened(true)}
+						className="profile-avatar"
+						onClick={(f) => f}
+						type="button"
+						aria-label="Изменить аватар"
 					>
-						Изменить ник
+						<img
+							src={getUserAvatar(currentUser.sex)}
+							alt="Avatar"
+							className="profile-avatar-image"
+						/>
 					</button>
-				</div>
-			</div>
-			<form
-				className="profile-status-container"
-				onSubmit={(e) => {
-					setFormValues((prevState) => ({
-						...prevState,
-						status: e.target.value,
-					}));
-				}}
-			>
-				<label htmlFor="status" className="profile-status-label">
-					Твой статус
-					<input
-						type="text"
-						placeholder={formValues.status || 'Хочу на прогулку'}
-						className="profile-status-input"
-						id="status"
-						onChange={handleStatusChange}
-						onBlur={handleStatusChange}
-					/>
-				</label>
-				<div className="profile-status-bar">
-					{recommendedStatuses.map((statusValue) => (
+					{/* <Avatar url={getUserAvatar(UserInfo.sex)} /> */}
+					<div className="profile-user-info">
+						<div className="profile-user-name">{`${currentUser.firstName} ${currentUser.lastName}`}</div>
+						<div className="profile-user-nickname">{currentUser.nickname}</div>
 						<button
-							key={statusValue}
-							type="button"
-							onClick={() => {
-								setFormValues((prevState) => ({
-									...prevState,
-									status: statusValue,
-								}));
-							}}
-							className="profile-status-bar-button"
+							className="profile-user-change-nickname"
+							aria-label="Изменить ник"
+							onClick={() => setNicknamePopupOpened(true)}
 						>
-							{statusValue}
+							Изменить ник
 						</button>
-					))}
+					</div>
 				</div>
-			</form>
-			<div className="profile-invite-banner">
-				<div className="profile-invite-banner-text-container">
-					<h2 className="profile-invite-banner-heading">
-						Пригласи новых друзей
-					</h2>
-					<p className="profile-invite-banner-text">
-						Добавить новых друзей с помощью электронной почты
-					</p>
-				</div>
-				<Button
-					label="Добавить"
-					type="button"
-					color="secondary"
-					size="medium"
-					onClick={() => setInviteFreindsPopupOpened(true)}
-					className="profile-invite-banner-add-btn"
-					onSubmit={() => {}}
-				/>
-				<img
-					className="profile-invite-banner-circle"
-					src={vectorCircle}
-					alt="векторный круг"
-				/>
-				<div className="profile-invite-banner-fixed-spiral">
-					<img
-						className="profile-invite-banner-spiral"
-						src={spiralPng}
-						alt="спираль"
+				<form
+					className="profile-status-container"
+					onSubmit={(e) => {
+						e.preventDefault();
+						handleSubmitStatus(formValues.status);
+					}}
+				>
+					<label htmlFor="status" className="profile-status-label">
+						Твой статус
+						<input
+							type="text"
+							placeholder={currentUser.status || 'Хочу на прогулку'}
+							value={formValues.status}
+							className="profile-status-input"
+							id="status"
+							onChange={(e) => {
+								e.preventDefault();
+								handleStatusChange(e.target.value);
+							}}
+						/>
+					</label>
+					<div className="profile-status-bar">
+						{recommendedStatuses.map((statusValue) => (
+							<button
+								key={statusValue}
+								type="button"
+								onClick={(e) => {
+									e.preventDefault();
+									handleSubmitStatus(statusValue);
+								}}
+								className="profile-status-bar-button"
+							>
+								{statusValue}
+							</button>
+						))}
+					</div>
+					<button type="submit" style={{ display: 'none' }}>
+						{' '}
+					</button>
+				</form>
+				<div className="profile-invite-banner">
+					<div className="profile-invite-banner-text-container">
+						<h2 className="profile-invite-banner-heading">
+							Пригласи новых друзей
+						</h2>
+						<p className="profile-invite-banner-text">
+							Добавить новых друзей с помощью электронной почты
+						</p>
+					</div>
+					<Button
+						label="Добавить"
+						type="button"
+						color="secondary"
+						size="medium"
+						onClick={() => setInviteFreindsPopupOpened(true)}
+						className="profile-invite-banner-add-btn"
+						onSubmit={() => {}}
 					/>
+					<img
+						className="profile-invite-banner-circle"
+						src={vectorCircle}
+						alt="векторный круг"
+					/>
+					<div className="profile-invite-banner-fixed-spiral">
+						<img
+							className="profile-invite-banner-spiral"
+							src={spiralPng}
+							alt="спираль"
+						/>
+					</div>
 				</div>
-			</div>
-
-			<Footer />
+			</MainLayout>
 			<PopupWithForm
 				title=""
 				name="change-nickname"
 				isOpen={nicknamePopupOpened}
 				onClose={() => setNicknamePopupOpened(false)}
-				onSubmit={() => {}}
+				onSubmit={handleSubmitNickname}
 			>
 				<>
 					<Input
@@ -171,7 +198,7 @@ export const Profile = () => {
 							onClick={() => {
 								setFormValues((prevState) => ({
 									...prevState,
-									nicknameValue: UserInfo.nickname,
+									nicknameValue: currentUser.nickname,
 								}));
 								setNicknamePopupOpened(false);
 							}}
@@ -183,13 +210,7 @@ export const Profile = () => {
 							type="submit"
 							color="primary"
 							size="medium"
-							onClick={(e) => {
-								e.preventDefault();
-								console.log(
-									`Новый никнейм "${formValues.nicknameValue}" отправлен на сервер`
-								);
-								setNicknamePopupOpened(false);
-							}}
+							onClick={handleSubmitNickname}
 							className="popup-button"
 						/>
 					</div>
@@ -198,15 +219,15 @@ export const Profile = () => {
 
 			<PopupWithForm
 				title="Введи адрес электронной почты. Мы отправим другу письмо с приглашением"
-				name="change-nickname"
+				name="invite-form"
 				isOpen={inviteFreindsPopupOpened}
 				onClose={() => setInviteFreindsPopupOpened(false)}
-				onSubmit={() => {}}
+				onSubmit={handleSubmitInvite}
 			>
 				<>
 					<Input
-						id="change-nickname"
-						name="change-nickname"
+						id="input-email"
+						name="input-email"
 						label="Email"
 						placeholder="Электронная почта"
 						className=""
@@ -242,9 +263,7 @@ export const Profile = () => {
 							size="medium"
 							onClick={(e) => {
 								e.preventDefault();
-								console.log(
-									`Приглошение отправленно на почту "${formValues.inviteEmailValue}"`
-								);
+								// Функция с отправко сообщения другу на почту
 								setInviteFreindsPopupOpened(false);
 								setFormValues((prevState) => ({
 									...prevState,

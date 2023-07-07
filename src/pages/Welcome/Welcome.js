@@ -10,7 +10,7 @@ export function Welcome() {
 		<main className="welcome">
 			<Carousel />
 			<div className="welcome__button-container">
-				<Link to={ROUTES.REGISTRATION}>
+				<Link to={ROUTES.ACCESS_AGE}>
 					<Button
 						label="Зарегистрироваться"
 						type="button"

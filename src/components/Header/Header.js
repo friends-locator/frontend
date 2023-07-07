@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import './Header.scss';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import GeneralMenuPopup from '../GeneralMenuPopup/GeneralMenuPopup';
 
 const Header = ({ handleSearch, className }) => {
 	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
+	const userStatus = useSelector((state) => state.user.status);
 
 	const handleChange = (e) => {
 		const searchTerm = e.target.value;
@@ -32,6 +34,7 @@ const Header = ({ handleSearch, className }) => {
 			<GeneralMenuPopup
 				isOpen={isMenuPopupOpen}
 				onClose={() => setIsMenuPopupOpen(false)}
+				userStatus={userStatus}
 			/>
 		</header>
 	);

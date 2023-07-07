@@ -11,6 +11,7 @@ const userSlice = createSlice({
 		sex: 'male',
 		email: '',
 		avatar: '',
+		status: '',
 		loginLoading: false,
 		signUpLoading: false,
 		logOutLoading: false,

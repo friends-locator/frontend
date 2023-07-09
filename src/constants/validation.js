@@ -16,3 +16,6 @@ export const invalidNicknameErrorText =
 	'Ник должно содержать только латиницу, кириллицу, пробел и дефис';
 export const invalidEmailErrorText = 'Некорректный email';
 export const invalidConfirmPasswordErrorText = 'Пароли должны совпадать';
+
+export const friendExistErrorText =
+	'Пользователь с такой почтой уже есть у тебя в друзьях';

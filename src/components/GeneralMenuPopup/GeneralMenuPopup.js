@@ -21,11 +21,13 @@ function GeneralMenuPopup({
 					<div className="generalMenuPopup__status">{userStatus}</div>
 				)}
 			</div>
-			<Checkbox
-				option="Режим невидимки"
-				chooseOption={chooseOption}
-				isActiveOption={isActiveOption}
-			/>
+			<div className="generalMenuPopup__checkbox-container">
+				<Checkbox
+					option="Режим невидимки"
+					chooseOption={chooseOption}
+					isActiveOption={isActiveOption}
+				/>
+			</div>
 		</MenuPopup>
 	);
 }

@@ -1,7 +1,7 @@
 import './Checkbox.scss';
 import PropTypes from 'prop-types';
 
-function Checkbox({ chooseOption, isActiveOption }) {
+function Checkbox({ option, chooseOption, isActiveOption }) {
 	return (
 		<label className="checkbox" htmlFor="checkbox">
 			<input
@@ -12,18 +12,15 @@ function Checkbox({ chooseOption, isActiveOption }) {
 				checked={isActiveOption}
 			/>
 			<span className="checkbox__toggle" />
-			<span className="checkbox__title">Короткометражки</span>
+			<span className="checkbox__title">{option}</span>
 		</label>
 	);
 }
 
 Checkbox.propTypes = {
-	chooseOption: PropTypes.func,
-	isActiveOption: PropTypes.bool,
+	option: PropTypes.string.isRequired,
+	chooseOption: PropTypes.func.isRequired,
+	isActiveOption: PropTypes.bool.isRequired,
 };
 
-Checkbox.defaultProps = {
-	chooseOption: undefined,
-	isActiveOption: false,
-};
 export default Checkbox;

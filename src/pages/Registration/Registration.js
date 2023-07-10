@@ -55,6 +55,7 @@ export const Registration = () => {
 	const [confirmPasswordError, setConfirmPasswordError] = useState(
 		invalidConfirmPasswordErrorText
 	);
+	const [checkboxError, setCheckboxError] = useState(false);
 
 	const [step, setStep] = useState(1);
 
@@ -228,6 +229,7 @@ export const Registration = () => {
 
 		setPasswordDirty(true);
 		setConfirmPasswordDirty(true);
+		setCheckboxError(true);
 	};
 
 	return (
@@ -385,7 +387,9 @@ export const Registration = () => {
 								<input
 									id="terms-of-use-checkbox"
 									type="checkbox"
-									className="registration_form_terms-of-use_checkbox"
+									className={`registration_form_terms-of-use_checkbox ${
+										checkboxError === true ? 'checkbox-error' : ''
+									}`}
 									value={termsOfUse}
 									onChange={() => {
 										setTermsOfUse(!termsOfUse);

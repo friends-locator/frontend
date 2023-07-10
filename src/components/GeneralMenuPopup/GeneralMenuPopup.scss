@@ -1,8 +1,37 @@
 $grey: #CCCDC2;
+$green-gradient: linear-gradient(#C3F402, #3FE911);
+$white: #fff;
 
 .generalMenuPopup {
   &__header {
     height: 64px;
     border-bottom: 1px solid $grey;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    box-sizing: border-box;
+  }
+
+  &__status {
+    position: relative;
+    border-radius: 20px;
+    background: $white;
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
+    padding: 8px 20px;
+  }
+
+  &__status::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    background: $green-gradient;
+    border-radius: 20px;
+    z-index: -1;
   }
 }

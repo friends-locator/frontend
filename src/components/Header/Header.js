@@ -6,12 +6,17 @@ import GeneralMenuPopup from '../GeneralMenuPopup/GeneralMenuPopup';
 
 const Header = ({ handleSearch, className }) => {
 	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
+	const [isActiveOption, setIsActiveOption] = useState(false); //состояние чекбокса в меню
 	const userStatus = useSelector((state) => state.user.status);
 
 	const handleChange = (e) => {
 		const searchTerm = e.target.value;
 		handleSearch(searchTerm);
 	};
+
+	function handleChooseOption() {
+		setIsActiveOption(!isActiveOption);
+	}
 
 	return (
 		<header className={className}>
@@ -35,6 +40,8 @@ const Header = ({ handleSearch, className }) => {
 				isOpen={isMenuPopupOpen}
 				onClose={() => setIsMenuPopupOpen(false)}
 				userStatus={userStatus}
+				chooseOption={handleChooseOption}
+				isActiveOption={isActiveOption}
 			/>
 		</header>
 	);

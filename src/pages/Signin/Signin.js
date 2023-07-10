@@ -110,7 +110,7 @@ export const Signin = () => {
 						inputError={emailError}
 					/>
 					<InputPassword
-						label="Придумайте пароль"
+						label="Пароль"
 						passwordType={passwordType}
 						id="password"
 						name="password"

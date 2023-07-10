@@ -24,34 +24,40 @@ export const Friends = () => {
 
 	return (
 		<section className="friends">
-			<MainLayout handleSearch={handleSearch} className="friends__header">
-				<ul className="friends-list">
-					{filteredFriends.map((friend) => (
-						<li key={friend.id} className="friends-list__item">
-							<img
-								src={friend.avatar}
-								alt={friend.name}
-								className="friends-list__item-img"
-							/>
-							<span>{friend.name}</span>
-						</li>
-					))}
-				</ul>
-				<div className="friends__btn-container">
-					<Button
-						label="Добавить новых друзей"
-						type="button"
-						color="secondary"
-						size="large"
-						onClick={handleAddFriend}
-						className="friends__add-btn"
-					/>
-				</div>
-			</MainLayout>
-			<PopupAddFriend
-				isOpen={addFreindsPopupOpened}
-				onClose={() => setAddFreindsPopupOpened(false)}
-			/>
+			<div className="friends_container">
+				<MainLayout
+					handleSearch={handleSearch}
+					headerClassName="friends__header"
+					activeTab="friends"
+				>
+					<ul className="friends-list">
+						{filteredFriends.map((friend) => (
+							<li key={friend.id} className="friends-list__item">
+								<img
+									src={friend.avatar}
+									alt={friend.name}
+									className="friends-list__item-img"
+								/>
+								<span>{friend.name}</span>
+							</li>
+						))}
+					</ul>
+					<div className="friends__btn-container">
+						<Button
+							label="Добавить новых друзей"
+							type="button"
+							color="secondary"
+							size="large"
+							onClick={handleAddFriend}
+							className="friends__add-btn"
+						/>
+					</div>
+				</MainLayout>
+				<PopupAddFriend
+					isOpen={addFreindsPopupOpened}
+					onClose={() => setAddFreindsPopupOpened(false)}
+				/>
+			</div>
 		</section>
 	);
 };

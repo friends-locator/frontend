@@ -53,9 +53,18 @@ export function TrackingMap() {
 	}, [map]);
 
 	return (
-		<MainLayout className="header" handleSearch={() => {}}>
-			{displayMap}
-			<ButtonUserLocation handleClick={findUserLocation} />
-		</MainLayout>
+		<section className="map">
+			<div className="map_container">
+				<MainLayout
+					headerClassName="header"
+					footerClassName="footer"
+					activeTab="map"
+					handleSearch={() => {}}
+				>
+					{displayMap}
+					<ButtonUserLocation handleClick={findUserLocation} />
+				</MainLayout>
+			</div>
+		</section>
 	);
 }

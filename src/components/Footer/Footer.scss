@@ -1,11 +1,17 @@
 .footer {
 	box-sizing: border-box;
-	width: 100%;
-	padding: 0 8px 20px 8px;
 	display: flex;
-	column-gap: 12px;
-	border-top: 1px solid #cccdc2;
-	background-color: #fff;
+	justify-content: center;
+	max-width: 375px;
+
+	&_container {
+		width: 100%;
+		padding: 0 8px 20px 8px;
+		display: flex;
+		column-gap: 12px;
+		border-top: 1px solid #cccdc2;
+		background-color: #fff;
+	}
 
 	&__link {
 		width: calc(100% / 3);

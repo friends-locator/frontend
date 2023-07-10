@@ -1,9 +1,14 @@
 .friends {
-	max-width: 375px;
-	height: 100vh;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 64px auto 92px 76px;
+	display: flex;
+	justify-content: center;
+
+	&_container {
+		max-width: 375px;
+		height: 100vh;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 64px auto 92px 76px;
+	}
 
 	&__header {
 		position: relative;

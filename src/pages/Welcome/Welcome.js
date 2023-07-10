@@ -8,19 +8,26 @@ import { ROUTES } from '../../constants';
 export function Welcome() {
 	return (
 		<main className="welcome">
-			<Carousel />
-			<div className="welcome__button-container">
-				<Link to={ROUTES.ACCESS_AGE}>
-					<Button
-						label="Зарегистрироваться"
-						type="button"
-						size="large"
-						color="primary"
-					/>
-				</Link>
-				<Link to={ROUTES.SIGN_IN}>
-					<Button label="Войти" type="button" size="large" color="secondary" />
-				</Link>
+			<div className="welcome_container">
+				<Carousel />
+				<div className="welcome__button-container">
+					<Link to={ROUTES.ACCESS_AGE}>
+						<Button
+							label="Зарегистрироваться"
+							type="button"
+							size="large"
+							color="primary"
+						/>
+					</Link>
+					<Link to={ROUTES.SIGN_IN}>
+						<Button
+							label="Войти"
+							type="button"
+							size="large"
+							color="secondary"
+						/>
+					</Link>
+				</div>
 			</div>
 		</main>
 	);

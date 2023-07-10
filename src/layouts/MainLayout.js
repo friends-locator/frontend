@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import { Header, Footer } from '../components';
 import { useUser } from '../context/AppContext';
 
-export default function MainLayout({ handleSearch, className, children }) {
+export default function MainLayout({
+	handleSearch,
+	headerClassName,
+	footerClassName,
+	children,
+	activeTab,
+}) {
 	const { currentUser } = useUser();
 
 	return (
@@ -11,20 +17,24 @@ export default function MainLayout({ handleSearch, className, children }) {
 			<Header
 				user={currentUser}
 				handleSearch={handleSearch}
-				className={className}
+				className={headerClassName}
 			/>
 			{children}
-			<Footer />
+			<Footer className={footerClassName} activeTab={activeTab} />
 		</>
 	);
 }
 
 MainLayout.propTypes = {
 	handleSearch: PropTypes.func,
-	className: PropTypes.string.isRequired,
+	headerClassName: PropTypes.string,
+	footerClassName: PropTypes.string,
 	children: PropTypes.node.isRequired,
+	activeTab: PropTypes.oneOf(['map', 'chat', 'friends']).isRequired,
 };
 
 MainLayout.defaultProps = {
 	handleSearch: undefined,
+	headerClassName: '',
+	footerClassName: '',
 };

@@ -83,6 +83,19 @@ export const Signin = () => {
 		navigate(-1);
 	};
 
+	const formValidCheck = () => !emailError && !passwordError;
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		if (formValidCheck()) {
+			navigate(ROUTES.MAP);
+		}
+
+		setEmailDirty(true);
+		setPasswordDirty(true);
+	};
+
 	return (
 		<section className="signin">
 			<div className="signin_container">
@@ -110,7 +123,7 @@ export const Signin = () => {
 						inputError={emailError}
 					/>
 					<InputPassword
-						label="Придумайте пароль"
+						label="Пароль"
 						passwordType={passwordType}
 						id="password"
 						name="password"
@@ -122,12 +135,14 @@ export const Signin = () => {
 						passwordError={passwordError}
 						onPasswordBtnClick={handlePasswordBtnClick}
 					/>
+
 					<Button
 						label="Войти"
-						type="submit"
+						type="button"
 						color="primary"
 						size="large"
 						className="registration_form_btn-continue"
+						onClick={handleSubmit}
 					/>
 					<span className="signin_form_span">
 						Еще нет аккаунта?{' '}

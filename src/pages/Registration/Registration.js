@@ -203,16 +203,32 @@ export const Registration = () => {
 		}
 	};
 
-	// const formValidCheck = (validationStep) => {
-	// 	const isFormValidStepOne = !nameError && !surnameError && !nicknameError && !emailError;
-	// 	const isFormValidStepTwo = isFormValidStepOne && !passwordError && !confirmPasswordError && termsOfUse;
+	const formValidCheck = (validationStep) => {
+		const isFormValidStepOne =
+			!nameError && !surnameError && !nicknameError && !emailError;
+		const isFormValidStepTwo =
+			isFormValidStepOne &&
+			!passwordError &&
+			!confirmPasswordError &&
+			termsOfUse;
 
-	// 	if(validationStep===1) {
-	// 		return isFormValidStepOne;
-	// 	}
+		if (validationStep === 1) {
+			return isFormValidStepOne;
+		}
 
-	// 	return isFormValidStepTwo;
-	// }
+		return isFormValidStepTwo;
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		if (formValidCheck(2)) {
+			navigate(ROUTES.MAP);
+		}
+
+		setPasswordDirty(true);
+		setConfirmPasswordDirty(true);
+	};
 
 	return (
 		<section className="registration">
@@ -402,10 +418,11 @@ export const Registration = () => {
 							</div>
 							<Button
 								label="Зарегистрироваться"
-								type="submit"
+								type="button"
 								color="primary"
 								size="large"
 								className="registration_form_btn-continue"
+								onClick={handleSubmit}
 							/>
 
 							<span className="registration_form_span">

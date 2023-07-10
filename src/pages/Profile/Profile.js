@@ -66,7 +66,7 @@ export const Profile = () => {
 
 	return (
 		<section className="profile">
-			<MainLayout className="header">
+			<MainLayout headerClassName="header" activeTab="map">
 				<h1 className="profile-heading">Профиль</h1>
 				<div className="profile-user-container">
 					<button

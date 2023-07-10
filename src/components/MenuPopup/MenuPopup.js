@@ -19,7 +19,7 @@ function MenuPopup({ isOpen, onClose, children }) {
 MenuPopup.propTypes = {
 	isOpen: PropTypes.bool,
 	onClose: PropTypes.func,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.node.isRequired,
 };
 
 MenuPopup.defaultProps = {

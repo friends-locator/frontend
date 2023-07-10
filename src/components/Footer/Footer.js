@@ -42,7 +42,7 @@ const Footer = ({ className, activeTab }) => {
 					<span className="footer__link-text">Карта</span>
 				</Link>
 				<Link
-					to={ROUTES.CHAT}
+					to={ROUTES.COMING_SOON}
 					className={`footer__link ${activeButton === 'chat' ? 'active' : ''}`}
 					onClick={() => handleClick('chat')}
 				>

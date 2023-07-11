@@ -8,7 +8,9 @@ function MenuPopup({ isOpen, onClose, children }) {
 
 	return (
 		<div
-			role="presentation"
+			onKeyDown={handleOverlayClick}
+			role="button"
+			tabIndex="0"
 			className={`menuPopup ${isOpen && 'menuPopup_opened'}`}
 			onClick={handleOverlayClick}
 		>

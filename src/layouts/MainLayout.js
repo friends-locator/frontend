@@ -9,7 +9,6 @@ export default function MainLayout({
 	headerClassName,
 	footerClassName,
 	children,
-	activeTab,
 }) {
 	const { currentUser } = useUser();
 
@@ -30,7 +29,7 @@ export default function MainLayout({
 				setIsMenuPopupOpen={setIsMenuPopupOpen}
 			/>
 			{children}
-			<Footer className={footerClassName} activeTab={activeTab} />
+			<Footer className={footerClassName} />
 			<GeneralMenuPopup
 				isOpen={isMenuPopupOpen}
 				onClose={() => setIsMenuPopupOpen(false)}
@@ -47,7 +46,6 @@ MainLayout.propTypes = {
 	headerClassName: PropTypes.string,
 	footerClassName: PropTypes.string,
 	children: PropTypes.node.isRequired,
-	activeTab: PropTypes.oneOf(['map', 'chat', 'friends']).isRequired,
 };
 
 MainLayout.defaultProps = {

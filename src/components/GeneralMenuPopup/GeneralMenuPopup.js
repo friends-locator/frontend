@@ -62,7 +62,11 @@ function GeneralMenuPopup({
 							/>
 							<p className="generalMenuPopup__link-text">Места</p>
 						</Link>
-						<Link to={ROUTES.PROFILE} className="generalMenuPopup__link">
+						<Link
+							to={ROUTES.PROFILE}
+							className="generalMenuPopup__link"
+							onClick={onClose}
+						>
 							<img
 								className="generalMenuPopup__link-img"
 								src={profile}

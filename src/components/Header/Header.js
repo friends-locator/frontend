@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import './Header.scss';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import GeneralMenuPopup from '../GeneralMenuPopup/GeneralMenuPopup';
 
@@ -14,9 +14,9 @@ const Header = ({ handleSearch, className }) => {
 		handleSearch(searchTerm);
 	};
 
-	function handleChooseOption() {
+	const handleChooseOption = useCallback(() => {
 		setIsActiveOption(!isActiveOption);
-	}
+	}, [isActiveOption]);
 
 	return (
 		<header className={className}>

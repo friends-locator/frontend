@@ -9,3 +9,4 @@ export { default as Loader } from './Loader/Loader';
 export { default as Input } from './Input/Input';
 export { default as PopupAddFriend } from './PopupAddFriend/PopupAddFriend';
 export { default as GeneralMenuPopup } from './GeneralMenuPopup/GeneralMenuPopup';
+export { default as InputSearch } from './InputSearch/InputSearch';

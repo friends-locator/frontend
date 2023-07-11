@@ -58,7 +58,6 @@ export function TrackingMap() {
 				<MainLayout
 					headerClassName="header"
 					footerClassName="footer"
-					activeTab="map"
 					handleSearch={() => {}}
 				>
 					{displayMap}

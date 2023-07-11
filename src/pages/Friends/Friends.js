@@ -29,7 +29,6 @@ export const Friends = () => {
 					handleSearch={handleSearch}
 					headerClassName="friends__header"
 					footerClassName="friends__footer"
-					activeTab="friends"
 				>
 					<ul className="friends-list">
 						{filteredFriends.map((friend) => (

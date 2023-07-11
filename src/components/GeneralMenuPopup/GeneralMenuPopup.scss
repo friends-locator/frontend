@@ -1,6 +1,7 @@
 $grey: #CCCDC2;
 $green-gradient: linear-gradient(#C3F402, #3FE911);
 $white: #fff;
+$black: #141513;
 
 .generalMenuPopup {
   &__header {
@@ -36,6 +37,37 @@ $white: #fff;
   }
 
   &__checkbox-container {
-    margin: 24px 20px 16px;
+    margin: 22px 20px 14px;
+  }
+
+  &__navigation {
+    //margin: 12px 20px;
+    margin: 12px 20px 296px;
+  }
+
+  &__link {
+    display: flex;
+    box-sizing: border-box;
+    text-decoration: none;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__link:last-child {
+    margin-bottom: 0;
+  }
+
+  &__link-img {
+    margin-right: 16px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__link-text {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    color: $black;
   }
 }

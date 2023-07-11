@@ -127,6 +127,14 @@
 			padding: 2px;
 		}
 
+		input[type='checkbox']:not(:checked) + label::before {
+			background: url(../../images/checkbox-unchecked.svg) 0 0 no-repeat;
+		}
+
+		input[type='checkbox']:not(:checked).checkbox-error + label::before {
+			background: url(../../images/checkbox-error.svg) 0 0 no-repeat;
+		}
+
 		&_terms-of-use_checkbox {
 			display: none;
 		}

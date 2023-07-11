@@ -6,7 +6,7 @@ import UserAvatar from '../UserAvatar/UserAvatar';
 import Checkbox from '../Checkbox/Checkbox';
 import chat from '../../images/chat_menu.svg';
 import { ROUTES } from '../../constants';
-import friends from '../../images/friends_menu.svg';
+import friendsNew from '../../images/friendsNew_menu.svg';
 import places from '../../images/places_menu.svg';
 import profile from '../../images/profile_menu.svg';
 import settings from '../../images/settings_menu.svg';
@@ -43,7 +43,7 @@ function GeneralMenuPopup({
 				<Link to={ROUTES.FRIENDS} className="generalMenuPopup__link">
 					<img
 						className="generalMenuPopup__link-img"
-						src={friends}
+						src={friendsNew}
 						alt="Друзья"
 					/>
 					<p className="generalMenuPopup__link-text">Друзья</p>

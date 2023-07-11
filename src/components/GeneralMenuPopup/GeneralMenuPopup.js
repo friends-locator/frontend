@@ -80,13 +80,9 @@ function GeneralMenuPopup({
 						</Link>
 					</section>
 				</div>
-				<button
-					className="generalMenuPopup__button"
-					type="button"
-					aria-label="Выйти из аккаунта"
-				>
+				<Link to={ROUTES.SIGN_IN} className="generalMenuPopup__button">
 					Выйти из профиля
-				</button>
+				</Link>
 			</div>
 		</MenuPopup>
 	);

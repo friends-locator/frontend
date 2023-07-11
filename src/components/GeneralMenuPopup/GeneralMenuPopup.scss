@@ -83,13 +83,13 @@ $light-yellow: #FDFFE2;
   }
 
   &__button {
-    border: none;
-    height: 43px;
-    padding-left: 20px;
+    text-decoration: none;
+    color: $black;
     font-size: 15px;
     font-weight: 500;
     line-height: normal;
-    text-align: left;
+    background: rgba(20, 21, 19, 0.03);
+    padding: 12px 0 12px 20px;
   }
 
   &__button:hover {

@@ -6,7 +6,7 @@ import GeneralMenuPopup from '../GeneralMenuPopup/GeneralMenuPopup';
 
 const Header = ({ handleSearch, className }) => {
 	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
-	const [isActiveOption, setIsActiveOption] = useState(false); //состояние чекбокса в меню
+	const [isActiveOption, setIsActiveOption] = useState(false);
 	const userStatus = useSelector((state) => state.user.status);
 
 	const handleChange = (e) => {

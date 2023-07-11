@@ -39,7 +39,7 @@ function PopupWithForm({
 	);
 }
 PopupWithForm.propTypes = {
-	title: PropTypes.string.isRequired,
+	title: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
 	isOpen: PropTypes.bool,
@@ -49,6 +49,7 @@ PopupWithForm.propTypes = {
 };
 
 PopupWithForm.defaultProps = {
+	title: '',
 	isOpen: false,
 	onClose: undefined,
 	onSubmit: undefined,

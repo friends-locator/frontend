@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Button, PopupWithForm } from '../../components';
 import { ROUTES } from '../../constants';
 import './AccessAge.scss';
 
 export const AccessAge = () => {
+	const navigate = useNavigate();
 	const [tooYoungPopupOpened, setTooYoungPopupOpened] = useState(false);
 
 	return (
@@ -59,6 +60,7 @@ export const AccessAge = () => {
 							className="access-age_popup-container_btn-ok"
 							onClick={() => {
 								setTooYoungPopupOpened(false);
+								navigate(ROUTES.ROOT);
 							}}
 						/>
 					</div>

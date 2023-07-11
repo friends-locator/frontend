@@ -167,7 +167,6 @@ export const Profile = () => {
 				</div>
 			</MainLayout>
 			<PopupWithForm
-				title=""
 				name="change-nickname"
 				isOpen={nicknamePopupOpened}
 				onClose={() => setNicknamePopupOpened(false)}

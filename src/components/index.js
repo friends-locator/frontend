@@ -8,3 +8,4 @@ export { default as Carousel } from './Carousel/Carousel';
 export { default as Loader } from './Loader/Loader';
 export { default as Input } from './Input/Input';
 export { default as PopupAddFriend } from './PopupAddFriend/PopupAddFriend';
+export { default as GeneralMenuPopup } from './GeneralMenuPopup/GeneralMenuPopup';

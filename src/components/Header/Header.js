@@ -1,22 +1,11 @@
 import PropTypes from 'prop-types';
 import './Header.scss';
-import { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import GeneralMenuPopup from '../GeneralMenuPopup/GeneralMenuPopup';
 
-const Header = ({ handleSearch, className }) => {
-	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
-	const [isActiveOption, setIsActiveOption] = useState(false);
-	const userStatus = useSelector((state) => state.user.status);
-
+const Header = ({ handleSearch, className, setIsMenuPopupOpen }) => {
 	const handleChange = (e) => {
 		const searchTerm = e.target.value;
 		handleSearch(searchTerm);
 	};
-
-	const handleChooseOption = useCallback(() => {
-		setIsActiveOption(!isActiveOption);
-	}, [isActiveOption]);
 
 	return (
 		<header className={className}>
@@ -36,13 +25,6 @@ const Header = ({ handleSearch, className }) => {
 					className="header__input"
 				/>
 			)}
-			<GeneralMenuPopup
-				isOpen={isMenuPopupOpen}
-				onClose={() => setIsMenuPopupOpen(false)}
-				userStatus={userStatus}
-				chooseOption={handleChooseOption}
-				isActiveOption={isActiveOption}
-			/>
 		</header>
 	);
 };
@@ -50,11 +32,13 @@ const Header = ({ handleSearch, className }) => {
 Header.propTypes = {
 	handleSearch: PropTypes.func,
 	className: PropTypes.string,
+	setIsMenuPopupOpen: PropTypes.func,
 };
 
 Header.defaultProps = {
 	handleSearch: undefined,
 	className: '',
+	setIsMenuPopupOpen: undefined,
 };
 
 export default Header;

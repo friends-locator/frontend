@@ -1,0 +1,98 @@
+$grey: #CCCDC2;
+$green-gradient: linear-gradient(#C3F402, #3FE911);
+$white: #fff;
+$black: #141513;
+$light-yellow: #FDFFE2;
+
+.generalMenuPopup {
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__header {
+    height: 64px;
+    border-bottom: 1px solid $grey;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    box-sizing: border-box;
+  }
+
+  &__status {
+    position: relative;
+    border-radius: 20px;
+    background: $white;
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
+    padding: 8px 20px;
+  }
+
+  &__status::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    background: $green-gradient;
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  &__checkbox-container {
+    margin: 22px 20px 14px;
+  }
+
+  &__navigation {
+    margin: 0 20px;
+  }
+
+  &__link {
+    display: flex;
+    box-sizing: border-box;
+    text-decoration: none;
+    align-items: center;
+    padding: 12px 0;
+  }
+
+  &__link:hover {
+    background: $light-yellow;
+  }
+
+  &__link:last-child {
+    margin-bottom: 0;
+  }
+
+  &__link-img {
+    margin-right: 16px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__link-text {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    color: $black;
+  }
+
+  &__button {
+    text-decoration: none;
+    color: $black;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    background: rgba(20, 21, 19, 0.03);
+    padding: 12px 0 12px 20px;
+  }
+
+  &__button:hover {
+    cursor: pointer;
+  }
+}

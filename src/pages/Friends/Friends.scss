@@ -3,6 +3,7 @@
 	justify-content: center;
 
 	&_container {
+		position: relative;
 		max-width: 375px;
 		height: 100vh;
 		display: grid;
@@ -61,4 +62,10 @@
 	&__add-btn {
 		width: 335px;
 	}
+}
+.friends__footer {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	max-width: 375px;
 }

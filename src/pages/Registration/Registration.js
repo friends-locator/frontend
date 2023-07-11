@@ -16,6 +16,7 @@ import {
 	invalidEmailErrorText,
 	invalidConfirmPasswordErrorText,
 	ROUTES,
+	nicknamePattern,
 } from '../../constants';
 
 import { Button, InputText, InputPassword } from '../../components';
@@ -89,7 +90,7 @@ export const Registration = () => {
 			case 'nickname':
 				if (String(value).length === 0) {
 					setNicknameError(emptyNicknameErrorText);
-				} else if (!value.match(namePattern)) {
+				} else if (!value.match(nicknamePattern)) {
 					setNicknameError(invalidNicknameErrorText);
 				} else {
 					setNicknameError('');

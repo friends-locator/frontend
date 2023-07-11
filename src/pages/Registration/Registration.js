@@ -225,7 +225,7 @@ export const Registration = () => {
 		event.preventDefault();
 
 		if (formValidCheck(2)) {
-			navigate(ROUTES.MAP);
+			navigate(ROUTES.ACCESS_GEO);
 		}
 
 		setPasswordDirty(true);

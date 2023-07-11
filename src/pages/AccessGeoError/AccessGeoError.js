@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLocation, setLocationError } from '../../store/slices/location';
 import { Button } from '../../components';
@@ -8,6 +8,7 @@ import './AccessGeoError.scss';
 
 export const AccessGeoError = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleLocateBtnClick = () => {
 		const handleSuccess = (position) => {
@@ -17,6 +18,8 @@ export const AccessGeoError = () => {
 					longitude: position.coords.longitude,
 				})
 			);
+
+			navigate(ROUTES.MAP);
 
 			// @TODO отправить координаты на сервер
 			// Чтобы их получить используем:

@@ -20,59 +20,74 @@ function GeneralMenuPopup({
 }) {
 	return (
 		<MenuPopup isOpen={isOpen} onClose={onClose}>
-			<div className="generalMenuPopup__header">
-				<UserAvatar />
-				{userStatus === '' ? (
-					<div className="generalMenuPopup__status">Статус не выбран</div>
-				) : (
-					<div className="generalMenuPopup__status">{userStatus}</div>
-				)}
+			<div className="generalMenuPopup__container">
+				<div>
+					<div className="generalMenuPopup__header">
+						<UserAvatar />
+						{userStatus === '' ? (
+							<div className="generalMenuPopup__status">Статус не выбран</div>
+						) : (
+							<div className="generalMenuPopup__status">{userStatus}</div>
+						)}
+					</div>
+					<div className="generalMenuPopup__checkbox-container">
+						<Checkbox
+							option="Режим невидимки"
+							chooseOption={chooseOption}
+							isActiveOption={isActiveOption}
+						/>
+					</div>
+					<section className="generalMenuPopup__navigation">
+						<Link to={ROUTES.CHAT} className="generalMenuPopup__link">
+							<img
+								className="generalMenuPopup__link-img"
+								src={chat}
+								alt="Чат"
+							/>
+							<p className="generalMenuPopup__link-text">Чат</p>
+						</Link>
+						<Link to={ROUTES.FRIENDS} className="generalMenuPopup__link">
+							<img
+								className="generalMenuPopup__link-img"
+								src={friendsNew}
+								alt="Друзья"
+							/>
+							<p className="generalMenuPopup__link-text">Друзья</p>
+						</Link>
+						<Link to={ROUTES.COMING_SOON} className="generalMenuPopup__link">
+							<img
+								className="generalMenuPopup__link-img"
+								src={places}
+								alt="Места"
+							/>
+							<p className="generalMenuPopup__link-text">Места</p>
+						</Link>
+						<Link to={ROUTES.PROFILE} className="generalMenuPopup__link">
+							<img
+								className="generalMenuPopup__link-img"
+								src={profile}
+								alt="Профиль"
+							/>
+							<p className="generalMenuPopup__link-text">Профиль</p>
+						</Link>
+						<Link to={ROUTES.COMING_SOON} className="generalMenuPopup__link">
+							<img
+								className="generalMenuPopup__link-img"
+								src={settings}
+								alt="Настройки"
+							/>
+							<p className="generalMenuPopup__link-text">Настройки</p>
+						</Link>
+					</section>
+				</div>
+				<button
+					className="generalMenuPopup__button"
+					type="button"
+					aria-label="Выйти из аккаунта"
+				>
+					Выйти из профиля
+				</button>
 			</div>
-			<div className="generalMenuPopup__checkbox-container">
-				<Checkbox
-					option="Режим невидимки"
-					chooseOption={chooseOption}
-					isActiveOption={isActiveOption}
-				/>
-			</div>
-			<section className="generalMenuPopup__navigation">
-				<Link to={ROUTES.CHAT} className="generalMenuPopup__link">
-					<img className="generalMenuPopup__link-img" src={chat} alt="Чат" />
-					<p className="generalMenuPopup__link-text">Чат</p>
-				</Link>
-				<Link to={ROUTES.FRIENDS} className="generalMenuPopup__link">
-					<img
-						className="generalMenuPopup__link-img"
-						src={friendsNew}
-						alt="Друзья"
-					/>
-					<p className="generalMenuPopup__link-text">Друзья</p>
-				</Link>
-				<Link to={ROUTES.COMING_SOON} className="generalMenuPopup__link">
-					<img
-						className="generalMenuPopup__link-img"
-						src={places}
-						alt="Места"
-					/>
-					<p className="generalMenuPopup__link-text">Места</p>
-				</Link>
-				<Link to={ROUTES.PROFILE} className="generalMenuPopup__link">
-					<img
-						className="generalMenuPopup__link-img"
-						src={profile}
-						alt="Профиль"
-					/>
-					<p className="generalMenuPopup__link-text">Профиль</p>
-				</Link>
-				<Link to={ROUTES.COMING_SOON} className="generalMenuPopup__link">
-					<img
-						className="generalMenuPopup__link-img"
-						src={settings}
-						alt="Настройки"
-					/>
-					<p className="generalMenuPopup__link-text">Настройки</p>
-				</Link>
-			</section>
 		</MenuPopup>
 	);
 }

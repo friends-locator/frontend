@@ -5,6 +5,13 @@ $black: #141513;
 $light-yellow: #FDFFE2;
 
 .generalMenuPopup {
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   &__header {
     height: 64px;
     border-bottom: 1px solid $grey;
@@ -42,7 +49,7 @@ $light-yellow: #FDFFE2;
   }
 
   &__navigation {
-    margin: 0 20px 296px;
+    margin: 0 20px;
   }
 
   &__link {
@@ -73,5 +80,19 @@ $light-yellow: #FDFFE2;
     font-weight: 500;
     line-height: normal;
     color: $black;
+  }
+
+  &__button {
+    border: none;
+    height: 43px;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: left;
+  }
+
+  &__button:hover {
+    cursor: pointer;
   }
 }

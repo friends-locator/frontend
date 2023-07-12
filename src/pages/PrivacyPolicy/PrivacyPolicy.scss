@@ -1,8 +1,13 @@
 .privacy-policy {
-	height: 100vh;
-	padding-top: 12px;
-	background-color: #fff;
+	display: flex;
+	justify-content: center;
 
+	&__container {
+		max-width: 375px;
+		height: 100vh;
+		padding-top: 12px;
+		background-color: #fff;
+	}
 	&__header {
 		display: flex;
 		align-items: center;

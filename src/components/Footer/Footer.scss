@@ -37,12 +37,12 @@
 		font-weight: 500;
 		line-height: 140%;
 	}
-}
 
-.active {
-	color: #000;
+	&__link_active {
+		color: #000;
 
-	& svg {
-		fill: #000;
+		& svg {
+			fill: #000;
+		}
 	}
 }

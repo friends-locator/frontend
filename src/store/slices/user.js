@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
@@ -19,48 +18,63 @@ const userSlice = createSlice({
 	},
 	reducers: {
 		login(state) {
-			state.loginLoading = true;
+			return {
+				...state,
+				loginLoading: true,
+			};
 		},
 		loginSuccess(state, action) {
-			state.loginLoading = false;
-			// state.id = action.payload.id;
-			// state.name = action.payload.id;
-			// state.surname = action.payload.id;
-			// state.nickname = action.payload.id;
-			// state.sex = action.payload.id;
-			// state.email = action.payload.id;
-			state = {
+			return {
 				...state,
 				...action.payload,
+				loginLoading: false,
 			};
 		},
 		loginFailed(state, action) {
-			state.loginLoading = false;
-			state.errorMessage = action.payload.errorMessage;
+			return {
+				...state,
+				loginLoading: false,
+				errorMessage: action.payload.errorMessage,
+			};
 		},
 		signUp(state) {
-			state.signUpLoading = true;
+			return {
+				...state,
+				signUpLoading: true,
+			};
 		},
 		signUpSuccess(state, action) {
-			state.signUpLoading = false;
-			state = {
+			return {
 				...state,
 				...action.payload,
+				signUpLoading: false,
 			};
 		},
 		signUpFailed(state, action) {
-			state.signUpLoading = false;
-			state.errorMessage = action.payload.errorMessage;
+			return {
+				...state,
+				signUpLoading: false,
+				errorMessage: action.payload.errorMessage,
+			};
 		},
 		logOut(state) {
-			state.logOutLoading = true;
+			return {
+				...state,
+				logOutLoading: true,
+			};
 		},
 		logOutSuccess(state) {
-			state.logOutLoading = false;
+			return {
+				...state,
+				logOutLoading: false,
+			};
 		},
 		logOutFailed(state, action) {
-			state.logOutLoading = false;
-			state.errorMessage = action.payload.errorMessage;
+			return {
+				...state,
+				logOutLoading: false,
+				errorMessage: action.payload.errorMessage,
+			};
 		},
 	},
 });

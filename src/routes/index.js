@@ -1,5 +1,4 @@
 import { Routes as RoutesDOM, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import {
 	Registration,
@@ -99,7 +98,3 @@ export const Routes = () => (
 		<Route path="*" element={<ComingSoon />} />
 	</RoutesDOM>
 );
-
-PrivateRout.propTypes = {
-	children: PropTypes.node.isRequired,
-};

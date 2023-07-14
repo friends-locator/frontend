@@ -8,8 +8,7 @@ export const userData = {
 	nickname: 'Ivanova123',
 	sex: 'female',
 	email: '123@mail.ru',
-	avatar:
-		'https://www.funtastik.by/upload/iblock/9c6/9c653df6440b9f5c8476b708f574d796.jpg',
+	avatar: '',
 	status: '',
 	friends: [
 		{

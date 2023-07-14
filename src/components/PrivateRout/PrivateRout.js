@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const PrivateRout = ({ children }) => {
 	const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-	const location = useLocation();
 
-	return isAuthenticated ? (
-		children
-	) : (
-		<Navigate to="/signin" state={{ from: location }} replace />
-	);
+	return isAuthenticated ? children : <Navigate to="/signin" replace />;
 };
 
 export default PrivateRout;

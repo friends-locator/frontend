@@ -12,9 +12,17 @@ export default function MainLayout({
 }) {
 	const { currentUser } = useUser();
 
-	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
+	const [isGeneralMenuPopupOpen, setIsGeneralMenuPopupOpen] = useState(false);
 	const [isActiveInvisible, setIsActiveInvisible] = useState(false);
 	const userStatus = useSelector((state) => state.user.status);
+
+	const handleOpenGeneralMenuPopup = useCallback(() => {
+		setIsGeneralMenuPopupOpen(true);
+	}, [isGeneralMenuPopupOpen]);
+
+	const closeAllPopups = useCallback(() => {
+		setIsGeneralMenuPopupOpen(false);
+	}, [isGeneralMenuPopupOpen]);
 
 	const toggleInvisibleOption = useCallback(() => {
 		setIsActiveInvisible(!isActiveInvisible);
@@ -26,13 +34,13 @@ export default function MainLayout({
 				user={currentUser}
 				handleSearch={handleSearch}
 				className={headerClassName}
-				setIsMenuPopupOpen={setIsMenuPopupOpen}
+				openGeneralMenuPopup={handleOpenGeneralMenuPopup}
 			/>
 			{children}
 			<Footer className={footerClassName} />
 			<GeneralMenuPopup
-				isOpen={isMenuPopupOpen}
-				onClose={() => setIsMenuPopupOpen(false)}
+				isOpen={isGeneralMenuPopupOpen}
+				onClose={closeAllPopups}
 				userStatus={userStatus}
 				chooseInvisible={toggleInvisibleOption}
 				isActiveInvisible={isActiveInvisible}

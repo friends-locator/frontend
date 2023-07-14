@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import InputSearch from '../InputSearch/InputSearch';
 import './Header.scss';
 
-const Header = ({ handleSearch, className, setIsMenuPopupOpen }) => (
+const Header = ({ handleSearch, className, openGeneralMenuPopup }) => (
 	<header className={className}>
 		<button
 			className="header__menu"
 			type="button"
 			aria-label="Кнопка меню"
-			onClick={() => setIsMenuPopupOpen(true)}
+			onClick={openGeneralMenuPopup}
 		/>
 		{/* если нет пропса то только кнопка меню */}
 		{handleSearch && <InputSearch handleSearch={handleSearch} />}
@@ -17,14 +17,12 @@ const Header = ({ handleSearch, className, setIsMenuPopupOpen }) => (
 
 Header.propTypes = {
 	handleSearch: PropTypes.func,
-	className: PropTypes.string,
-	setIsMenuPopupOpen: PropTypes.func,
+	className: PropTypes.string.isRequired,
+	openGeneralMenuPopup: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
 	handleSearch: undefined,
-	className: '',
-	setIsMenuPopupOpen: undefined,
 };
 
 export default Header;

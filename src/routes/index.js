@@ -17,13 +17,34 @@ import {
 
 import { ROUTES } from '../constants';
 import { TrackingMap } from '../pages/TrackingMap/TrackingMap';
-import { PrivateRout } from '../components';
+import { PrivateRout, PublicRoute } from '../components';
 
 export const Routes = () => (
 	<RoutesDOM>
-		<Route path={ROUTES.ROOT} element={<Welcome />} />
-		<Route path={ROUTES.REGISTRATION} element={<Registration />} />
-		<Route path={ROUTES.SIGN_IN} element={<Signin />} />
+		<Route
+			path={ROUTES.ROOT}
+			element={
+				<PublicRoute>
+					<Welcome />
+				</PublicRoute>
+			}
+		/>
+		<Route
+			path={ROUTES.REGISTRATION}
+			element={
+				<PublicRoute>
+					<Registration />
+				</PublicRoute>
+			}
+		/>
+		<Route
+			path={ROUTES.SIGN_IN}
+			element={
+				<PublicRoute>
+					<Signin />
+				</PublicRoute>
+			}
+		/>
 		<Route path={ROUTES.PRIVACY_POLICY} element={<PrivacyPolicy />} />
 		<Route path={ROUTES.TERMS_OF_USE} element={<TermsOfUse />} />
 		<Route

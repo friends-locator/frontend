@@ -13,12 +13,12 @@ export default function MainLayout({
 	const { currentUser } = useUser();
 
 	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
-	const [isActiveOption, setIsActiveOption] = useState(false);
+	const [isActiveInvisible, setIsActiveInvisible] = useState(false);
 	const userStatus = useSelector((state) => state.user.status);
 
-	const handleChooseOption = useCallback(() => {
-		setIsActiveOption(!isActiveOption);
-	}, [isActiveOption]);
+	const toggleInvisibleOption = useCallback(() => {
+		setIsActiveInvisible(!isActiveInvisible);
+	}, [isActiveInvisible]);
 
 	return (
 		<>
@@ -34,8 +34,8 @@ export default function MainLayout({
 				isOpen={isMenuPopupOpen}
 				onClose={() => setIsMenuPopupOpen(false)}
 				userStatus={userStatus}
-				chooseOption={handleChooseOption}
-				isActiveOption={isActiveOption}
+				chooseInvisible={toggleInvisibleOption}
+				isActiveInvisible={isActiveInvisible}
 			/>
 		</>
 	);

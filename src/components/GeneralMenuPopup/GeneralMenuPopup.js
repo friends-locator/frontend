@@ -15,8 +15,8 @@ function GeneralMenuPopup({
 	isOpen,
 	onClose,
 	userStatus,
-	chooseOption,
-	isActiveOption,
+	chooseInvisible,
+	isActiveInvisible,
 }) {
 	return (
 		<MenuPopup isOpen={isOpen} onClose={onClose}>
@@ -33,8 +33,8 @@ function GeneralMenuPopup({
 					<div className="generalMenuPopup__checkbox-container">
 						<Checkbox
 							option="Режим невидимки"
-							chooseOption={chooseOption}
-							isActiveOption={isActiveOption}
+							chooseOption={chooseInvisible}
+							isActiveOption={isActiveInvisible}
 						/>
 					</div>
 					<section className="generalMenuPopup__navigation">
@@ -96,8 +96,8 @@ GeneralMenuPopup.propTypes = {
 	isOpen: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired,
 	userStatus: PropTypes.string.isRequired,
-	isActiveOption: PropTypes.bool.isRequired,
-	chooseOption: PropTypes.func.isRequired,
+	isActiveInvisible: PropTypes.bool.isRequired,
+	chooseInvisible: PropTypes.func.isRequired,
 };
 
 export default GeneralMenuPopup;

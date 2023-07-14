@@ -4,7 +4,6 @@ import './Header.scss';
 
 const Header = ({ handleSearch, className, setIsMenuPopupOpen }) => (
 	<header className={className}>
-		{/* @TODO вставить сюда меню когда оно будет готово */}
 		<button
 			className="header__menu"
 			type="button"

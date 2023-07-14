@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 const PublicRoute = ({ children }) => {
 	const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
-	return !isAuthenticated ? children : <Navigate to="/map" replace />;
+	return isAuthenticated ? <Navigate to="/map" replace /> : children;
 };
 
 export default PublicRoute;

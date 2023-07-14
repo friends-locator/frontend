@@ -17,6 +17,7 @@ function GeneralMenuPopup({
 	userStatus,
 	chooseInvisible,
 	isActiveInvisible,
+	openSettingsMenuPopup,
 }) {
 	return (
 		<MenuPopup isOpen={isOpen} onClose={onClose}>
@@ -38,7 +39,11 @@ function GeneralMenuPopup({
 						/>
 					</div>
 					<section className="generalMenuPopup__navigation">
-						<Link to={ROUTES.CHAT} className="generalMenuPopup__link">
+						<Link
+							to={ROUTES.CHAT}
+							className="generalMenuPopup__link"
+							onClick={onClose}
+						>
 							<img
 								className="generalMenuPopup__link-img"
 								src={chat}
@@ -46,7 +51,11 @@ function GeneralMenuPopup({
 							/>
 							<p className="generalMenuPopup__link-text">Чат</p>
 						</Link>
-						<Link to={ROUTES.FRIENDS} className="generalMenuPopup__link">
+						<Link
+							to={ROUTES.FRIENDS}
+							className="generalMenuPopup__link"
+							onClick={onClose}
+						>
 							<img
 								className="generalMenuPopup__link-img"
 								src={friendsNew}
@@ -74,14 +83,17 @@ function GeneralMenuPopup({
 							/>
 							<p className="generalMenuPopup__link-text">Профиль</p>
 						</Link>
-						<Link to={ROUTES.COMING_SOON} className="generalMenuPopup__link">
+						<button
+							onClick={openSettingsMenuPopup}
+							className="generalMenuPopup__link generalMenuPopup__link_settings"
+						>
 							<img
 								className="generalMenuPopup__link-img"
 								src={settings}
 								alt="Настройки"
 							/>
 							<p className="generalMenuPopup__link-text">Настройки</p>
-						</Link>
+						</button>
 					</section>
 				</div>
 				<Link to={ROUTES.SIGN_IN} className="generalMenuPopup__button">
@@ -98,6 +110,7 @@ GeneralMenuPopup.propTypes = {
 	userStatus: PropTypes.string.isRequired,
 	isActiveInvisible: PropTypes.bool.isRequired,
 	chooseInvisible: PropTypes.func.isRequired,
+	openSettingsMenuPopup: PropTypes.func.isRequired,
 };
 
 export default GeneralMenuPopup;

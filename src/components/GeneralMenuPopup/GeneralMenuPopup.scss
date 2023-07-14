@@ -62,7 +62,7 @@ $light-yellow: #fdffe2;
 		padding: 12px 0;
 	}
 
-	&__link:hover {
+	&__link:hover, &__button_settings:hover {
 		background: $light-yellow;
 	}
 
@@ -92,6 +92,12 @@ $light-yellow: #fdffe2;
 		line-height: normal;
 		background: rgba(20, 21, 19, 0.03);
 		padding: 12px 0 12px 20px;
+	}
+
+	&__link_settings {
+		border: none;
+		background: transparent;
+		width: 100%;
 	}
 
 	&__button:hover {

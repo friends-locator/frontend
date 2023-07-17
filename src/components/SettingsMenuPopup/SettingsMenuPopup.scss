@@ -28,4 +28,8 @@ $grey: #cccdc2;
   &__title {
     @include font15;
   }
+
+  &__checkbox-container {
+    margin: 22px 20px 14px;
+  }
 }

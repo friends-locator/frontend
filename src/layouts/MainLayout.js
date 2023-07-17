@@ -20,6 +20,7 @@ export default function MainLayout({
 	const [isGeneralMenuPopupOpen, setIsGeneralMenuPopupOpen] = useState(false);
 	const [isSettingsMenuPopupOpen, setIsSettingsMenuPopupOpen] = useState(false);
 	const [isActiveInvisible, setIsActiveInvisible] = useState(false);
+	const [isActiveNightTheme, setIsActiveNightTheme] = useState(false);
 	const userStatus = useSelector((state) => state.user.status);
 
 	const handleOpenGeneralMenuPopup = useCallback(() => {
@@ -43,6 +44,10 @@ export default function MainLayout({
 		setIsActiveInvisible(!isActiveInvisible);
 	}, [isActiveInvisible]);
 
+	const toggleNightThemeOption = useCallback(() => {
+		setIsActiveNightTheme(!isActiveNightTheme);
+	}, [isActiveNightTheme]);
+
 	return (
 		<>
 			<Header
@@ -53,17 +58,21 @@ export default function MainLayout({
 			/>
 			{children}
 			<Footer className={footerClassName} />
-			<GeneralMenuPopup
-				isOpen={isGeneralMenuPopupOpen}
-				onClose={closeAllPopups}
-				userStatus={userStatus}
-				chooseInvisible={toggleInvisibleOption}
-				isActiveInvisible={isActiveInvisible}
-				openSettingsMenuPopup={handleOpenSettingsMenuPopup}
-			/>
+			{!isSettingsMenuPopupOpen && (
+				<GeneralMenuPopup
+					isOpen={isGeneralMenuPopupOpen}
+					onClose={closeAllPopups}
+					userStatus={userStatus}
+					chooseInvisible={toggleInvisibleOption}
+					isActiveInvisible={isActiveInvisible}
+					openSettingsMenuPopup={handleOpenSettingsMenuPopup}
+				/>
+			)}
 			<SettingsMenuPopup
 				isOpen={isSettingsMenuPopupOpen}
 				onClose={closeSettingsMenuPopup}
+				chooseNightTheme={toggleNightThemeOption}
+				isActiveNightTheme={isActiveNightTheme}
 			/>
 		</>
 	);

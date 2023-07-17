@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-const PrivateRout = ({ children }) => {
+const PrivateRoute = ({ children }) => {
 	const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
 	return isAuthenticated ? children : <Navigate to="/signin" replace />;
 };
 
-export default PrivateRout;
+export default PrivateRoute;
 
-PrivateRout.propTypes = {
+PrivateRoute.propTypes = {
 	children: PropTypes.node.isRequired,
 };

@@ -1,7 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Header, Footer, GeneralMenuPopup } from '../components';
+import {
+	Header,
+	Footer,
+	GeneralMenuPopup,
+	SettingsMenuPopup,
+} from '../components';
 import { useUser } from '../context/AppContext';
 
 export default function MainLayout({
@@ -12,13 +17,36 @@ export default function MainLayout({
 }) {
 	const { currentUser } = useUser();
 
-	const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
-	const [isActiveOption, setIsActiveOption] = useState(false);
+	const [isGeneralMenuPopupOpen, setIsGeneralMenuPopupOpen] = useState(false);
+	const [isSettingsMenuPopupOpen, setIsSettingsMenuPopupOpen] = useState(false);
+	const [isActiveInvisible, setIsActiveInvisible] = useState(false);
+	const [isActiveNightTheme, setIsActiveNightTheme] = useState(false);
 	const userStatus = useSelector((state) => state.user.status);
 
-	const handleChooseOption = useCallback(() => {
-		setIsActiveOption(!isActiveOption);
-	}, [isActiveOption]);
+	const handleOpenGeneralMenuPopup = useCallback(() => {
+		setIsGeneralMenuPopupOpen(true);
+	}, []);
+
+	const handleOpenSettingsMenuPopup = useCallback(() => {
+		setIsSettingsMenuPopupOpen(true);
+	}, []);
+
+	const closeAllPopups = useCallback(() => {
+		setIsGeneralMenuPopupOpen(false);
+		setIsSettingsMenuPopupOpen(false);
+	}, []);
+
+	const closeSettingsMenuPopup = useCallback(() => {
+		setIsSettingsMenuPopupOpen(false);
+	}, []);
+
+	const toggleInvisibleOption = useCallback(() => {
+		setIsActiveInvisible(!isActiveInvisible);
+	}, [isActiveInvisible]);
+
+	const toggleNightThemeOption = useCallback(() => {
+		setIsActiveNightTheme(!isActiveNightTheme);
+	}, [isActiveNightTheme]);
 
 	return (
 		<>
@@ -26,16 +54,25 @@ export default function MainLayout({
 				user={currentUser}
 				handleSearch={handleSearch}
 				className={headerClassName}
-				setIsMenuPopupOpen={setIsMenuPopupOpen}
+				openGeneralMenuPopup={handleOpenGeneralMenuPopup}
 			/>
 			{children}
 			<Footer className={footerClassName} />
-			<GeneralMenuPopup
-				isOpen={isMenuPopupOpen}
-				onClose={() => setIsMenuPopupOpen(false)}
-				userStatus={userStatus}
-				chooseOption={handleChooseOption}
-				isActiveOption={isActiveOption}
+			{!isSettingsMenuPopupOpen && (
+				<GeneralMenuPopup
+					isOpen={isGeneralMenuPopupOpen}
+					onClose={closeAllPopups}
+					userStatus={userStatus}
+					chooseInvisible={toggleInvisibleOption}
+					isActiveInvisible={isActiveInvisible}
+					openSettingsMenuPopup={handleOpenSettingsMenuPopup}
+				/>
+			)}
+			<SettingsMenuPopup
+				isOpen={isSettingsMenuPopupOpen}
+				onClose={closeSettingsMenuPopup}
+				chooseNightTheme={toggleNightThemeOption}
+				isActiveNightTheme={isActiveNightTheme}
 			/>
 		</>
 	);

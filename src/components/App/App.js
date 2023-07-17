@@ -1,18 +1,18 @@
 import './App.scss';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
 import { Routes } from '../../routes';
 import { AppContextProvider } from '../../context/AppContext';
-import { loginSuccess } from '../../store/slices/user';
-import { userData } from '../../constants';
+// import { loginSuccess } from '../../store/slices/user';
+// import { userData } from '../../constants';git stash
 
 function App() {
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(loginSuccess(userData));
-		// eslint-disable-next-line  react-hooks/exhaustive-deps
-	}, []);
+	// useEffect(() => {
+	// 	dispatch(loginSuccess(userData));
+	// 	eslint-disable-next-line  react-hooks/exhaustive-deps
+	// }, []);
 
 	return (
 		<AppContextProvider>

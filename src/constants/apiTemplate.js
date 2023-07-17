@@ -1,6 +1,4 @@
-const BASE_URL = 'https://flap.acceleratorpracticum.ru/api/v1/';
-const checkAnswer = (res) =>
-	res.ok ? res.json() : Promise.reject(new Error(`Ошибка: ${res.statusText}`));
+const BASE_URL = 'https://flap.acceleratorpracticum.ru/api/v1';
 
 export const fetchTemplate = (path, method, body, token = '') =>
 	fetch(`${BASE_URL}${path}`, {
@@ -11,4 +9,4 @@ export const fetchTemplate = (path, method, body, token = '') =>
 			Authorization: token,
 		},
 		body: JSON.stringify(body),
-	}).then(checkAnswer);
+	});

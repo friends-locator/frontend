@@ -1,18 +1,11 @@
 import { fetchTemplate } from '../constants';
 
-export const register = ({
-	email,
-	username,
-	firstName,
-	lastName,
-	password,
-	gender,
-}) =>
-	fetchTemplate('/users', 'POST', {
+export const register = ({ email, nickname, name, surname, password, sex }) =>
+	fetchTemplate('/users/', 'POST', {
 		email,
-		username,
-		first_name: firstName,
-		last_name: lastName,
+		username: nickname,
+		first_name: name,
+		last_name: surname,
 		password,
-		gender,
+		gender: sex,
 	});

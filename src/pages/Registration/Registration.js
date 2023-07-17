@@ -2,6 +2,7 @@
 import './Registration.scss';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
 	namePattern,
 	emailPattern,
@@ -23,6 +24,8 @@ import { Button, InputText, InputPassword } from '../../components';
 
 import avatarman from '../../images/avatarman.png';
 import avatarwoman from '../../images/avatarwoman.png';
+
+import { registerUser } from '../../store/thunk/registerUser';
 
 export const Registration = () => {
 	const navigate = useNavigate();
@@ -221,10 +224,13 @@ export const Registration = () => {
 		return isFormValidStepTwo;
 	};
 
+	const dispatch = useDispatch();
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		if (formValidCheck(2)) {
+			dispatch(registerUser(userData));
 			navigate(ROUTES.ACCESS_GEO);
 		}
 
@@ -394,6 +400,10 @@ export const Registration = () => {
 									value={termsOfUse}
 									onChange={() => {
 										setTermsOfUse(!termsOfUse);
+										setUserData({
+											...userData,
+											termsOfUse,
+										});
 									}}
 									checked={termsOfUse}
 								/>

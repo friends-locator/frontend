@@ -10,3 +10,5 @@ export { default as Input } from './Input/Input';
 export { default as PopupAddFriend } from './PopupAddFriend/PopupAddFriend';
 export { default as GeneralMenuPopup } from './GeneralMenuPopup/GeneralMenuPopup';
 export { default as InputSearch } from './InputSearch/InputSearch';
+export { default as PrivateRout } from './PrivateRout/PrivateRout';
+export { default as PublicRoute } from './PublicRoute/PublicRoute';

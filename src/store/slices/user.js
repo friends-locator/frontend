@@ -14,6 +14,7 @@ const userSlice = createSlice({
 		loginLoading: false,
 		signUpLoading: false,
 		logOutLoading: false,
+		isAuthenticated: false,
 		errorMessage: '',
 	},
 	reducers: {
@@ -28,6 +29,7 @@ const userSlice = createSlice({
 				...state,
 				...action.payload,
 				loginLoading: false,
+				isAuthenticated: true,
 			};
 		},
 		loginFailed(state, action) {
@@ -67,6 +69,7 @@ const userSlice = createSlice({
 			return {
 				...state,
 				logOutLoading: false,
+				isAuthenticated: false,
 			};
 		},
 		logOutFailed(state, action) {

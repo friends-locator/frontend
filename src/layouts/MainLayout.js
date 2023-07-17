@@ -35,6 +35,10 @@ export default function MainLayout({
 		setIsSettingsMenuPopupOpen(false);
 	}, []);
 
+	const closeSettingsMenuPopup = useCallback(() => {
+		setIsSettingsMenuPopupOpen(false);
+	}, []);
+
 	const toggleInvisibleOption = useCallback(() => {
 		setIsActiveInvisible(!isActiveInvisible);
 	}, [isActiveInvisible]);
@@ -59,7 +63,7 @@ export default function MainLayout({
 			/>
 			<SettingsMenuPopup
 				isOpen={isSettingsMenuPopupOpen}
-				onClose={closeAllPopups}
+				onClose={closeSettingsMenuPopup}
 			/>
 		</>
 	);

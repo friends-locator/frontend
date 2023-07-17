@@ -1,0 +1,31 @@
+$grey: #cccdc2;
+@mixin font15 {
+  font-size: 15px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: normal;
+}
+
+.settingsMenuPopup {
+  &__header {
+    height: 64px;
+    border-bottom: 1px solid $grey;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    background: url("../../images/back-arrow24.svg") no-repeat center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  &__title {
+    @include font15;
+  }
+}

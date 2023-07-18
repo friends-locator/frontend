@@ -231,6 +231,13 @@ export const Registration = () => {
 		if (registerSuccess) navigate(ROUTES.ACCESS_GEO);
 		if (!registerSuccess && errorMessage) {
 			const errors = JSON.parse(errorMessage);
+
+			setEmailError('');
+			setNicknameError('');
+			setNameError('');
+			setSurnameError('');
+			setPasswordError('');
+
 			if (errors.email) {
 				setStep(1);
 				setEmailError(errors.email[0]);

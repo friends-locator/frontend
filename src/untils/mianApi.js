@@ -9,3 +9,10 @@ export const register = ({ email, nickname, name, surname, password, sex }) =>
 		password,
 		gender: sex,
 	});
+
+export const login = ({ email, password }) => {
+	fetchTemplate('/jwt/create/', 'GET', {
+		email,
+		password,
+	});
+};

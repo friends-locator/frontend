@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { registerUser } from '../thunk/registerUser';
+import { loginUser } from '../thunk/loginUser';
 
 const userSlice = createSlice({
 	name: 'user',
@@ -16,29 +17,11 @@ const userSlice = createSlice({
 		isLoading: false,
 		errorMessage: '',
 		registerSuccess: false,
+		isAuthenticated: false,
+		access: '',
+		refresh: '',
 	},
 	// reducers: {
-	// 	login(state) {
-	// 		return {
-	// 			...state,
-	// 			loginLoading: true,
-	// 		};
-	// 	},
-	// 	loginSuccess(state, action) {
-	// 		return {
-	// 			...state,
-	// 			...action.payload,
-	// 			loginLoading: false,
-	// 			isAuthenticated: true,
-	// 		};
-	// 	},
-	// 	loginFailed(state, action) {
-	// 		return {
-	// 			...state,
-	// 			loginLoading: false,
-	// 			errorMessage: action.payload.errorMessage,
-	// 		};
-	// 	},
 	// 	logOut(state) {
 	// 		return {
 	// 			...state,
@@ -75,8 +58,25 @@ const userSlice = createSlice({
 		builder.addCase(registerUser.rejected, (state, action) => ({
 			...state,
 			isLoading: false,
-			errorMessage: action.payload.errorMessage,
+			errorMessage: action.payload,
 			registerSuccess: false,
+		}));
+		builder.addCase(loginUser.pending, (state) => ({
+			...state,
+			isLoading: true,
+		}));
+		builder.addCase(loginUser.fulfilled, (state, action) => ({
+			...state,
+			...action.payload,
+			isLoading: false,
+			isAuthenticated: true,
+			errorMessage: '',
+		}));
+		builder.addCase(loginUser.rejected, (state, action) => ({
+			...state,
+			isLoading: false,
+			errorMessage: action.payload,
+			isAuthenticated: false,
 		}));
 	},
 });

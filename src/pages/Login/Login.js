@@ -1,7 +1,9 @@
-import './Signin.scss';
-import { useState } from 'react';
+import './Login.scss';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../store/thunk/loginUser';
 import {
 	emailPattern,
 	emptyEmailErrorText,
@@ -12,7 +14,7 @@ import {
 
 import { Button, InputText, InputPassword } from '../../components';
 
-export const Signin = () => {
+export const Login = () => {
 	const navigate = useNavigate();
 
 	const [userData, setUserData] = useState({
@@ -85,11 +87,30 @@ export const Signin = () => {
 
 	const formValidCheck = () => !emailError && !passwordError;
 
+	const dispatch = useDispatch();
+	const { errorMessage, isAuthenticated, requestCounter } = useSelector(
+		(state) => state.user
+	);
+
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate(ROUTES.MAP);
+		}
+		if (!isAuthenticated && errorMessage) {
+			const errors = JSON.parse(errorMessage);
+			setPasswordError('');
+
+			if (errors.detail) {
+				setPasswordError('Неверный логин или пароль');
+			}
+		}
+	}, [navigate, errorMessage, isAuthenticated, requestCounter]);
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		if (formValidCheck()) {
-			navigate(ROUTES.MAP);
+			dispatch(loginUser(userData));
 		}
 
 		setEmailDirty(true);

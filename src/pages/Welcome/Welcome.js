@@ -19,7 +19,7 @@ export function Welcome() {
 							color="primary"
 						/>
 					</Link>
-					<Link to={ROUTES.SIGN_IN}>
+					<Link to={ROUTES.LOGIN}>
 						<Button
 							label="Войти"
 							type="button"

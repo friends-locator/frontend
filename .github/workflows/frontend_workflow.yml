@@ -3,12 +3,12 @@ name: frontend workflow
 on:
   push:
     branches-ignore:
-      - "main"
-      - "develop"
+      - 'main'
+      - 'develop'
   pull_request:
     branches:
-      - "main"
-      - "develop"
+      - 'main'
+      - 'develop'
     types:
       - closed
 
@@ -71,7 +71,7 @@ jobs:
       - name: Push to DockerHub
         uses: docker/build-push-action@v2
         with:
-          context: "{{defaultContext}}"
+          context: '{{defaultContext}}'
           push: True
           tags: ${{ secrets.DOCKER_USERNAME }}/friends-locator-frontend:latest
           file: ./Dockerfile

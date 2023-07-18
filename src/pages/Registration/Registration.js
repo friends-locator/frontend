@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './Registration.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	namePattern,
 	emailPattern,
@@ -23,6 +24,8 @@ import { Button, InputText, InputPassword } from '../../components';
 
 import avatarman from '../../images/avatarman.png';
 import avatarwoman from '../../images/avatarwoman.png';
+
+import { registerUser } from '../../store/thunk/registerUser';
 
 export const Registration = () => {
 	const navigate = useNavigate();
@@ -221,11 +224,49 @@ export const Registration = () => {
 		return isFormValidStepTwo;
 	};
 
+	const dispatch = useDispatch();
+	const { errorMessage, registerSuccess, requestCounter } = useSelector(
+		(state) => state.user
+	);
+
+	useEffect(() => {
+		if (registerSuccess) navigate(ROUTES.ACCESS_GEO);
+		if (!registerSuccess && errorMessage) {
+			const errors = JSON.parse(errorMessage);
+
+			setEmailError('');
+			setNicknameError('');
+			setNameError('');
+			setSurnameError('');
+			setPasswordError('');
+
+			if (errors.email) {
+				setStep(1);
+				setEmailError(errors.email[0]);
+			}
+			if (errors.username) {
+				setStep(1);
+				setNicknameError(errors.username[0]);
+			}
+			if (errors.firstname) {
+				setStep(1);
+				setNameError(errors.firstname[0]);
+			}
+			if (errors.lastname) {
+				setStep(1);
+				setSurnameError(errors.lastname[0]);
+			}
+			if (errors.password) {
+				setPasswordError(errors.password[0]);
+			}
+		}
+	}, [navigate, errorMessage, registerSuccess, requestCounter]);
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		if (formValidCheck(2)) {
-			navigate(ROUTES.ACCESS_GEO);
+			dispatch(registerUser(userData));
 		}
 
 		setPasswordDirty(true);
@@ -344,7 +385,7 @@ export const Registration = () => {
 
 							<span className="registration_form_span">
 								У тебя уже есть аккаунт?{' '}
-								<Link to={ROUTES.SIGN_IN} className="registration_form_link">
+								<Link to={ROUTES.LOGIN} className="registration_form_link">
 									Войти
 								</Link>
 							</span>
@@ -394,6 +435,10 @@ export const Registration = () => {
 									value={termsOfUse}
 									onChange={() => {
 										setTermsOfUse(!termsOfUse);
+										setUserData({
+											...userData,
+											termsOfUse,
+										});
 									}}
 									checked={termsOfUse}
 								/>
@@ -432,7 +477,7 @@ export const Registration = () => {
 
 							<span className="registration_form_span">
 								У тебя уже есть аккаунт?{' '}
-								<Link to={ROUTES.SIGN_IN} className="registration_form_link">
+								<Link to={ROUTES.LOGIN} className="registration_form_link">
 									Войти
 								</Link>
 							</span>

@@ -2,6 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { registerUser } from '../thunk/registerUser';
 import { loginUser } from '../thunk/loginUser';
+import { getCurrentUser } from '../thunk/getCurrentUser';
+import { refreshToken } from '../thunk/refreshToken';
 
 const userSlice = createSlice({
 	name: 'user',
@@ -20,6 +22,7 @@ const userSlice = createSlice({
 		isAuthenticated: false,
 		access: '',
 		refresh: '',
+		requestCounter: 0,
 	},
 	// reducers: {
 	// 	logOut(state) {
@@ -54,12 +57,14 @@ const userSlice = createSlice({
 			isLoading: false,
 			registerSuccess: true,
 			errorMessage: '',
+			requestCounter: state.requestCounter + 1,
 		}));
 		builder.addCase(registerUser.rejected, (state, action) => ({
 			...state,
 			isLoading: false,
 			errorMessage: action.payload,
 			registerSuccess: false,
+			requestCounter: state.requestCounter + 1,
 		}));
 		builder.addCase(loginUser.pending, (state) => ({
 			...state,
@@ -71,12 +76,46 @@ const userSlice = createSlice({
 			isLoading: false,
 			isAuthenticated: true,
 			errorMessage: '',
+			requestCounter: state.requestCounter + 1,
 		}));
 		builder.addCase(loginUser.rejected, (state, action) => ({
 			...state,
 			isLoading: false,
 			errorMessage: action.payload,
 			isAuthenticated: false,
+			requestCounter: state.requestCounter + 1,
+		}));
+		builder.addCase(getCurrentUser.pending, (state) => ({
+			...state,
+			isLoading: true,
+		}));
+		builder.addCase(getCurrentUser.fulfilled, (state, action) => ({
+			...state,
+			...action.payload,
+			isLoading: false,
+			isAuthenticated: true,
+			errorMessage: '',
+		}));
+		builder.addCase(getCurrentUser.rejected, (state, action) => ({
+			...state,
+			isLoading: false,
+			errorMessage: action.payload,
+			isAuthenticated: false,
+		}));
+		builder.addCase(refreshToken.pending, (state) => ({
+			...state,
+			isLoading: true,
+		}));
+		builder.addCase(refreshToken.fulfilled, (state, action) => ({
+			...state,
+			...action.payload,
+			isLoading: false,
+			errorMessage: '',
+		}));
+		builder.addCase(refreshToken.rejected, (state, action) => ({
+			...state,
+			isLoading: false,
+			errorMessage: action.payload,
 		}));
 	},
 });

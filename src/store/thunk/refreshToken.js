@@ -1,17 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { login } from '../../untils/mianApi';
+import { refreshToken as refresh } from '../../untils/mianApi';
 
-export const loginUser = createAsyncThunk(
-	'jwt/create',
+export const refreshToken = createAsyncThunk(
+	'jwt/refresh',
 	async (payload, thunkAPI) => {
 		try {
-			const response = await login(payload);
+			const response = await refresh(payload);
 			const data = await response.json();
 			if (!response.ok) {
 				throw new Error(JSON.stringify(data));
 			}
 			localStorage.setItem('access_token', data.access);
-			localStorage.setItem('refresh_token', data.refresh);
 
 			return data;
 		} catch (error) {

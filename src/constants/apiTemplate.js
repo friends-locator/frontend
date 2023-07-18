@@ -1,6 +1,6 @@
 const BASE_URL = 'https://flap.acceleratorpracticum.ru/api/v1';
 
-export const fetchTemplate = (path, method, body, token = '') =>
+export const fetchTemplate = ({ path, method, body, token = '' }) =>
 	fetch(`${BASE_URL}${path}`, {
 		method,
 		headers: {

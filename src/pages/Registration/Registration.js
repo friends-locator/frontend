@@ -225,7 +225,9 @@ export const Registration = () => {
 	};
 
 	const dispatch = useDispatch();
-	const { errorMessage, registerSuccess } = useSelector((state) => state.user);
+	const { errorMessage, registerSuccess, requestCounter } = useSelector(
+		(state) => state.user
+	);
 
 	useEffect(() => {
 		if (registerSuccess) navigate(ROUTES.ACCESS_GEO);
@@ -258,7 +260,7 @@ export const Registration = () => {
 				setPasswordError(errors.password[0]);
 			}
 		}
-	}, [navigate, errorMessage, registerSuccess]);
+	}, [navigate, errorMessage, registerSuccess, requestCounter]);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();

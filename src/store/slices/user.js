@@ -39,27 +39,6 @@ const userSlice = createSlice({
 	// 			errorMessage: action.payload.errorMessage,
 	// 		};
 	// 	},
-	// 	signUp(state) {
-	// 		return {
-	// 			...state,
-	// 			signUpLoading: true,
-	// 		};
-	// 	},
-	// 	signUpSuccess(state, action) {
-	// 		return {
-	// 			...state,
-	// 			...action.payload,
-	// 			signUpLoading: false,
-	// 		};
-	// 	},
-	// 	signUpFailed(state, action) {
-	// 		console.log(action.payload);
-	// 		return {
-	// 			...state,
-	// 			signUpLoading: false,
-	// 			errorMessage: action.payload.errorMessage,
-	// 		};
-	// 	},
 	// 	logOut(state) {
 	// 		return {
 	// 			...state,
@@ -85,13 +64,13 @@ const userSlice = createSlice({
 		builder.addCase(registerUser.pending, (state) => ({
 			...state,
 			isLoading: true,
-			registerSuccess: false,
 		}));
 		builder.addCase(registerUser.fulfilled, (state, action) => ({
 			...state,
 			...action.payload,
 			isLoading: false,
 			registerSuccess: true,
+			errorMessage: '',
 		}));
 		builder.addCase(registerUser.rejected, (state, action) => ({
 			...state,
@@ -103,14 +82,3 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-// export const {
-// 	login,
-// 	loginFailed,
-// 	loginSuccess,
-// 	logOut,
-// 	logOutFailed,
-// 	logOutSuccess,
-// 	signUp,
-// 	signUpFailed,
-// 	signUpSuccess,
-// } = userSlice.actions;

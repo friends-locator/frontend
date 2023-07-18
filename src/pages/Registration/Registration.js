@@ -229,7 +229,28 @@ export const Registration = () => {
 
 	useEffect(() => {
 		if (registerSuccess) navigate(ROUTES.ACCESS_GEO);
-		if (!registerSuccess && errorMessage) alert(errorMessage);
+		if (!registerSuccess && errorMessage) {
+			const errors = JSON.parse(errorMessage);
+			if (errors.email) {
+				setStep(1);
+				setEmailError(errors.email[0]);
+			}
+			if (errors.username) {
+				setStep(1);
+				setNicknameError(errors.username[0]);
+			}
+			if (errors.firstname) {
+				setStep(1);
+				setNameError(errors.firstname[0]);
+			}
+			if (errors.lastname) {
+				setStep(1);
+				setSurnameError(errors.lastname[0]);
+			}
+			if (errors.password) {
+				setPasswordError(errors.password[0]);
+			}
+		}
 	}, [navigate, errorMessage, registerSuccess]);
 
 	const handleSubmit = (event) => {

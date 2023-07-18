@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './Registration.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	namePattern,
 	emailPattern,
@@ -225,13 +225,18 @@ export const Registration = () => {
 	};
 
 	const dispatch = useDispatch();
+	const { errorMessage, registerSuccess } = useSelector((state) => state.user);
+
+	useEffect(() => {
+		if (registerSuccess) navigate(ROUTES.ACCESS_GEO);
+		if (!registerSuccess && errorMessage) alert(errorMessage);
+	}, [navigate, errorMessage, registerSuccess]);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		if (formValidCheck(2)) {
 			dispatch(registerUser(userData));
-			navigate(ROUTES.ACCESS_GEO);
 		}
 
 		setPasswordDirty(true);

@@ -6,18 +6,16 @@ const userSlice = createSlice({
 	name: 'user',
 	initialState: {
 		id: 0,
-		name: '',
-		surname: '',
-		nickname: '',
-		sex: 'male',
+		first_name: '',
+		last_name: '',
+		username: '',
+		gender: 'male',
 		email: '',
 		avatar: '',
 		status: '',
-		loginLoading: false,
-		signUpLoading: false,
-		logOutLoading: false,
-		isAuthenticated: false,
+		isLoading: false,
 		errorMessage: '',
+		registerSuccess: false,
 	},
 	// reducers: {
 	// 	login(state) {
@@ -84,21 +82,23 @@ const userSlice = createSlice({
 	// 	},
 	// },
 	extraReducers: (builder) => {
-		builder.addCase(registerUser.pending, (state) => {
-			state.signUpLoading = true;
-		});
-		builder.addCase(registerUser.fulfilled, (state, action) => {
-			state.signUpLoading = false;
-			state.email = action.payload.email;
-			state.nickname = action.payload.username;
-			state.name = action.payload.first_name;
-			state.surname = action.payload.last_name;
-			state.sex = action.payload.gender;
-		});
-		builder.addCase(registerUser.rejected, (state, action) => {
-			state.signUpLoading = false;
-			state.errorMessage = action.payload?.errorMessage;
-		});
+		builder.addCase(registerUser.pending, (state) => ({
+			...state,
+			isLoading: true,
+			registerSuccess: false,
+		}));
+		builder.addCase(registerUser.fulfilled, (state, action) => ({
+			...state,
+			...action.payload,
+			isLoading: false,
+			registerSuccess: true,
+		}));
+		builder.addCase(registerUser.rejected, (state, action) => ({
+			...state,
+			isLoading: false,
+			errorMessage: action.payload.errorMessage,
+			registerSuccess: false,
+		}));
 	},
 });
 

@@ -70,10 +70,7 @@ export default function MainLayout({
 					/>
 				</MenuPopup>
 			)}
-			<MenuPopup
-				isOpen={isSettingsMenuPopupOpen}
-				onClose={closeSettingsMenuPopup}
-			>
+			<MenuPopup isOpen={isSettingsMenuPopupOpen} onClose={closeAllPopups}>
 				<SettingsMenuPopup
 					onClose={closeSettingsMenuPopup}
 					chooseNightTheme={toggleNightThemeOption}

@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { ROUTES } from '../../constants';
 
-const PrivateRout = ({ children }) => {
+const PrivateRoute = ({ children }) => {
 	const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
 	return isAuthenticated ? children : <Navigate to={ROUTES.LOGIN} replace />;
 };
 
-export default PrivateRout;
+export default PrivateRoute;
 
-PrivateRout.propTypes = {
+PrivateRoute.propTypes = {
 	children: PropTypes.node.isRequired,
 };

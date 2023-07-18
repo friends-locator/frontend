@@ -16,7 +16,7 @@ import {
 
 import { ROUTES } from '../constants';
 import { TrackingMap } from '../pages/TrackingMap/TrackingMap';
-import { PrivateRout, PublicRoute } from '../components';
+import { PrivateRoute, PublicRoute } from '../components';
 
 export const Routes = () => (
 	<RoutesDOM>
@@ -49,49 +49,49 @@ export const Routes = () => (
 		<Route
 			path={ROUTES.FRIENDS}
 			element={
-				<PrivateRout>
+				<PrivateRoute>
 					<Friends />
-				</PrivateRout>
+				</PrivateRoute>
 			}
 		/>
 		<Route
 			path={ROUTES.ACCESS_GEO}
 			element={
-				<PrivateRout>
+				<PrivateRoute>
 					<AccessGeo />
-				</PrivateRout>
+				</PrivateRoute>
 			}
 		/>
 		<Route
 			path={ROUTES.ACCESS_GEO_ERROR}
 			element={
-				<PrivateRout>
+				<PrivateRoute>
 					<AccessGeoError />
-				</PrivateRout>
+				</PrivateRoute>
 			}
 		/>
 		<Route
 			path={ROUTES.MAP}
 			element={
-				<PrivateRout>
+				<PrivateRoute>
 					<TrackingMap />
-				</PrivateRout>
+				</PrivateRoute>
 			}
 		/>
 		<Route
 			path={ROUTES.PROFILE}
 			element={
-				<PrivateRout>
+				<PrivateRoute>
 					<Profile />
-				</PrivateRout>
+				</PrivateRoute>
 			}
 		/>
 		<Route
 			path={ROUTES.ACCESS_AGE}
 			element={
-				<PrivateRout>
+				<PublicRoute>
 					<AccessAge />
-				</PrivateRout>
+				</PublicRoute>
 			}
 		/>
 		<Route path={ROUTES.COMING_SOON} element={<ComingSoon />} />

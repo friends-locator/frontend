@@ -7,7 +7,7 @@ export default function Input({
 	type,
 	id,
 	name,
-  className,
+	className,
 	isRequired,
 	inputValue,
 	onChange,
@@ -32,7 +32,6 @@ export default function Input({
 					value={inputValue}
 					onChange={onChange}
 					onBlur={onBlur}
-
 				/>
 			</label>
 			{inputDirty && inputError && (
@@ -48,7 +47,7 @@ Input.propTypes = {
 	id: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
 	name: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+	className: PropTypes.string.isRequired,
 	isRequired: PropTypes.bool,
 	inputValue: PropTypes.string.isRequired,
 	onChange: PropTypes.func,

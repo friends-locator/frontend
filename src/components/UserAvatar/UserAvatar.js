@@ -5,7 +5,7 @@ import avatarMale from '../../images/icon_profile_man.png';
 import avatarFemale from '../../images/icon_profile_woman.png';
 
 function UserAvatar() {
-	const userSex = useSelector((state) => state.user.sex);
+	const userSex = useSelector((state) => state.user.gender);
 	const userAvatar = useSelector((state) => state.user.avatar);
 
 	function getUserAvatar(sex) {

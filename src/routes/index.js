@@ -4,7 +4,7 @@ import {
 	Registration,
 	TermsOfUse,
 	PrivacyPolicy,
-	Signin,
+	Login,
 	Welcome,
 	Friends,
 	AccessGeo,
@@ -37,10 +37,10 @@ export const Routes = () => (
 			}
 		/>
 		<Route
-			path={ROUTES.SIGN_IN}
+			path={ROUTES.LOGIN}
 			element={
 				<PublicRoute>
-					<Signin />
+					<Login />
 				</PublicRoute>
 			}
 		/>

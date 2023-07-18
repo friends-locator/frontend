@@ -84,7 +84,7 @@ function GeneralMenuPopup({
 						</Link>
 					</section>
 				</div>
-				<Link to={ROUTES.SIGN_IN} className="generalMenuPopup__button">
+				<Link to={ROUTES.LOGIN} className="generalMenuPopup__button">
 					Выйти из профиля
 				</Link>
 			</div>

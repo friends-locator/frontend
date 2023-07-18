@@ -1,4 +1,4 @@
-import './Signin.scss';
+import './Login.scss';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import {
 
 import { Button, InputText, InputPassword } from '../../components';
 
-export const Signin = () => {
+export const Login = () => {
 	const navigate = useNavigate();
 
 	const [userData, setUserData] = useState({

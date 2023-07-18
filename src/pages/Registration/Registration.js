@@ -383,7 +383,7 @@ export const Registration = () => {
 
 							<span className="registration_form_span">
 								У тебя уже есть аккаунт?{' '}
-								<Link to={ROUTES.SIGN_IN} className="registration_form_link">
+								<Link to={ROUTES.LOGIN} className="registration_form_link">
 									Войти
 								</Link>
 							</span>
@@ -475,7 +475,7 @@ export const Registration = () => {
 
 							<span className="registration_form_span">
 								У тебя уже есть аккаунт?{' '}
-								<Link to={ROUTES.SIGN_IN} className="registration_form_link">
+								<Link to={ROUTES.LOGIN} className="registration_form_link">
 									Войти
 								</Link>
 							</span>

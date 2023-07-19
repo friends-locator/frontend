@@ -1,0 +1,14 @@
+.welcome {
+	display: flex;
+	justify-content: center;
+
+	&_container {
+		max-width: 375px;
+	}
+
+	&__button-container {
+		display: grid;
+		gap: 12px;
+		justify-content: center;
+	}
+}

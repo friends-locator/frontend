@@ -1,0 +1,44 @@
+.terms-of-use {
+	display: flex;
+	justify-content: center;
+
+	&__container {
+		max-width: 375px;
+		height: 100vh;
+		padding-top: 12px;
+		background-color: #fff;
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #cccdc2;
+	}
+
+	&__btn-back {
+		margin-left: 20px;
+		margin-right: 12px;
+		padding: 0;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		width: 32px;
+		height: 32px;
+		background: transparent url(../../images/arrow-back.svg) no-repeat;
+	}
+
+	&__title {
+		margin: 0;
+		padding: 0;
+		font-size: 15px;
+		font-weight: 500;
+	}
+
+	&__description {
+		margin: 0;
+		padding: 16px 20px;
+		font-size: 14px;
+		line-height: 140%;
+	}
+}

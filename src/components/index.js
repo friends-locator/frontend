@@ -1,0 +1,15 @@
+export { default as Button } from './Button/Button';
+export { default as PopupWithForm } from './PopupWithForm/PopupWithForm';
+export { default as InputText } from './InputText/InputText';
+export { default as InputPassword } from './InputPassword/InputPassword';
+export { default as Header } from './Header/Header';
+export { default as Footer } from './Footer/Footer';
+export { default as Carousel } from './Carousel/Carousel';
+export { default as Loader } from './Loader/Loader';
+export { default as Input } from './Input/Input';
+export { default as PopupAddFriend } from './PopupAddFriend/PopupAddFriend';
+export { default as GeneralMenuPopup } from './GeneralMenuPopup/GeneralMenuPopup';
+export { default as InputSearch } from './InputSearch/InputSearch';
+export { default as PrivateRoute } from './PrivateRoute/PrivateRoute';
+export { default as PublicRoute } from './PublicRoute/PublicRoute';
+export { default as SettingsMenuPopup } from './SettingsMenuPopup/SettingsMenuPopup';

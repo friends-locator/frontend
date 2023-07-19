@@ -1,18 +1,12 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import MenuPopup from '../MenuPopup/MenuPopup';
 import './SettingsMenuPopup.scss';
 import Checkbox from '../Checkbox/Checkbox';
 import { ROUTES } from '../../constants';
 
-function SettingsMenuPopup({
-	isOpen,
-	onClose,
-	chooseNightTheme,
-	isActiveNightTheme,
-}) {
+function SettingsMenuPopup({ onClose, chooseNightTheme, isActiveNightTheme }) {
 	return (
-		<MenuPopup isOpen={isOpen} onClose={onClose}>
+		<>
 			<div className="settingsMenuPopup__header">
 				<button
 					className="settingsMenuPopup__button"
@@ -49,12 +43,11 @@ function SettingsMenuPopup({
 					</Link>
 				</div>
 			</section>
-		</MenuPopup>
+		</>
 	);
 }
 
 SettingsMenuPopup.propTypes = {
-	isOpen: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired,
 	isActiveNightTheme: PropTypes.bool.isRequired,
 	chooseNightTheme: PropTypes.func.isRequired,

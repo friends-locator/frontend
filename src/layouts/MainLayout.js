@@ -8,6 +8,7 @@ import {
 	SettingsMenuPopup,
 } from '../components';
 import { useUser } from '../context/AppContext';
+import MenuPopup from '../components/MenuPopup/MenuPopup';
 
 export default function MainLayout({
 	handleSearch,
@@ -59,21 +60,23 @@ export default function MainLayout({
 			{children}
 			<Footer className={footerClassName} />
 			{!isSettingsMenuPopupOpen && (
-				<GeneralMenuPopup
-					isOpen={isGeneralMenuPopupOpen}
-					onClose={closeAllPopups}
-					userStatus={userStatus}
-					chooseInvisible={toggleInvisibleOption}
-					isActiveInvisible={isActiveInvisible}
-					openSettingsMenuPopup={handleOpenSettingsMenuPopup}
-				/>
+				<MenuPopup isOpen={isGeneralMenuPopupOpen} onClose={closeAllPopups}>
+					<GeneralMenuPopup
+						onClose={closeAllPopups}
+						userStatus={userStatus}
+						chooseInvisible={toggleInvisibleOption}
+						isActiveInvisible={isActiveInvisible}
+						openSettingsMenuPopup={handleOpenSettingsMenuPopup}
+					/>
+				</MenuPopup>
 			)}
-			<SettingsMenuPopup
-				isOpen={isSettingsMenuPopupOpen}
-				onClose={closeSettingsMenuPopup}
-				chooseNightTheme={toggleNightThemeOption}
-				isActiveNightTheme={isActiveNightTheme}
-			/>
+			<MenuPopup isOpen={isSettingsMenuPopupOpen} onClose={closeAllPopups}>
+				<SettingsMenuPopup
+					onClose={closeSettingsMenuPopup}
+					chooseNightTheme={toggleNightThemeOption}
+					isActiveNightTheme={isActiveNightTheme}
+				/>
+			</MenuPopup>
 		</>
 	);
 }

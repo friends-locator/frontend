@@ -25,9 +25,7 @@
 		outline: none;
 		width: 32px;
 		height: 32px;
-		background: transparent;
-		background-image: url(../../images/arrow-back.svg);
-		background-repeat: no-repeat;
+		background: transparent url(../../images/arrow-back.svg) no-repeat;
 	}
 
 	&__title {

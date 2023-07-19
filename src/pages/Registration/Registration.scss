@@ -14,9 +14,7 @@
 		height: 32px;
 		top: 62px;
 		left: 20px;
-		background: transparent;
-		background-image: url(../../images/arrow-back.svg);
-		background-repeat: no-repeat;
+		background: url(../../images/arrow-back.svg) transparent no-repeat;
 	}
 
 	&_container {
@@ -95,7 +93,7 @@
 		align-items: center;
 		padding: 24px 36px 33px;
 		background: #ffffff;
-		border-radius: 30px 30px 0px 0px;
+		border-radius: 30px 30px 0 0;
 		width: 100%;
 
 		&_terms-of-use-container {
@@ -114,16 +112,14 @@
 
 		&_terms-of-use_label::before {
 			content: '';
-			background: url(../../images/checkbox-unchecked.svg) 0 0 no-repeat;
 			width: 20px;
 			height: 20px;
-			background-position: center;
+			background: url(../../images/checkbox-unchecked.svg) no-repeat center;
 			padding: 2px;
 		}
 
 		input[type='checkbox']:checked + label:before {
-			background: url(../../images/checkbox-checked.svg) 0 0 no-repeat;
-			background-position: center;
+			background: url(../../images/checkbox-checked.svg) no-repeat center;
 			padding: 2px;
 		}
 
@@ -159,8 +155,7 @@
 
 			color: #aeafa4;
 
-			margin: 0;
-			margin-bottom: 16px;
+			margin: 0 0 16px;
 		}
 
 		&_title {
@@ -185,7 +180,7 @@
 				margin-bottom: 12px;
 				color: #000;
 				font-size: 13px;
-				font-family: Noto Sans;
+				font-family: 'Noto Sans', 'Arial', sans-serif;
 				font-weight: 500;
 				line-height: 130%;
 				letter-spacing: -0.247px;
@@ -199,16 +194,14 @@
 
 			&_label::before {
 				content: '';
-				background: url(../../images/radio-unchecked.svg) 0 0 no-repeat;
 				width: 24px;
 				height: 24px;
-				background-position: center;
+				background: url(../../images/radio-unchecked.svg) no-repeat center;
 				padding: 4px;
 			}
 
 			input[type='radio']:checked + label:before {
-				background: url(../../images/radio-checked.svg) 0 0 no-repeat;
-				background-position: center;
+				background: url(../../images/radio-checked.svg) no-repeat center;
 				padding: 4px;
 			}
 

@@ -9,6 +9,7 @@ import friendsNew from '../../images/friendsNew_menu.svg';
 import places from '../../images/places_menu.svg';
 import profile from '../../images/profile_menu.svg';
 import settings from '../../images/settings_menu.svg';
+import events from '../../images/events_menu.svg';
 
 function GeneralMenuPopup({
 	onClose,
@@ -63,6 +64,14 @@ function GeneralMenuPopup({
 							alt="Места"
 						/>
 						<p className="generalMenuPopup__link-text">Места</p>
+					</Link>
+					<Link to={ROUTES.COMING_SOON} className="generalMenuPopup__link">
+						<img
+							className="generalMenuPopup__link-img"
+							src={events}
+							alt="Мероприятия"
+						/>
+						<p className="generalMenuPopup__link-text">Мероприятия</p>
 					</Link>
 					<Link
 						to={ROUTES.PROFILE}

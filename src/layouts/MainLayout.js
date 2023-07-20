@@ -60,6 +60,11 @@ export default function MainLayout({
 		setIsActiveNightTheme(!isActiveNightTheme);
 	}, [isActiveNightTheme]);
 
+	// исправить на удаление аккаунта
+	const handleDeleteAccount = useCallback(() => {
+		console.log('account deleted');
+	}, []);
+
 	return (
 		<>
 			<Header
@@ -96,6 +101,7 @@ export default function MainLayout({
 			<PopupDeleteAccount
 				isOpen={isPopupDeleteAccountOpen}
 				onClose={closePopupDeleteAccount}
+				deleteAccount={handleDeleteAccount}
 			/>
 		</>
 	);

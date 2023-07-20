@@ -9,6 +9,7 @@ import {
 } from '../components';
 import { useUser } from '../context/AppContext';
 import MenuPopup from '../components/MenuPopup/MenuPopup';
+import PopupDeleteAccount from '../components/PopupDeleteAccount/PopupDeleteAccount';
 
 export default function MainLayout({
 	handleSearch,
@@ -59,6 +60,7 @@ export default function MainLayout({
 			/>
 			{children}
 			<Footer className={footerClassName} />
+
 			{!isSettingsMenuPopupOpen && (
 				<MenuPopup isOpen={isGeneralMenuPopupOpen} onClose={closeAllPopups}>
 					<GeneralMenuPopup
@@ -77,6 +79,8 @@ export default function MainLayout({
 					isActiveNightTheme={isActiveNightTheme}
 				/>
 			</MenuPopup>
+
+			<PopupDeleteAccount />
 		</>
 	);
 }

@@ -4,7 +4,12 @@ import './SettingsMenuPopup.scss';
 import Checkbox from '../Checkbox/Checkbox';
 import { ROUTES } from '../../constants';
 
-function SettingsMenuPopup({ onClose, chooseNightTheme, isActiveNightTheme }) {
+function SettingsMenuPopup({
+	onClose,
+	chooseNightTheme,
+	isActiveNightTheme,
+	deleteAccount,
+}) {
 	return (
 		<>
 			<div className="settingsMenuPopup__header">
@@ -54,6 +59,7 @@ SettingsMenuPopup.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	isActiveNightTheme: PropTypes.bool.isRequired,
 	chooseNightTheme: PropTypes.func.isRequired,
+	deleteAccount: PropTypes.func.isRequired,
 };
 
 export default SettingsMenuPopup;

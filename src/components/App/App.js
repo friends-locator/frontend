@@ -12,15 +12,15 @@ function App() {
 
 	useEffect(() => {
 		let token = localStorage.getItem('access_token');
+		if (token) {
+			dispatch(getCurrentUser(token));
+		}
 		if (errorMessage) {
 			const error = JSON.parse(errorMessage);
 			if (error?.code === 'token_not_valid') {
 				token = localStorage.getItem('refresh_token');
 				dispatch(refreshToken(token));
 			}
-		}
-		if (token) {
-			dispatch(getCurrentUser(token));
 		}
 	}, [dispatch, errorMessage]);
 

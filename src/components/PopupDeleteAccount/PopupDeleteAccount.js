@@ -5,27 +5,37 @@ import './PopupDeleteAccount.scss';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import Button from '../Button/Button';
 import { ROUTES } from '../../constants';
+import success from '../../images/icon-success.svg';
 
 function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
-	const [step, setStep] = useState(1);
+	const [title, setTitle] = useState(
+		'Вы действительно хотите удалить свой профиль в «Где друзья»?'
+	);
+
 	const handleClick = () => {
 		deleteAccount();
-		setStep(2);
+		setTitle('');
 	};
 
 	return (
 		<PopupWithForm
-			title={
-				step === 1
-					? 'Вы действительно хотите удалить свой профиль в «Где друзья»?'
-					: step === 2 && 'Профиль удалён'
-			}
+			title={title}
 			name="delete-account"
 			isOpen={isOpen}
 			onClose={onClose}
 		>
+			{title === '' && (
+				<div className="delete-account__container">
+					<img
+						className="delete-account__img"
+						src={success}
+						alt="Профиль удалён"
+					/>
+					<p className="delete-account__text">Профиль удалён</p>
+				</div>
+			)}
 			<div className="delete-account__btn-container">
-				{step === 1 && (
+				{title !== '' && (
 					<>
 						<Button
 							className="delete-account__btn"
@@ -45,7 +55,7 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 						/>
 					</>
 				)}
-				{step === 2 && (
+				{title === '' && (
 					<Link to={ROUTES.ROOT}>
 						<Button
 							label="На главную"

@@ -60,7 +60,7 @@ export default function MainLayout({
 		setIsActiveNightTheme(!isActiveNightTheme);
 	}, [isActiveNightTheme]);
 
-	// исправить на удаление аккаунта
+	// TODO исправить на удаление аккаунта
 	const handleDeleteAccount = useCallback(() => {
 		console.log('account deleted');
 	}, []);

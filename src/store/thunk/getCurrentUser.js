@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCurrentUser as getUser } from '../../untils/mainApi';
+import { getCurrentUser as getUser } from '../../utils/mainApi';
 
 export const getCurrentUser = createAsyncThunk(
 	'user/me',

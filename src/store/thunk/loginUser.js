@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { login } from '../../untils/mainApi';
+import { login } from '../../utils/mainApi';
 
 export const loginUser = createAsyncThunk(
 	'jwt/create',

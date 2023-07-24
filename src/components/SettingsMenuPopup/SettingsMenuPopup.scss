@@ -19,12 +19,22 @@ $light-yellow: #fdffe2;
   }
 
   &__button {
-    background: url("../../images/arrow-back.svg") no-repeat center;
-    width: 24px;
-    height: 24px;
     border: none;
-    margin-right: 20px;
     cursor: pointer;
+
+    &_arrow-back {
+      background: url("../../images/arrow-back.svg") no-repeat center;
+      width: 24px;
+      height: 24px;
+      margin-right: 20px;
+    }
+
+    &_delete-account {
+      @include font15;
+      padding: 12px 0;
+      background: transparent;
+      text-align: left;
+    }
   }
 
   &__title {
@@ -54,7 +64,7 @@ $light-yellow: #fdffe2;
     padding: 12px 0;
   }
 
-  &__link:hover {
+  &__link:hover, &__button_delete-account:hover {
     background: $light-yellow;
   }
 }

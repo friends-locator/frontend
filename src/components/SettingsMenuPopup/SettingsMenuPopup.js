@@ -4,12 +4,17 @@ import './SettingsMenuPopup.scss';
 import Checkbox from '../Checkbox/Checkbox';
 import { ROUTES } from '../../constants';
 
-function SettingsMenuPopup({ onClose, chooseNightTheme, isActiveNightTheme }) {
+function SettingsMenuPopup({
+	onClose,
+	chooseNightTheme,
+	isActiveNightTheme,
+	deleteAccount,
+}) {
 	return (
 		<>
 			<div className="settingsMenuPopup__header">
 				<button
-					className="settingsMenuPopup__button"
+					className="settingsMenuPopup__button settingsMenuPopup__button_arrow-back"
 					aria-label="Вернуться в главное меню"
 					onClick={onClose}
 				/>
@@ -38,9 +43,12 @@ function SettingsMenuPopup({ onClose, chooseNightTheme, isActiveNightTheme }) {
 					<Link className="settingsMenuPopup__link" to={ROUTES.PRIVACY_POLICY}>
 						Политика конфиденциальности
 					</Link>
-					<Link className="settingsMenuPopup__link" to={ROUTES.COMING_SOON}>
+					<button
+						className="settingsMenuPopup__button settingsMenuPopup__button_delete-account"
+						onClick={deleteAccount}
+					>
 						Удалить аккаунт
-					</Link>
+					</button>
 				</div>
 			</section>
 		</>
@@ -51,6 +59,7 @@ SettingsMenuPopup.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	isActiveNightTheme: PropTypes.bool.isRequired,
 	chooseNightTheme: PropTypes.func.isRequired,
+	deleteAccount: PropTypes.func.isRequired,
 };
 
 export default SettingsMenuPopup;

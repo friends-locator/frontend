@@ -96,6 +96,8 @@ const userSlice = createSlice({
 			isLoading: false,
 			isAuthenticated: true,
 			errorMessage: '',
+			access: localStorage.getItem('access_token'),
+			refresh: localStorage.getItem('refresh_token'),
 		}));
 		builder.addCase(getCurrentUser.rejected, (state, action) => ({
 			...state,

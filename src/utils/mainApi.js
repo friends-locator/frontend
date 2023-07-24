@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { fetchTemplate } from '../constants';
 
 export const register = ({ email, nickname, name, surname, password, sex }) =>
@@ -39,4 +38,11 @@ export const refreshToken = (token) =>
 		body: {
 			refresh: token,
 		},
+	});
+
+export const deleteCurrentUser = (token) =>
+	fetchTemplate({
+		path: '/users/me/',
+		method: 'DELETE',
+		token: `Bearer ${token}`,
 	});

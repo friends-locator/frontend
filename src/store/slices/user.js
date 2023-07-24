@@ -1,9 +1,9 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { registerUser } from '../thunk/registerUser';
 import { loginUser } from '../thunk/loginUser';
 import { getCurrentUser } from '../thunk/getCurrentUser';
 import { refreshToken } from '../thunk/refreshToken';
+import { deleteCurrentUser } from '../thunk/deleteCurrentUser';
 
 const userSlice = createSlice({
 	name: 'user',
@@ -116,6 +116,23 @@ const userSlice = createSlice({
 			...state,
 			isLoading: false,
 			errorMessage: action.payload,
+		}));
+		builder.addCase(deleteCurrentUser.pending, (state) => ({
+			...state,
+			isLoading: true,
+		}));
+		builder.addCase(deleteCurrentUser.fulfilled, (state, action) => ({
+			...state,
+			...action.payload,
+			isLoading: false,
+			isAuthenticated: false,
+			errorMessage: '',
+		}));
+		builder.addCase(deleteCurrentUser.rejected, (state, action) => ({
+			...state,
+			isLoading: false,
+			errorMessage: action.payload,
+			isAuthenticated: true,
 		}));
 	},
 });

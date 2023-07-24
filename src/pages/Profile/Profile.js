@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 import { Button, PopupWithForm, Input } from '../../components';
 import MainLayout from '../../layouts/MainLayout';
 import spiralPng from '../../images/spiral-banner.png';
@@ -7,6 +8,7 @@ import avatarMale from '../../images/icon_profile_man.png';
 import avatarFemale from '../../images/icon_profile_woman.png';
 import { useUser } from '../../context/AppContext';
 import './Profile.scss';
+// import { setNickname } from '../../store/thunk/setNickname';
 
 const recommendedStatuses = [
 	'На работе',
@@ -15,6 +17,7 @@ const recommendedStatuses = [
 ].slice(0, 3);
 
 export const Profile = () => {
+	// const currentUser = useSelector(state => state.user);
 	const { currentUser, setCurrentUser } = useUser();
 	const [nicknamePopupOpened, setNicknamePopupOpened] = useState(false);
 	const [inviteFreindsPopupOpened, setInviteFreindsPopupOpened] =
@@ -24,6 +27,9 @@ export const Profile = () => {
 		nicknameValue: currentUser.nickname,
 		inviteEmailValue: '',
 	});
+
+	// const dispatch = useDispatch();
+	// const userNickname = useSelector((state) => state.user.username);
 
 	const handleSubmitStatus = (newStatus) => {
 		setCurrentUser((prevState) => ({
@@ -46,6 +52,7 @@ export const Profile = () => {
 	const handleSubmitNickname = (e) => {
 		e.preventDefault();
 		// Здесь нужно реализовать логику отправки никнейма
+		// dispatch(setNickname(userNickname));
 		setCurrentUser((prevState) => ({
 			...prevState,
 			nickname: formValues.nicknameValue,

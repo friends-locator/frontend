@@ -4,6 +4,7 @@ import { registerUser } from '../thunk/registerUser';
 import { loginUser } from '../thunk/loginUser';
 import { getCurrentUser } from '../thunk/getCurrentUser';
 import { refreshToken } from '../thunk/refreshToken';
+import { setNickname } from '../thunk/setNickname';
 
 const userSlice = createSlice({
 	name: 'user',
@@ -113,6 +114,21 @@ const userSlice = createSlice({
 			errorMessage: '',
 		}));
 		builder.addCase(refreshToken.rejected, (state, action) => ({
+			...state,
+			isLoading: false,
+			errorMessage: action.payload,
+		}));
+		builder.addCase(setNickname.pending, (state) => ({
+			...state,
+			isLoading: true,
+		}));
+		builder.addCase(setNickname.fulfilled, (state, action) => ({
+			...state,
+			...action.payload,
+			isLoading: false,
+			errorMessage: '',
+		}));
+		builder.addCase(setNickname.rejected, (state, action) => ({
 			...state,
 			isLoading: false,
 			errorMessage: action.payload,

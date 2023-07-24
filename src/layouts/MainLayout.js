@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
+
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
 	Header,
 	Footer,
@@ -10,6 +11,7 @@ import {
 import { useUser } from '../context/AppContext';
 import MenuPopup from '../components/MenuPopup/MenuPopup';
 import PopupDeleteAccount from '../components/PopupDeleteAccount/PopupDeleteAccount';
+import { deleteCurrentUser } from '../store/thunk/deleteCurrentUser';
 
 export default function MainLayout({
 	handleSearch,
@@ -18,6 +20,7 @@ export default function MainLayout({
 	children,
 }) {
 	const { currentUser } = useUser();
+	const dispatch = useDispatch();
 
 	const [isGeneralMenuPopupOpen, setIsGeneralMenuPopupOpen] = useState(false);
 	const [isSettingsMenuPopupOpen, setIsSettingsMenuPopupOpen] = useState(false);
@@ -60,10 +63,15 @@ export default function MainLayout({
 		setIsActiveNightTheme(!isActiveNightTheme);
 	}, [isActiveNightTheme]);
 
-	// TODO исправить на удаление аккаунта
+	// TODO добавить удаление токенов из локалстораджа
 	const handleDeleteAccount = useCallback(() => {
-		console.log('account deleted');
-	}, []);
+		const token = localStorage.getItem('access_token');
+		if (token) {
+			dispatch(deleteCurrentUser(token));
+		} else {
+			console.log('токена нет');
+		}
+	}, [dispatch]);
 
 	return (
 		<>

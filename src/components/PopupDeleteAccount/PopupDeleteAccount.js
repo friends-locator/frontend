@@ -12,7 +12,11 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 		'Вы действительно хотите удалить свой профиль в «Где друзья»?'
 	);
 
-	const handleClick = () => {
+	const handleDeleteClick = () => {
+		setTitle('Для подтверждения действия введите свой пароль');
+	};
+
+	const handleConfirmClick = () => {
 		deleteAccount();
 		setTitle('');
 	};
@@ -34,38 +38,60 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 					<p className="delete-account__text">Профиль удалён</p>
 				</div>
 			)}
-			<div className="delete-account__btn-container">
-				{title !== '' && (
-					<>
-						<Button
-							className="delete-account__btn"
-							label="Отмена"
-							type="button"
-							color="secondary"
-							size="medium"
-							onClick={onClose}
-						/>
-						<Button
-							className="delete-account__btn"
-							label="Удалить"
-							type="button"
-							color="primary"
-							size="medium"
-							onClick={handleClick}
-						/>
-					</>
-				)}
-				{title === '' && (
-					<Link to={ROUTES.ROOT}>
-						<Button
-							label="На главную"
-							type="button"
-							color="primary"
-							size="medium"
-						/>
-					</Link>
-				)}
-			</div>
+
+			{title ===
+				'Вы действительно хотите удалить свой профиль в «Где друзья»?' && (
+				<div className="delete-account__btn-container">
+					<Button
+						className="delete-account__btn"
+						label="Отмена"
+						type="button"
+						color="secondary"
+						size="medium"
+						onClick={onClose}
+					/>
+					<Button
+						className="delete-account__btn"
+						label="Удалить"
+						type="button"
+						color="primary"
+						size="medium"
+						onClick={handleDeleteClick}
+					/>
+				</div>
+			)}
+
+			{title === 'Для подтверждения действия введите свой пароль' && (
+				<div className="delete-account__btn-container">
+					<Button
+						className="delete-account__btn"
+						label="Отмена"
+						type="button"
+						color="secondary"
+						size="medium"
+						onClick={onClose}
+					/>
+					<Button
+						className="delete-account__btn"
+						label="Подтвердить"
+						type="button"
+						color="primary"
+						size="medium"
+						onClick={handleConfirmClick}
+					/>
+				</div>
+			)}
+
+			{title === '' && (
+				<Link to={ROUTES.ROOT}>
+					<Button
+						label="На главную"
+						type="button"
+						color="primary"
+						size="medium"
+					/>
+				</Link>
+			)}
 		</PopupWithForm>
 	);
 }

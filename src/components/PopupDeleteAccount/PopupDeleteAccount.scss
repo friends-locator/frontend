@@ -23,3 +23,7 @@
 .delete-account__btn:first-child {
   margin-right: 16px;
 }
+
+.registration_form_input-container ~ .delete-account__btn-container {
+  margin-top: 24px;
+}

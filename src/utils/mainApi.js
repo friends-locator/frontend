@@ -40,9 +40,12 @@ export const refreshToken = (token) =>
 		},
 	});
 
-export const deleteCurrentUser = (token) =>
+export const deleteCurrentUser = ({ token, password }) =>
 	fetchTemplate({
 		path: '/users/me/',
 		method: 'DELETE',
 		token: `Bearer ${token}`,
+		body: {
+			current_password: password,
+		},
 	});

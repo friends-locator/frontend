@@ -15,13 +15,16 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 	const [password, setPassword] = useState('');
 	const [passwordType, setPasswordType] = useState('password');
 
-	const handleChange = (evt) => setPassword(evt.target.value);
+	const handleChange = (evt) => {
+		setPassword(evt.target.value);
+	};
 
-	const handleDeleteClick = () =>
+	const handleDeleteClick = () => {
 		setTitle('Для подтверждения действия введите свой пароль');
+	};
 
 	const handleConfirmClick = () => {
-		deleteAccount();
+		deleteAccount(password);
 		setTitle('');
 	};
 
@@ -72,6 +75,7 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 				</div>
 			)}
 			{/* TODO passwordDirty и passwordError использовать или убрать из обязательных у InputPassword */}
+			{/* TODO обработку, если пользователь ввел неверный пароль */}
 			{title === 'Для подтверждения действия введите свой пароль' && (
 				<>
 					<InputPassword

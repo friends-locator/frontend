@@ -63,15 +63,20 @@ export default function MainLayout({
 		setIsActiveNightTheme(!isActiveNightTheme);
 	}, [isActiveNightTheme]);
 
-	// TODO добавить удаление токенов из локалстораджа
-	const handleDeleteAccount = useCallback(() => {
-		const token = localStorage.getItem('access_token');
-		if (token) {
-			dispatch(deleteCurrentUser(token));
-		} else {
-			console.log('токена нет');
-		}
-	}, [dispatch]);
+	// TODO показать попап, что аккаунт удален
+	// TODO обработать ошибку, если введен неверный пароль от аккаунта
+	const handleDeleteAccount = useCallback(
+		(password) => {
+			const token = localStorage.getItem('access_token');
+			if (token) {
+				dispatch(deleteCurrentUser({ token, password }));
+				localStorage.clear();
+			} else {
+				console.log('токена нет');
+			}
+		},
+		[dispatch]
+	);
 
 	return (
 		<>

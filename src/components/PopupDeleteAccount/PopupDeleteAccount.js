@@ -19,6 +19,11 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 		setPassword(evt.target.value);
 	};
 
+	const handleCancelClick = () => {
+		onClose();
+		setTitle('Вы действительно хотите удалить свой профиль в «Где друзья»?');
+	};
+
 	const handleDeleteClick = () => {
 		setTitle('Для подтверждения действия введите свой пароль');
 	};
@@ -95,7 +100,7 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 							type="button"
 							color="secondary"
 							size="medium"
-							onClick={onClose}
+							onClick={handleCancelClick}
 						/>
 						<Button
 							className="delete-account__btn"

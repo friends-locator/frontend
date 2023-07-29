@@ -40,3 +40,11 @@ export const refreshToken = (token) =>
 			refresh: token,
 		},
 	});
+export const verifyToken = (token) =>
+	fetchTemplate({
+		path: '/jwt/verify/',
+		method: 'POST',
+		body: {
+			token,
+		},
+	});

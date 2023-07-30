@@ -411,3 +411,14 @@ export const getPlaceById = (userId, placeId) =>
 		path: `/users/${userId}/places/${placeId}/`,
 		method: 'GET',
 	});
+
+export const updatePlace = (userId, placeId, { name, latitude, longitude }) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/${placeId}/`,
+		method: 'PUT',
+		body: {
+			name,
+			latitude,
+			longitude,
+		},
+	});

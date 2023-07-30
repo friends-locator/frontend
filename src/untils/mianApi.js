@@ -220,3 +220,9 @@ export const updateUserDataDetails = ({
 			status,
 		},
 	});
+
+export const deleteUser = (id) =>
+	fetchTemplate({
+		path: `/users/${id}/`,
+		method: 'DELETE',
+	});

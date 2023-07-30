@@ -79,3 +79,9 @@ export const getFriends = () =>
 		path: '/users/friends/',
 		method: 'GET',
 	});
+
+export const getFriendsData = () =>
+	fetchTemplate({
+		path: '/users/get-friends/',
+		method: 'GET',
+	});

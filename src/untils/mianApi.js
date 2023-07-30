@@ -226,3 +226,27 @@ export const deleteUser = (id) =>
 		path: `/users/${id}/`,
 		method: 'DELETE',
 	});
+
+export const addFriend = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/add-friend/`,
+		method: 'POST',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

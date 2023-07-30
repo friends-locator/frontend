@@ -156,3 +156,13 @@ export const setEmail = ({ password, email }) =>
 			new_email: email,
 		},
 	});
+
+export const setPassword = ({ newPassword, currentPassword }) =>
+	fetchTemplate({
+		path: '/users/set_password/',
+		method: 'POST',
+		body: {
+			new_password: newPassword,
+			current_password: currentPassword,
+		},
+	});

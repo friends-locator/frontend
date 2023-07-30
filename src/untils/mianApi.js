@@ -99,3 +99,9 @@ export const updateUserDetails = (userData) =>
 		method: 'PATCH',
 		body: JSON.stringify(userData),
 	});
+
+export const deleteUserProfile = () =>
+	fetchTemplate({
+		path: '/users/me/',
+		method: 'DELETE',
+	});

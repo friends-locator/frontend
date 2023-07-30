@@ -310,3 +310,27 @@ export const updateCoordinates = ({
 			status,
 		},
 	});
+
+export const updateFriendsCategory = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/update-friends-category/`,
+		method: 'PATCH',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

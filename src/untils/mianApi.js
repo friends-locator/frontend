@@ -166,3 +166,9 @@ export const setPassword = ({ newPassword, currentPassword }) =>
 			current_password: currentPassword,
 		},
 	});
+
+export const getUser = (id) =>
+	fetchTemplate({
+		path: `/users/${id}/`,
+		method: 'GET',
+	});

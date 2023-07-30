@@ -73,3 +73,9 @@ export const getAllRequests = () =>
 		path: '/users/all-requests/',
 		method: 'GET',
 	});
+
+export const getFriends = () =>
+	fetchTemplate({
+		path: '/users/friends/',
+		method: 'GET',
+	});

@@ -358,3 +358,27 @@ export const updateUserPic = ({
 			status,
 		},
 	});
+
+export const updateUserStatus = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/update-user-status/`,
+		method: 'PATCH',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

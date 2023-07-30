@@ -382,3 +382,9 @@ export const updateUserStatus = ({
 			status,
 		},
 	});
+
+export const getUserPlaces = (userId) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/`,
+		method: 'GET',
+	});

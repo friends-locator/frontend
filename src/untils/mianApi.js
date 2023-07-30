@@ -119,3 +119,10 @@ export const resetEmail = ({ email }) =>
 		method: 'POST',
 		body: { email },
 	});
+
+export const confirmResetEmail = ({ email }) =>
+	fetchTemplate({
+		path: '/users/reset_email_confirm/',
+		method: 'POST',
+		body: { new_email: email },
+	});

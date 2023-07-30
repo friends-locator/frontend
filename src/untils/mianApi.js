@@ -388,3 +388,14 @@ export const getUserPlaces = (userId) =>
 		path: `/users/${userId}/places/`,
 		method: 'GET',
 	});
+
+export const createPlace = (userId, { name, latitude, longitude }) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/`,
+		method: 'POST',
+		body: {
+			name,
+			latitude,
+			longitude,
+		},
+	});

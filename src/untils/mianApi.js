@@ -40,6 +40,7 @@ export const refreshToken = (token) =>
 			refresh: token,
 		},
 	});
+
 export const verifyToken = (token) =>
 	fetchTemplate({
 		path: '/jwt/verify/',
@@ -47,4 +48,10 @@ export const verifyToken = (token) =>
 		body: {
 			token,
 		},
+	});
+
+export const getTags = () =>
+	fetchTemplate({
+		path: '/tags/',
+		method: 'GET',
 	});

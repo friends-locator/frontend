@@ -422,3 +422,18 @@ export const updatePlace = (userId, placeId, { name, latitude, longitude }) =>
 			longitude,
 		},
 	});
+
+export const updatePlaceDetails = (
+	userId,
+	placeId,
+	{ name, latitude, longitude }
+) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/${placeId}/`,
+		method: 'PATCH',
+		body: {
+			name,
+			latitude,
+			longitude,
+		},
+	});

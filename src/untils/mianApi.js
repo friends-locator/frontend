@@ -61,3 +61,9 @@ export const getTagById = (id) =>
 		path: `/tags/${id}/`,
 		method: 'GET',
 	});
+
+export const getUsers = () =>
+	fetchTemplate({
+		path: '/users/',
+		method: 'GET',
+	});

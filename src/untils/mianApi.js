@@ -399,3 +399,9 @@ export const createPlace = (userId, { name, latitude, longitude }) =>
 			longitude,
 		},
 	});
+
+export const getAllSharedPlaces = (userId) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/all-shared-places/`,
+		method: 'GET',
+	});

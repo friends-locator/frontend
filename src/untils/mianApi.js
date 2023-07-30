@@ -126,3 +126,12 @@ export const confirmResetEmail = ({ email }) =>
 		method: 'POST',
 		body: { new_email: email },
 	});
+
+export const resetPassword = ({ password }) =>
+	fetchTemplate({
+		path: '/users/reset_password/',
+		method: 'POST',
+		body: {
+			password,
+		},
+	});

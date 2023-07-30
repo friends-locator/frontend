@@ -67,3 +67,9 @@ export const getUsers = () =>
 		path: '/users/',
 		method: 'GET',
 	});
+
+export const getAllRequests = () =>
+	fetchTemplate({
+		path: '/users/all-requests/',
+		method: 'GET',
+	});

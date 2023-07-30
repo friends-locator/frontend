@@ -334,3 +334,27 @@ export const updateFriendsCategory = ({
 			status,
 		},
 	});
+
+export const updateUserPic = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/update-user-pic/`,
+		method: 'PATCH',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

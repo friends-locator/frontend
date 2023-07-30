@@ -112,3 +112,10 @@ export const resendActivationEmail = ({ email }) =>
 		method: 'POST',
 		body: { email },
 	});
+
+export const resetEmail = ({ email }) =>
+	fetchTemplate({
+		path: '/users/reset_email/',
+		method: 'POST',
+		body: { email },
+	});

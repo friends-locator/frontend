@@ -85,3 +85,10 @@ export const getFriendsData = () =>
 		path: '/users/get-friends/',
 		method: 'GET',
 	});
+
+export const updateUserProfile = (userData) =>
+	fetchTemplate({
+		path: '/users/me/',
+		method: 'PUT',
+		body: JSON.stringify(userData),
+	});

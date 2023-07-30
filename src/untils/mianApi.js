@@ -196,3 +196,27 @@ export const updateUser = ({
 			status,
 		},
 	});
+
+export const updateUserDataDetails = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/`,
+		method: 'PATCH',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

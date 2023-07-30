@@ -172,3 +172,27 @@ export const getUser = (id) =>
 		path: `/users/${id}/`,
 		method: 'GET',
 	});
+
+export const updateUser = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/`,
+		method: 'PUT',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

@@ -437,3 +437,9 @@ export const updatePlaceDetails = (
 			longitude,
 		},
 	});
+
+export const deletePlace = (userId, placeId) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/${placeId}/`,
+		method: 'DELETE',
+	});

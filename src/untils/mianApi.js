@@ -405,3 +405,9 @@ export const getAllSharedPlaces = (userId) =>
 		path: `/users/${userId}/places/all-shared-places/`,
 		method: 'GET',
 	});
+
+export const getPlaceById = (userId, placeId) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/${placeId}/`,
+		method: 'GET',
+	});

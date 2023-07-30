@@ -135,3 +135,14 @@ export const resetPassword = ({ password }) =>
 			password,
 		},
 	});
+
+export const resetPasswordConfirm = ({ uid, token, password }) =>
+	fetchTemplate({
+		path: '/users/reset_password_confirm/',
+		method: 'POST',
+		body: {
+			uid,
+			token,
+			new_password: password,
+		},
+	});

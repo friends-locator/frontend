@@ -274,3 +274,9 @@ export const approveUser = ({
 			status,
 		},
 	});
+
+export const deleteFriend = (id) =>
+	fetchTemplate({
+		path: `/users/${id}/delete-friend/`,
+		method: 'DELETE',
+	});

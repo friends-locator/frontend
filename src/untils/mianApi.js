@@ -286,3 +286,27 @@ export const deleteRequest = (id) =>
 		path: `/users/${id}/delete-request/`,
 		method: 'DELETE',
 	});
+
+export const updateCoordinates = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/update-coordinates/`,
+		method: 'PATCH',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

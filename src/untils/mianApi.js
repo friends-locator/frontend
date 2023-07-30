@@ -250,3 +250,27 @@ export const addFriend = ({
 			status,
 		},
 	});
+
+export const approveUser = ({
+	id,
+	email,
+	username,
+	firstName,
+	lastName,
+	longitude,
+	latitude,
+	status,
+}) =>
+	fetchTemplate({
+		path: `/users/${id}/approved/`,
+		method: 'POST',
+		body: {
+			email,
+			username,
+			first_name: firstName,
+			last_name: lastName,
+			longitude,
+			latitude,
+			status,
+		},
+	});

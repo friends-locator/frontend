@@ -454,3 +454,9 @@ export const sharePlace = (userId, placeId, { name, latitude, longitude }) =>
 			longitude,
 		},
 	});
+
+export const stopSharingPlace = (userId, placeId) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/${placeId}/stop-sharing-place/`,
+		method: 'DELETE',
+	});

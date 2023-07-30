@@ -92,3 +92,10 @@ export const updateUserProfile = (userData) =>
 		method: 'PUT',
 		body: JSON.stringify(userData),
 	});
+
+export const updateUserDetails = (userData) =>
+	fetchTemplate({
+		path: '/users/me/',
+		method: 'PATCH',
+		body: JSON.stringify(userData),
+	});

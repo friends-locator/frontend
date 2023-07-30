@@ -443,3 +443,14 @@ export const deletePlace = (userId, placeId) =>
 		path: `/users/${userId}/places/${placeId}/`,
 		method: 'DELETE',
 	});
+
+export const sharePlace = (userId, placeId, { name, latitude, longitude }) =>
+	fetchTemplate({
+		path: `/users/${userId}/places/${placeId}/share-place/`,
+		method: 'POST',
+		body: {
+			name,
+			latitude,
+			longitude,
+		},
+	});

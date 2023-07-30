@@ -280,3 +280,9 @@ export const deleteFriend = (id) =>
 		path: `/users/${id}/delete-friend/`,
 		method: 'DELETE',
 	});
+
+export const deleteRequest = (id) =>
+	fetchTemplate({
+		path: `/users/${id}/delete-request/`,
+		method: 'DELETE',
+	});

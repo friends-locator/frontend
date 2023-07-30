@@ -105,3 +105,10 @@ export const deleteUserProfile = () =>
 		path: '/users/me/',
 		method: 'DELETE',
 	});
+
+export const resendActivationEmail = ({ email }) =>
+	fetchTemplate({
+		path: '/users/resend_activation/',
+		method: 'POST',
+		body: { email },
+	});

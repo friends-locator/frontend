@@ -18,6 +18,11 @@ function GeneralMenuPopup({
 	isActiveInvisible,
 	openSettingsMenuPopup,
 }) {
+	const handleExitClick = () => {
+		localStorage.removeItem('access_token');
+		localStorage.removeItem('refresh_token');
+	};
+
 	return (
 		<div className="generalMenuPopup__container">
 			<div>
@@ -98,7 +103,11 @@ function GeneralMenuPopup({
 					</button>
 				</section>
 			</div>
-			<Link to={ROUTES.LOGIN} className="generalMenuPopup__button">
+			<Link
+				to={ROUTES.LOGIN}
+				className="generalMenuPopup__button"
+				onClick={handleExitClick}
+			>
 				Выйти из профиля
 			</Link>
 		</div>

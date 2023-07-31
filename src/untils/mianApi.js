@@ -40,3 +40,13 @@ export const refreshToken = (token) =>
 			refresh: token,
 		},
 	});
+
+export const setNickname = ({ username, token }) =>
+	fetchTemplate({
+		path: '/users/me/',
+		method: 'PATCH',
+		token: `Bearer ${token}`,
+		body: {
+			username,
+		},
+	});

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, PopupWithForm, Input } from '../../components';
 import MainLayout from '../../layouts/MainLayout';
 import spiralPng from '../../images/spiral-banner.png';
 import vectorCircle from '../../images/vector-signin-2.svg';
 import avatarMale from '../../images/icon_profile_man.png';
 import avatarFemale from '../../images/icon_profile_woman.png';
-import { useUser } from '../../context/AppContext';
+// import { useUser } from '../../context/AppContext';
 import './Profile.scss';
+import { setNickname } from '../../store/thunk/setNickname';
 
 const recommendedStatuses = [
 	'На работе',
@@ -15,26 +17,31 @@ const recommendedStatuses = [
 ].slice(0, 3);
 
 export const Profile = () => {
-	const { currentUser, setCurrentUser } = useUser();
+	const currentUser = useSelector((state) => state.user);
+	// const { currentUser, setCurrentUser } = useUser();
 	const [nicknamePopupOpened, setNicknamePopupOpened] = useState(false);
 	const [inviteFreindsPopupOpened, setInviteFreindsPopupOpened] =
 		useState(false);
 	const [formValues, setFormValues] = useState({
 		status: currentUser.status,
-		nicknameValue: currentUser.nickname,
+		nicknameValue: currentUser.username,
 		inviteEmailValue: '',
 	});
 
-	const handleSubmitStatus = (newStatus) => {
-		setCurrentUser((prevState) => ({
-			...prevState,
-			status: newStatus,
-		}));
-		setFormValues((prevState) => ({
-			...prevState,
-			status: '',
-		}));
-	};
+	const dispatch = useDispatch();
+
+	// @TODO Переделать статусы через Redux
+
+	// const handleSubmitStatus = (newStatus) => {
+	// 	setCurrentUser((prevState) => ({
+	// 		...prevState,
+	// 		status: newStatus,
+	// 	}));
+	// 	setFormValues((prevState) => ({
+	// 		...prevState,
+	// 		status: '',
+	// 	}));
+	// };
 
 	const handleStatusChange = (newStatus) => {
 		setFormValues((prevState) => ({
@@ -45,11 +52,20 @@ export const Profile = () => {
 
 	const handleSubmitNickname = (e) => {
 		e.preventDefault();
-		// Здесь нужно реализовать логику отправки никнейма
-		setCurrentUser((prevState) => ({
+		const updatedUser = { ...currentUser };
+		updatedUser.username = formValues.nicknameValue;
+		dispatch(
+			setNickname({
+				username: updatedUser.username,
+				token: currentUser.access,
+			})
+		);
+
+		setFormValues((prevState) => ({
 			...prevState,
-			nickname: formValues.nicknameValue,
+			nicknameValue: updatedUser.username,
 		}));
+
 		setNicknamePopupOpened(false);
 	};
 
@@ -77,16 +93,16 @@ export const Profile = () => {
 							aria-label="Изменить аватар"
 						>
 							<img
-								src={getUserAvatar(currentUser.sex)}
+								src={getUserAvatar(currentUser.gender)}
 								alt="Avatar"
 								className="profile-avatar-image"
 							/>
 						</button>
 						{/* <Avatar url={getUserAvatar(UserInfo.sex)} /> */}
 						<div className="profile-user-info">
-							<div className="profile-user-name">{`${currentUser.firstName} ${currentUser.lastName}`}</div>
+							<div className="profile-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</div>
 							<div className="profile-user-nickname">
-								{currentUser.nickname}
+								{currentUser.username}
 							</div>
 							<button
 								className="profile-user-change-nickname"
@@ -101,7 +117,7 @@ export const Profile = () => {
 						className="profile-status-container"
 						onSubmit={(e) => {
 							e.preventDefault();
-							handleSubmitStatus(formValues.status);
+							// handleSubmitStatus(formValues.status);
 						}}
 					>
 						<label htmlFor="status" className="profile-status-label">
@@ -125,7 +141,7 @@ export const Profile = () => {
 									type="button"
 									onClick={(e) => {
 										e.preventDefault();
-										handleSubmitStatus(statusValue);
+										// handleSubmitStatus(statusValue);
 									}}
 									className="profile-status-bar-button"
 								>

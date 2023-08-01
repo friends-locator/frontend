@@ -1,6 +1,8 @@
 import './GeneralMenuPopup.scss';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { logout } from '../../store/slices/user';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import Checkbox from '../Checkbox/Checkbox';
 import chat from '../../images/chat_menu.svg';
@@ -18,9 +20,10 @@ function GeneralMenuPopup({
 	isActiveInvisible,
 	openSettingsMenuPopup,
 }) {
+	const dispatch = useDispatch();
+
 	const handleExitClick = () => {
-		localStorage.removeItem('access_token');
-		localStorage.removeItem('refresh_token');
+		dispatch(logout());
 	};
 
 	return (

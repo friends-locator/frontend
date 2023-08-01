@@ -1,0 +1,25 @@
+@mixin font15 {
+	font-size: 15px;
+	font-weight: 500;
+	font-style: normal;
+	line-height: normal;
+	color: #141513;
+}
+.delete-account__img {
+	display: block;
+	margin: 0 auto 16px;
+}
+.delete-account__text {
+	@include font15;
+	margin: 0 0 24px;
+	text-align: center;
+}
+
+.delete-account__btn-container {
+	display: flex;
+	justify-content: center;
+}
+
+.delete-account__btn:first-child {
+	margin-right: 16px;
+}

@@ -1,6 +1,8 @@
 import './GeneralMenuPopup.scss';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { logout } from '../../store/slices/user';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import Checkbox from '../Checkbox/Checkbox';
 import chat from '../../images/chat_menu.svg';
@@ -18,6 +20,12 @@ function GeneralMenuPopup({
 	isActiveInvisible,
 	openSettingsMenuPopup,
 }) {
+	const dispatch = useDispatch();
+
+	const handleExitClick = () => {
+		dispatch(logout());
+	};
+
 	return (
 		<div className="generalMenuPopup__container">
 			<div>
@@ -98,7 +106,11 @@ function GeneralMenuPopup({
 					</button>
 				</section>
 			</div>
-			<Link to={ROUTES.LOGIN} className="generalMenuPopup__button">
+			<Link
+				to={ROUTES.LOGIN}
+				className="generalMenuPopup__button"
+				onClick={handleExitClick}
+			>
 				Выйти из профиля
 			</Link>
 		</div>

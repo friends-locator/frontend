@@ -9,6 +9,7 @@ import {
 } from '../components';
 import { useUser } from '../context/AppContext';
 import MenuPopup from '../components/MenuPopup/MenuPopup';
+import PopupDeleteAccount from '../components/PopupDeleteAccount/PopupDeleteAccount';
 
 export default function MainLayout({
 	handleSearch,
@@ -20,6 +21,8 @@ export default function MainLayout({
 
 	const [isGeneralMenuPopupOpen, setIsGeneralMenuPopupOpen] = useState(false);
 	const [isSettingsMenuPopupOpen, setIsSettingsMenuPopupOpen] = useState(false);
+	const [isPopupDeleteAccountOpen, setIsPopupDeleteAccountOpen] =
+		useState(false);
 	const [isActiveInvisible, setIsActiveInvisible] = useState(false);
 	const [isActiveNightTheme, setIsActiveNightTheme] = useState(false);
 	const userStatus = useSelector((state) => state.user.status);
@@ -32,6 +35,10 @@ export default function MainLayout({
 		setIsSettingsMenuPopupOpen(true);
 	}, []);
 
+	const handleOpenPopupDeleteAccount = useCallback(() => {
+		setIsPopupDeleteAccountOpen(true);
+	}, []);
+
 	const closeAllPopups = useCallback(() => {
 		setIsGeneralMenuPopupOpen(false);
 		setIsSettingsMenuPopupOpen(false);
@@ -41,6 +48,10 @@ export default function MainLayout({
 		setIsSettingsMenuPopupOpen(false);
 	}, []);
 
+	const closePopupDeleteAccount = useCallback(() => {
+		setIsPopupDeleteAccountOpen(false);
+	}, []);
+
 	const toggleInvisibleOption = useCallback(() => {
 		setIsActiveInvisible(!isActiveInvisible);
 	}, [isActiveInvisible]);
@@ -48,6 +59,11 @@ export default function MainLayout({
 	const toggleNightThemeOption = useCallback(() => {
 		setIsActiveNightTheme(!isActiveNightTheme);
 	}, [isActiveNightTheme]);
+
+	// TODO исправить на удаление аккаунта
+	const handleDeleteAccount = useCallback(() => {
+		console.log('account deleted');
+	}, []);
 
 	return (
 		<>
@@ -59,6 +75,7 @@ export default function MainLayout({
 			/>
 			{children}
 			<Footer className={footerClassName} />
+
 			{!isSettingsMenuPopupOpen && (
 				<MenuPopup isOpen={isGeneralMenuPopupOpen} onClose={closeAllPopups}>
 					<GeneralMenuPopup
@@ -75,8 +92,17 @@ export default function MainLayout({
 					onClose={closeSettingsMenuPopup}
 					chooseNightTheme={toggleNightThemeOption}
 					isActiveNightTheme={isActiveNightTheme}
+					deleteAccount={handleOpenPopupDeleteAccount}
+					isOpen={isPopupDeleteAccountOpen}
+					onClose2={closePopupDeleteAccount}
 				/>
 			</MenuPopup>
+
+			<PopupDeleteAccount
+				isOpen={isPopupDeleteAccountOpen}
+				onClose={closePopupDeleteAccount}
+				deleteAccount={handleDeleteAccount}
+			/>
 		</>
 	);
 }

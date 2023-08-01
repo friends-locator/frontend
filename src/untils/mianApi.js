@@ -460,3 +460,13 @@ export const stopSharingPlace = (userId, placeId) =>
 		path: `/users/${userId}/places/${placeId}/stop-sharing-place/`,
 		method: 'DELETE',
 	});
+
+export const setNickname = ({ username, token }) =>
+	fetchTemplate({
+		path: '/users/me/',
+		method: 'PATCH',
+		token: `Bearer ${token}`,
+		body: {
+			username,
+		},
+	});

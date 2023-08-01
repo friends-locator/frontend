@@ -19,7 +19,9 @@ function App() {
 			const error = JSON.parse(errorMessage);
 			if (error?.code === 'token_not_valid') {
 				token = localStorage.getItem('refresh_token');
-				dispatch(refreshToken(token));
+				if (token) {
+					dispatch(refreshToken(token));
+				}
 			}
 		}
 	}, [dispatch, errorMessage]);

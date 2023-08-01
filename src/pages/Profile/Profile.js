@@ -82,7 +82,7 @@ export const Profile = () => {
 
 	return (
 		<section className="profile">
-			<div className="profile_container">
+			<div className="profile-container">
 				<MainLayout headerClassName="header">
 					<h1 className="profile-heading">Профиль</h1>
 					<div className="profile-user-container">

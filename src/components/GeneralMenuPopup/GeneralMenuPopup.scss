@@ -62,7 +62,8 @@ $light-yellow: #fdffe2;
 		padding: 12px 0;
 	}
 
-	&__link:hover, &__button_settings:hover {
+	&__link:hover,
+	&__button_settings:hover {
 		background: $light-yellow;
 	}
 

@@ -24,28 +24,16 @@ const userSlice = createSlice({
 		refresh: '',
 		requestCounter: 0,
 	},
-	// reducers: {
-	// 	logOut(state) {
-	// 		return {
-	// 			...state,
-	// 			logOutLoading: true,
-	// 		};
-	// 	},
-	// 	logOutSuccess(state) {
-	// 		return {
-	// 			...state,
-	// 			logOutLoading: false,
-	// 			isAuthenticated: false,
-	// 		};
-	// 	},
-	// 	logOutFailed(state, action) {
-	// 		return {
-	// 			...state,
-	// 			logOutLoading: false,
-	// 			errorMessage: action.payload.errorMessage,
-	// 		};
-	// 	},
-	// },
+	reducers: {
+		logout(state) {
+			localStorage.removeItem('access_token');
+			localStorage.removeItem('refresh_token');
+			return {
+				...state,
+				isAuthenticated: false,
+			};
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(registerUser.pending, (state) => ({
 			...state,
@@ -148,3 +136,5 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+
+export const { logout } = userSlice.actions;

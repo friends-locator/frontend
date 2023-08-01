@@ -10,7 +10,8 @@
 		"build-storybook": "storybook build",
 		"lint": "eslint . --ext .js,.jsx .",
 		"lint:fix": "npm run lint -- --fix",
-		"format": "prettier . --write --ignore-path ./.prettierignore",
+		"format": "prettier . --check --ignore-path ./.prettierignore",
+		"format:fix": "prettier . --write --ignore-path ./.prettierignore",
 		"prepare": "husky install",
 		"commit": "cz"
 	},
@@ -106,8 +107,14 @@
 		]
 	},
 	"lint-staged": {
-		"*.{js,jsx}": "npm run lint",
-		"*.{js,jsx,css,md,html,json}": "npm run format"
+		"*.{js,jsx}": [
+			"npm run lint:fix",
+			"git add"
+		],
+		"*.{js,jsx,css,md,html,json}": [
+			"npm run format:fix",
+			"git add"
+		]
 	},
 	"config": {
 		"commitizen": {

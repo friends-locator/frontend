@@ -21,7 +21,9 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 
 	const handleCancelClick = () => {
 		onClose();
-		setTitle('Вы действительно хотите удалить свой профиль в «Где друзья»?');
+		setTimeout(() => {
+			setTitle('Вы действительно хотите удалить свой профиль в «Где друзья»?');
+		}, 500);
 	};
 
 	const handleDeleteClick = () => {
@@ -46,7 +48,7 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 			title={title}
 			name="delete-account"
 			isOpen={isOpen}
-			onClose={onClose}
+			onClose={handleCancelClick}
 		>
 			{title === '' && (
 				<div className="delete-account__container">
@@ -114,8 +116,9 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 				</>
 			)}
 			{title === '' && (
-				<Link to={ROUTES.ROOT}>
+				<Link className="delete-account__link" to={ROUTES.ROOT}>
 					<Button
+						className="delete-account__btn"
 						label="На главную"
 						type="button"
 						color="primary"

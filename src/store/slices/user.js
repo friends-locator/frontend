@@ -3,6 +3,7 @@ import { registerUser } from '../thunk/registerUser';
 import { loginUser } from '../thunk/loginUser';
 import { getCurrentUser } from '../thunk/getCurrentUser';
 import { refreshToken } from '../thunk/refreshToken';
+import { setNickname } from '../thunk/setNickname';
 import { deleteCurrentUser } from '../thunk/deleteCurrentUser';
 
 const userSlice = createSlice({
@@ -95,12 +96,16 @@ const userSlice = createSlice({
 			isLoading: false,
 			isAuthenticated: true,
 			errorMessage: '',
+			access: localStorage.getItem('access_token'),
+			refresh: localStorage.getItem('refresh_token'),
+			requestCounter: state.requestCounter + 1,
 		}));
 		builder.addCase(getCurrentUser.rejected, (state, action) => ({
 			...state,
 			isLoading: false,
 			errorMessage: action.payload,
 			isAuthenticated: false,
+			requestCounter: state.requestCounter + 1,
 		}));
 		builder.addCase(refreshToken.pending, (state) => ({
 			...state,
@@ -111,11 +116,34 @@ const userSlice = createSlice({
 			...action.payload,
 			isLoading: false,
 			errorMessage: '',
+			requestCounter: state.requestCounter + 1,
 		}));
-		builder.addCase(refreshToken.rejected, (state, action) => ({
+		builder.addCase(refreshToken.rejected, (state, action) => {
+			localStorage.removeItem('access_token');
+			localStorage.removeItem('refresh_token');
+			return {
+				...state,
+				isLoading: false,
+				errorMessage: action.payload,
+				requestCounter: state.requestCounter + 1,
+			};
+		});
+		builder.addCase(setNickname.pending, (state) => ({
+			...state,
+			isLoading: true,
+		}));
+		builder.addCase(setNickname.fulfilled, (state, action) => ({
+			...state,
+			...action.payload,
+			isLoading: false,
+			errorMessage: '',
+			requestCounter: state.requestCounter + 1,
+		}));
+		builder.addCase(setNickname.rejected, (state, action) => ({
 			...state,
 			isLoading: false,
 			errorMessage: action.payload,
+			requestCounter: state.requestCounter + 1,
 		}));
 		builder.addCase(deleteCurrentUser.pending, (state) => ({
 			...state,

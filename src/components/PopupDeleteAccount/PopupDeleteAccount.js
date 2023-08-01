@@ -23,6 +23,7 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 		onClose();
 		setTimeout(() => {
 			setTitle('Вы действительно хотите удалить свой профиль в «Где друзья»?');
+			setPassword('');
 		}, 500);
 	};
 

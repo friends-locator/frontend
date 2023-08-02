@@ -32,6 +32,44 @@ export function TrackingMap() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
+	useEffect(() => {
+		const handleSuccess = (pos) => {
+			map.setView(position);
+			// if (access && id !== 0) {
+			if (location.isAccessAllowed) {
+				if (
+					location.latitude !== pos.coords.latitude ||
+					location.longitude !== pos.coords.longitude
+				) {
+					dispatch(
+						sendCoords({
+							token: access,
+							id,
+							latitude: pos.coords.latitude,
+							longitude: pos.coords.longitude,
+						})
+					);
+				}
+			} else {
+				navigate(ROUTES.ACCESS_GEO);
+			}
+			// };
+		};
+
+		const handleError = () => {
+			navigate(ROUTES.ACCESS_GEO_ERROR);
+		};
+
+		const idWatch = navigator.geolocation.watchPosition(
+			handleSuccess,
+			handleError
+		);
+
+		return () => {
+			navigator.geolocation.clearWatch(idWatch);
+		};
+	}, [navigate, dispatch, location, access, id, position, map]);
+
 	const displayMap = useMemo(
 		() => (
 			<MapContainer
@@ -65,42 +103,6 @@ export function TrackingMap() {
 	const findUserLocation = useCallback(() => {
 		map.setView(position);
 	}, [map, position]);
-
-	useEffect(() => {
-		const handleSuccess = (pos) => {
-			map.setView(position);
-			if (location.isAccessAllowed) {
-				if (
-					location.latitude !== pos.coords.latitude ||
-					location.longitude !== pos.coords.longitude
-				) {
-					dispatch(
-						sendCoords({
-							token: access,
-							id,
-							latitude: pos.coords.latitude,
-							longitude: pos.coords.longitude,
-						})
-					);
-				}
-			} else {
-				navigate(ROUTES.ACCESS_GEO);
-			}
-		};
-
-		const handleError = () => {
-			navigate(ROUTES.ACCESS_GEO_ERROR);
-		};
-
-		const idWatch = navigator.geolocation.watchPosition(
-			handleSuccess,
-			handleError
-		);
-
-		return () => {
-			navigator.geolocation.clearWatch(idWatch);
-		};
-	}, [navigate, dispatch, location, access, id, position, map]);
 
 	return (
 		<section className="map">

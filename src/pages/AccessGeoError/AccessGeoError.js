@@ -1,33 +1,33 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setLocation, setLocationError } from '../../store/slices/location';
+import {
+	setAccessAllowed,
+	setLocationError,
+} from '../../store/slices/location';
 import { Button } from '../../components';
 import { ROUTES } from '../../constants';
 import geoTag from '../../images/geo-tag-error.png';
 import './AccessGeoError.scss';
+import { logout } from '../../store/slices/user';
+// import { sendCoords } from '../../store/thunk/sendCoords';
 
 export const AccessGeoError = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	// const { access, id } = useSelector(state => state.user);
+
 	const handleLocateBtnClick = () => {
-		const handleSuccess = (position) => {
-			dispatch(
-				setLocation({
-					latitude: position.coords.latitude,
-					longitude: position.coords.longitude,
-				})
-			);
+		const handleSuccess = (/* position */) => {
+			dispatch(setAccessAllowed(true));
+			// dispatch(sendCoords({
+			// 	token: access,
+			// 	id,
+			// 	latitude: position.coords.latitude,
+			// 	longitude: position.coords.longitude,
+			// }));
 
 			navigate(ROUTES.MAP);
-
-			// @TODO отправить координаты на сервер
-			// Чтобы их получить используем:
-			// const coords =
-			// 				{
-			// 					latitude: useSelector(state => state.location.latitude),
-			// 					longitude: useSelector(state => state.location.longitude),
-			// 				}
 		};
 
 		const handleError = (error) => {
@@ -39,6 +39,10 @@ export const AccessGeoError = () => {
 		};
 
 		navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+	};
+
+	const handleExit = () => {
+		dispatch(logout());
 	};
 
 	return (
@@ -78,6 +82,7 @@ export const AccessGeoError = () => {
 						size="large"
 						color="secondary"
 						className="access-geo-error_exit-btn"
+						onClick={handleExit}
 					/>
 				</Link>
 			</div>

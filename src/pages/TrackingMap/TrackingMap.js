@@ -1,4 +1,6 @@
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
@@ -7,8 +9,9 @@ import './TrackingMap.scss';
 import geotag from '../../images/geotag_map.svg';
 import { friendsLocation } from './friendsLocation'; // TODO делать запрос к серверу для получения списка друзей, брать их координаты
 import ButtonUserLocation from '../../components/ButtonUserLocation/ButtonUserLocation';
+import { ROUTES } from '../../constants';
+import { sendCoords } from '../../store/thunk/sendCoords';
 
-const position = [55.729348, 37.560709]; //  TODO стартовые координаты пользователя брать из редакса
 const userIcon = new Icon({
 	iconUrl: geotag,
 	iconSize: [32, 47],
@@ -17,6 +20,17 @@ const userIcon = new Icon({
 
 export function TrackingMap() {
 	const [map, setMap] = useState(null);
+
+	const location = useSelector((state) => state.location);
+	const position = useMemo(
+		() => [location.latitude, location.longitude],
+		[location]
+	);
+
+	const { access, id } = useSelector((state) => state.user);
+
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const displayMap = useMemo(
 		() => (
@@ -45,12 +59,48 @@ export function TrackingMap() {
 				))}
 			</MapContainer>
 		),
-		[]
+		[position]
 	);
 
 	const findUserLocation = useCallback(() => {
 		map.setView(position);
-	}, [map]);
+	}, [map, position]);
+
+	useEffect(() => {
+		const handleSuccess = (pos) => {
+			map.setView(position);
+			if (location.isAccessAllowed) {
+				if (
+					location.latitude !== pos.coords.latitude ||
+					location.longitude !== pos.coords.longitude
+				) {
+					dispatch(
+						sendCoords({
+							token: access,
+							id,
+							latitude: pos.coords.latitude,
+							longitude: pos.coords.longitude,
+						})
+					);
+				}
+			} else {
+				navigate(ROUTES.ACCESS_GEO);
+			}
+		};
+
+		const handleError = () => {
+			navigate(ROUTES.ACCESS_GEO_ERROR);
+		};
+
+		const idWatch = navigator.geolocation.watchPosition(
+			handleSuccess,
+			handleError
+		);
+
+		return () => {
+			navigator.geolocation.clearWatch(idWatch);
+		};
+	}, [navigate, dispatch, location, access, id, position, map]);
 
 	return (
 		<section className="map">

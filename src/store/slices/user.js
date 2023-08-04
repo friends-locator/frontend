@@ -24,6 +24,7 @@ const userSlice = createSlice({
 		access: '',
 		refresh: '',
 		requestCounter: 0,
+		deleteUserPasswordError: '',
 	},
 	reducers: {
 		logout(state) {
@@ -136,19 +137,19 @@ const userSlice = createSlice({
 		builder.addCase(deleteCurrentUser.pending, (state) => ({
 			...state,
 			isLoading: true,
+			deleteUserPasswordError: '',
 		}));
-		builder.addCase(deleteCurrentUser.fulfilled, (state, action) => ({
+		builder.addCase(deleteCurrentUser.fulfilled, (state) => ({
 			...state,
-			...action.payload,
 			isLoading: false,
+			deleteSuccess: true,
 			isAuthenticated: false,
-			errorMessage: '',
+			deleteUserPasswordError: '',
 		}));
 		builder.addCase(deleteCurrentUser.rejected, (state, action) => ({
 			...state,
+			...action.payload,
 			isLoading: false,
-			errorMessage: action.payload,
-			isAuthenticated: true,
 		}));
 	},
 });

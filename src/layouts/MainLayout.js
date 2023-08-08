@@ -78,8 +78,9 @@ export default function MainLayout({
 			const token = localStorage.getItem('access_token');
 			if (token) {
 				dispatch(deleteCurrentUser({ token, password }));
-				// localStorage.clear();
-				if (!deleteSuccess) {
+				if (deleteSuccess) {
+					localStorage.clear();
+				} else {
 					setIsDeleteUserPasswordError(true);
 				}
 			} else {

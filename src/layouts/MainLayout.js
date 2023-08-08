@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
@@ -28,7 +28,13 @@ export default function MainLayout({
 		useState(false);
 	const [isActiveInvisible, setIsActiveInvisible] = useState(false);
 	const [isActiveNightTheme, setIsActiveNightTheme] = useState(false);
+	const [isDeleteUserPasswordError, setIsDeleteUserPasswordError] =
+		useState(false);
+
 	const userStatus = useSelector((state) => state.user.status);
+	const { deleteUserPasswordError, deleteSuccess } = useSelector(
+		(state) => state.user
+	);
 
 	const handleOpenGeneralMenuPopup = useCallback(() => {
 		setIsGeneralMenuPopupOpen(true);
@@ -53,6 +59,9 @@ export default function MainLayout({
 
 	const closePopupDeleteAccount = useCallback(() => {
 		setIsPopupDeleteAccountOpen(false);
+		setTimeout(() => {
+			setIsDeleteUserPasswordError(false);
+		}, 500);
 	}, []);
 
 	const toggleInvisibleOption = useCallback(() => {
@@ -69,26 +78,16 @@ export default function MainLayout({
 			const token = localStorage.getItem('access_token');
 			if (token) {
 				dispatch(deleteCurrentUser({ token, password }));
-				localStorage.clear();
+				// localStorage.clear();
+				if (!deleteSuccess) {
+					setIsDeleteUserPasswordError(true);
+				}
 			} else {
 				console.log('токена нет');
 			}
 		},
-		[dispatch]
+		[dispatch, deleteSuccess]
 	);
-
-	const [isDeleteUserPasswordError, setIsDeleteUserPasswordError] =
-		useState(false);
-
-	const { deleteUserPasswordError, deleteSuccess } = useSelector(
-		(state) => state.user
-	);
-
-	useEffect(() => {
-		if (!deleteSuccess) {
-			setIsDeleteUserPasswordError(true);
-		}
-	}, [isDeleteUserPasswordError, deleteSuccess]);
 
 	return (
 		<>

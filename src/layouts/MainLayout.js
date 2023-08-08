@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
@@ -64,7 +64,6 @@ export default function MainLayout({
 	}, [isActiveNightTheme]);
 
 	// TODO показать попап, что аккаунт удален
-	// TODO обработать ошибку, если введен неверный пароль от аккаунта
 	const handleDeleteAccount = useCallback(
 		(password) => {
 			const token = localStorage.getItem('access_token');
@@ -77,6 +76,19 @@ export default function MainLayout({
 		},
 		[dispatch]
 	);
+
+	const [isDeleteUserPasswordError, setIsDeleteUserPasswordError] =
+		useState(false);
+
+	const { deleteUserPasswordError, deleteSuccess } = useSelector(
+		(state) => state.user
+	);
+
+	useEffect(() => {
+		if (!deleteSuccess) {
+			setIsDeleteUserPasswordError(true);
+		}
+	}, [isDeleteUserPasswordError, deleteSuccess]);
 
 	return (
 		<>
@@ -115,6 +127,8 @@ export default function MainLayout({
 				isOpen={isPopupDeleteAccountOpen}
 				onClose={closePopupDeleteAccount}
 				deleteAccount={handleDeleteAccount}
+				isDeleteUserPasswordError={isDeleteUserPasswordError}
+				deleteUserPasswordError={deleteUserPasswordError}
 			/>
 		</>
 	);

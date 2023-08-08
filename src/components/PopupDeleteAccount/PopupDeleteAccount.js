@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import './PopupDeleteAccount.scss';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import Button from '../Button/Button';
@@ -9,28 +8,18 @@ import { ROUTES } from '../../constants';
 import success from '../../images/icon-success.svg';
 import InputPassword from '../InputPassword/InputPassword';
 
-function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
+function PopupDeleteAccount({
+	isOpen,
+	onClose,
+	deleteAccount,
+	isDeleteUserPasswordError,
+	deleteUserPasswordError,
+}) {
 	const [title, setTitle] = useState(
 		'Вы действительно хотите удалить свой профиль в «Где друзья»?'
 	);
 	const [password, setPassword] = useState('');
 	const [passwordType, setPasswordType] = useState('password');
-	const [isDeleteUserPasswordError, setIsDeleteUserPasswordError] =
-		useState(false);
-
-	const { deleteUserPasswordError, deleteSuccess } = useSelector(
-		(state) => state.user
-	);
-
-	useEffect(() => {
-		if (!deleteSuccess) {
-			setIsDeleteUserPasswordError(true);
-		}
-	}, [isDeleteUserPasswordError, deleteSuccess]);
-
-	// useEffect(() => {
-	// 	if (deleteSuccess) setTitle('');
-	// }, [deleteSuccess]);
 
 	const handleChange = (evt) => {
 		setPassword(evt.target.value);
@@ -99,7 +88,7 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 					/>
 				</div>
 			)}
-			{/* TODO правильное поведение при удалении аккаунта */}
+
 			{title === 'Для подтверждения действия введите свой пароль' && (
 				<>
 					<InputPassword
@@ -153,6 +142,8 @@ PopupDeleteAccount.propTypes = {
 	isOpen: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired,
 	deleteAccount: PropTypes.func.isRequired,
+	isDeleteUserPasswordError: PropTypes.bool.isRequired,
+	deleteUserPasswordError: PropTypes.string.isRequired,
 };
 
 export default PopupDeleteAccount;

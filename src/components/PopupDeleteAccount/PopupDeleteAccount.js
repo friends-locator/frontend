@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './PopupDeleteAccount.scss';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import Button from '../Button/Button';
@@ -14,6 +15,22 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 	);
 	const [password, setPassword] = useState('');
 	const [passwordType, setPasswordType] = useState('password');
+	const [isDeleteUserPasswordError, setIsDeleteUserPasswordError] =
+		useState(false);
+
+	const { deleteUserPasswordError, deleteSuccess } = useSelector(
+		(state) => state.user
+	);
+
+	useEffect(() => {
+		if (!deleteSuccess) {
+			setIsDeleteUserPasswordError(true);
+		}
+	}, [isDeleteUserPasswordError, deleteSuccess]);
+
+	// useEffect(() => {
+	// 	if (deleteSuccess) setTitle('');
+	// }, [deleteSuccess]);
 
 	const handleChange = (evt) => {
 		setPassword(evt.target.value);
@@ -82,8 +99,7 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 					/>
 				</div>
 			)}
-			{/* TODO passwordDirty и passwordError использовать или убрать из обязательных у InputPassword */}
-			{/* TODO обработку, если пользователь ввел неверный пароль */}
+			{/* TODO правильное поведение при удалении аккаунта */}
 			{title === 'Для подтверждения действия введите свой пароль' && (
 				<>
 					<InputPassword
@@ -95,6 +111,8 @@ function PopupDeleteAccount({ isOpen, onClose, deleteAccount }) {
 						inputValue={password || ''}
 						onChange={handleChange}
 						onPasswordBtnClick={handlePasswordBtnClick}
+						passwordDirty={isDeleteUserPasswordError}
+						passwordError={deleteUserPasswordError}
 					/>
 					<div className="delete-account__btn-container">
 						<Button

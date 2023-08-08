@@ -286,30 +286,6 @@ export const deleteRequest = (id) =>
 		method: 'DELETE',
 	});
 
-export const updateCoordinates = ({
-	id,
-	email,
-	username,
-	firstName,
-	lastName,
-	longitude,
-	latitude,
-	status,
-}) =>
-	fetchTemplate({
-		path: `/users/${id}/update-coordinates/`,
-		method: 'PATCH',
-		body: {
-			email,
-			username,
-			first_name: firstName,
-			last_name: lastName,
-			longitude,
-			latitude,
-			status,
-		},
-	});
-
 export const updateFriendsCategory = ({
 	id,
 	email,
@@ -469,6 +445,18 @@ export const setNickname = ({ username, token }) =>
 			username,
 		},
 	});
+
+export const updateCoordinates = ({ token, id, longitude, latitude }) =>
+	fetchTemplate({
+		path: `/users/${id}/update-coordinates/`,
+		method: 'PATCH',
+		body: {
+			longitude,
+			latitude,
+		},
+		token: `Bearer ${token}`,
+	});
+
 
 export const deleteCurrentUser = ({ token, password }) =>
 	fetchTemplate({

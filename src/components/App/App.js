@@ -8,7 +8,7 @@ import { refreshToken } from '../../store/thunk/refreshToken';
 
 function App() {
 	const dispatch = useDispatch();
-	const errorMessage = useSelector((state) => state.user.errorMessage);
+	const { errorMessage, isAuthenticated } = useSelector((state) => state.user);
 
 	useEffect(() => {
 		let token = localStorage.getItem('access_token');
@@ -24,7 +24,7 @@ function App() {
 				}
 			}
 		}
-	}, [dispatch, errorMessage]);
+	}, [dispatch, errorMessage, isAuthenticated]);
 
 	return (
 		<AppContextProvider>

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { updateCoordinates } from '../../untils/mianApi';
+import { updateCoordinates } from '../../utils/mainApi';
 
 export const sendCoords = createAsyncThunk(
 	'location/send',
